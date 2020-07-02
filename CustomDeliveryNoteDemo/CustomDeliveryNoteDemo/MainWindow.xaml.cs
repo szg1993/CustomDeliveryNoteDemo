@@ -23,6 +23,7 @@ namespace CustomDeliveryNoteDemo
         public MainWindow()
         {
             InitializeComponent();
+            //this.DataContext = new MainViewModel();
         }
     }
 }

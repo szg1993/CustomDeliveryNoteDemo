@@ -8,7 +8,7 @@ namespace ViewModel
 {
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
-        #region Properties
+        #region Declaration
 
         /// <summary>
         /// Needed because of the dispose pattern.

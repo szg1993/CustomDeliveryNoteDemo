@@ -9,7 +9,6 @@
         ResizeMode="CanMinimize"
         WindowStyle="None"
         AllowsTransparency="True"
-        Icon="Pictures\ProgramIcon.ico"
         Template="{StaticResource DeliveryNoteWindowTemplate}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Height="720" Width="1034">
@@ -21,11 +20,13 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="487*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0"
-                    Grid.Column="0" Grid.ColumnSpan="3"
+                    Grid.Column="0" Grid.ColumnSpan="5"
                     Background="{StaticResource PleasantSmokeColorBrush}">
             <Menu Name="MainMenu"
                   AlternationCount="2"
@@ -35,11 +36,11 @@
                         <DockPanel HorizontalAlignment="Stretch"/>
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
-                <MenuItem Header="New note"
+                <MenuItem Header="New"
                           AlternationCount="2"
                           FontSize="16">
                     <MenuItem Name ="mnnewstandardnote"
-                          Header="Hagyományos">
+                              Header="Standard note">
                         <MenuItem.Icon>
                             <Image Source="Pictures/AddStandardNoteIcon.png"
                                Width="20"
@@ -78,5 +79,6 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
+        <StackPanel Name="stkWorkPlace" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
     </Grid>
 </Window>
