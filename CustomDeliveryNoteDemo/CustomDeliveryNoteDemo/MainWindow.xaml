@@ -5,8 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomDeliveryNoteDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="Delivery note maker"
+        ResizeMode="CanMinimize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Icon="Pictures\ProgramIcon.ico"
+        Template="{StaticResource DeliveryNoteWindowTemplate}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Height="720" Width="1034">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0" Grid.ColumnSpan="3"
+                    Background="{StaticResource PleasantSmokeColorBrush}">
+            <Menu Name="MainMenu"
+                  AlternationCount="2"
+                  Style="{StaticResource DeliveryNoteMenuTemplate}">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="New note"
+                          AlternationCount="2"
+                          FontSize="16">
+                    <MenuItem Name ="mnnewstandardnote"
+                          Header="Hagyományos">
+                        <MenuItem.Icon>
+                            <Image Source="Pictures/AddStandardNoteIcon.png"
+                               Width="20"
+                               Height="20"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Maintenance" 
+                          AlternationCount="2"
+                          FontSize="16">
+                    <MenuItem Header="Recipient maintenance">
+                        <MenuItem.Icon>
+                            <Image Source="Pictures/PencilIcon.png"
+                                   Width="20"
+                                   Height="20"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Note search">
+                        <MenuItem.Icon>
+                            <Image Source="Pictures/SearchNoteIcon.png"
+                                   Width="20"
+                                   Height="20"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Help"
+                          AlternationCount="2"
+                          FontSize="16">
+                    <MenuItem Header="">
+                        <MenuItem.Icon>
+                            <Image Source="Pictures/LearnIcon.png"
+                                   Width="20"
+                                   Height="20"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,0 +1,208 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="CustomDeliveryNoteDemo.Templates.DeliveryNoteWindowTemplate">
+    
+    <ControlTemplate x:Key="DeliveryNoteWindowTemplate" TargetType="{x:Type Window}">
+        <Border Name="Bd"
+                Background="White" 
+                CornerRadius="15"
+                BorderBrush="{StaticResource PleasantGrayColorBrush}" 
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        CornerRadius="15,15,0,0"
+                        Margin="0"
+                        Padding="0"
+                        Background="{StaticResource PleasantSmokeColorBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="1"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"                                        
+                               Source="{TemplateBinding Icon}">
+                        </Image>
+                        <TextBlock Grid.Column="3"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"    
+                                   Text="{TemplateBinding Title}">
+                        </TextBlock>
+                        <Grid Grid.Column="5" HorizontalAlignment="Right">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="2"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="2"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="HideWindowIcon"
+                                     MouseDown="HideWindowIcon_MouseDown"
+                                     Grid.Column="0"
+                                     Width="16"
+                                     Height="16"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Fill="{StaticResource PleasantBlueColorBrush}">
+                                <Ellipse.Triggers>
+                                    <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="HideWindowIcon"
+                                                    Storyboard.TargetProperty="Width"
+                                                    From="16" To="18" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="HideWindowIcon"
+                                                    Storyboard.TargetProperty="Height"
+                                                    From="16" To="18" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="HideWindowIcon"
+                                                    Storyboard.TargetProperty="Width"
+                                                    From="18" To="16" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="HideWindowIcon"
+                                                    Storyboard.TargetProperty="Height"
+                                                    From="18" To="16" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Ellipse.Triggers>
+                            </Ellipse>
+                            <Ellipse x:Name="FullScreenIcon"
+                                     MouseDown="FullScreenIcon_MouseDown"
+                                     Grid.Column="2"
+                                     Width="16"
+                                     Height="16"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Fill="{StaticResource PleasantOrangeColorBrush}">
+                                <Ellipse.Triggers>
+                                    <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="FullScreenIcon"
+                                                    Storyboard.TargetProperty="Width"
+                                                    From="16" To="18" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="FullScreenIcon"
+                                                    Storyboard.TargetProperty="Height"
+                                                    From="16" To="18" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="FullScreenIcon"
+                                                    Storyboard.TargetProperty="Width"
+                                                    From="18" To="16" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="FullScreenIcon"
+                                                    Storyboard.TargetProperty="Height"
+                                                    From="18" To="16" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Ellipse.Triggers>
+                            </Ellipse>
+                            <Ellipse x:Name="WindowClosingIcon"
+                                     MouseDown="WindowClosingIcon_MouseDown"
+                                     Grid.Column="4"                                       
+                                     Width="16"
+                                     Height="16"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Fill="{StaticResource PleasantRedColorBrush}">
+                                <Ellipse.Triggers>
+                                    <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="WindowClosingIcon"
+                                                    Storyboard.TargetProperty="Width"
+                                                    From="16" To="18" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="WindowClosingIcon"
+                                                    Storyboard.TargetProperty="Height"
+                                                    From="16" To="18" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="WindowClosingIcon"
+                                                    Storyboard.TargetProperty="Width"
+                                                    From="18" To="16" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                                <DoubleAnimation 
+                                                    Storyboard.TargetName="WindowClosingIcon"
+                                                    Storyboard.TargetProperty="Height"
+                                                    From="18" To="16" Duration="0:0:0.1">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Ellipse.Triggers>
+                            </Ellipse>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <ContentPresenter Grid.Row="1"
+                                  Grid.Column="1"
+                                  Content="{TemplateBinding Content}" 
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" TargetName="HideWindowIcon" Value="Hand"/>
+                <Setter Property="Cursor" TargetName="FullScreenIcon" Value="No"/>
+                <Setter Property="Cursor" TargetName="WindowClosingIcon" Value="Hand"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Normal"/>
+                </MultiTrigger.Conditions>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

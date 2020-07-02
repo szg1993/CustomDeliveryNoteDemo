@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\App.xaml
-11151548125
+5523611110
 
-3-917710711
+4-1732191324
 1921654412462
-MainWindow.xaml;
+Dictionary\BrushDictionary.xaml;Dictionary\StyleDictionary.xaml;MainWindow.xaml;Templates\DeliveryNoteMenuTemplate.xaml;Templates\DeliveryNoteWindowTemplate.xaml;
 
-False
+True
 
