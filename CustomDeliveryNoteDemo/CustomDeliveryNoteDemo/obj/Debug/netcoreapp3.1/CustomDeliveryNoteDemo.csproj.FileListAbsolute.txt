@@ -22,3 +22,4 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDem
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.dll
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.pdb
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.genruntimeconfig.cache
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.csprojAssemblyReference.cache

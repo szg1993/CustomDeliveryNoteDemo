@@ -3,31 +3,27 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 
-namespace CustomDeliveryNoteDemo.Util
+namespace ViewModel.Util
 {
     public class RelayCommand : ICommand
     {
-        #region Declaration
-
         private Action<object> execute;
         private Predicate<object> canExecute;
 
-        #endregion
-
-        #region Ctors
-
-        public RelayCommand(Action<object> execIn, Predicate<object> canExecIn)
+        public RelayCommand(Action<object> exec_in, Predicate<object> canExec_in)
         {
-            this.execute = execIn ?? throw new Exception("The execute isn't declared");
-            this.canExecute = canExecIn;
+            if (exec_in == null)
+            {
+                throw new Exception("Nincs execute meghatározva!");
+            }
+            this.execute = exec_in;
+            this.canExecute = canExec_in;
         }
 
-        public RelayCommand(Action<object> execIn) : this(execIn, null)
+        public RelayCommand(Action<object> exec_in) : this(exec_in, null)
         {
 
         }
-
-        #endregion
 
         public bool CanExecute(object parameter)
         {

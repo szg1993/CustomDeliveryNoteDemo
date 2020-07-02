@@ -2,24 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ViewModel.Util;
 
 namespace ViewModel
 {
     public sealed class MainViewModel : ViewModelBase
     {
-        //private RelayCommand openMenuItemCommand;
+        private RelayCommand openMenuItemCommand;
 
-        //public RelayCommand OpenMenuItemCommand
-        //{
-        //    get
-        //    {
-        //        if (this.openMenuItemCommand == null)
-        //        {
-        //            this.openMenuItemCommand = new RelayCommand(OpenMenuItem);
-        //        }
-        //        return openMenuItemCommand;
-        //    }
-        //}
+        public RelayCommand OpenMenuItemCommand
+        {
+            get
+            {
+                if (this.openMenuItemCommand == null)
+                {
+                    this.openMenuItemCommand = new RelayCommand(OpenMenuItem);
+                }
+                return openMenuItemCommand;
+            }
+        }
 
         public MainViewModel()
         {

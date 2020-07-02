@@ -2,12 +2,8 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\n
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.AssemblyInfoInputs.cache
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.AssemblyInfo.cs
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.csproj.CoreCompileInputs.cache
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\bin\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.exe
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\bin\Debug\netcoreapp3.1\ViewModel.deps.json
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\bin\Debug\netcoreapp3.1\ViewModel.dll
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\bin\Debug\netcoreapp3.1\ViewModel.pdb
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\bin\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.dll
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\bin\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.pdb
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.csproj.CopyComplete
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.dll
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.pdb

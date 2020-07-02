@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace CustomDeliveryNoteDemo
 {
@@ -23,7 +24,7 @@ namespace CustomDeliveryNoteDemo
         public MainWindow()
         {
             InitializeComponent();
-            //this.DataContext = new MainViewModel();
+            this.DataContext = new MainViewModel();
         }
     }
 }
