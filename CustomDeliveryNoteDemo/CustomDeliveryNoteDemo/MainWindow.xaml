@@ -40,7 +40,8 @@
                           AlternationCount="2"
                           FontSize="16">
                     <MenuItem Name ="mnnewstandardnote"
-                              Header="Standard note">
+                              Header="Standard note"
+                              Command="{Binding OpenMenuItemCommand}" CommandParameter="CustomDeliveryNoteDemo.NoteMaintenanceView">
                         <MenuItem.Icon>
                             <Image Source="Pictures/AddStandardNoteIcon.png"
                                Width="20"

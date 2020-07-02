@@ -21,10 +21,14 @@ namespace CustomDeliveryNoteDemo
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Ctors
+
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new MainViewModel();
         }
+
+        #endregion
     }
 }

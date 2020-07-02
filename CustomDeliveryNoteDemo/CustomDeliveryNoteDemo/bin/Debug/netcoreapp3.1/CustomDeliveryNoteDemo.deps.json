@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "CustomDeliveryNoteDemo/1.0.0": {
+        "dependencies": {
+          "ViewModel": "1.0.0"
+        },
         "runtime": {
           "CustomDeliveryNoteDemo.dll": {}
+        }
+      },
+      "ViewModel/1.0.0": {
+        "runtime": {
+          "ViewModel.dll": {}
         }
       }
     }
   },
   "libraries": {
     "CustomDeliveryNoteDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ViewModel/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

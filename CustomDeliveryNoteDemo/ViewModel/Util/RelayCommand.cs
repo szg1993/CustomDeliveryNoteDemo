@@ -10,6 +10,8 @@ namespace ViewModel.Util
         private Action<object> execute;
         private Predicate<object> canExecute;
 
+        public event EventHandler CanExecuteChanged;
+
         public RelayCommand(Action<object> exec_in, Predicate<object> canExec_in)
         {
             if (exec_in == null)
@@ -35,12 +37,6 @@ namespace ViewModel.Util
             {
                 return canExecute(parameter);
             }
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
         }
 
         public void Execute(object parameter)
