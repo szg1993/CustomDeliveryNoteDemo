@@ -1,6 +1,7 @@
 ﻿//using CustomDeliveryNoteDemo.Util;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace ViewModel
             }
         }
 
-        public delegate void Notify();
+        public delegate void Notify(string menuItemName);
         public event Notify NewMenuItemEvent;
 
 
@@ -38,18 +39,21 @@ namespace ViewModel
 
         private void OpenMenuItem(object param)
         {
-            NewMenuItemEvent.Invoke();
             if (param == null)
             {
                 return;
             }
 
-            string className = param is object[]? Convert.ToString((param as object[])[0]) : Convert.ToString(param);
+            string menuItemName = param is object[]? Convert.ToString((param as object[])[0]) : Convert.ToString(param);           
 
-            if (String.IsNullOrEmpty(className))
+            if (String.IsNullOrEmpty(menuItemName))
             {
                 throw new MessageException("There is no class attached to the menu item.");
-            }          
+            }
+            else
+            {
+                NewMenuItemEvent.Invoke(menuItemName);
+            }
         }
     }
 }

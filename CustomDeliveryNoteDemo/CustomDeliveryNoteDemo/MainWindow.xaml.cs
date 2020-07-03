@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
+using ViewModel.Excep;
 
 namespace CustomDeliveryNoteDemo
 {
@@ -25,16 +26,25 @@ namespace CustomDeliveryNoteDemo
 
         public MainWindow()
         {
-            InitializeComponent();
-            this.DataContext = new MainViewModel();
+            try
+            {
+                InitializeComponent();
+                this.DataContext = new MainViewModel();
 
-            ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
+                ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
+            }
+            catch (MessageException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void MainWindow_NewMenuItemEvent()
+        private void MainWindow_NewMenuItemEvent(string menuItemName)
         {
-            this.stkWorkPlace.Children.Add(new NoteMaintenanceView());
-            MessageBox.Show("Done");
+            object ucType = menuItemName;
+            Type t = Type.GetType((string)ucType);
+            UserControl uc = Activator.CreateInstance(t) as UserControl;
+            this.grdWorkPlace.Children.Add(uc);
         }
 
         #endregion
