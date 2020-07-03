@@ -16,18 +16,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="16*"/>
-            <ColumnDefinition Width="487*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0"
-                    Grid.Column="0" Grid.ColumnSpan="5"
+                    Grid.Column="0" Grid.ColumnSpan="3"
                     Background="{StaticResource PleasantSmokeColorBrush}">
             <Menu Name="MainMenu"
                   AlternationCount="2"
@@ -82,14 +81,8 @@
             </Menu>
         </StackPanel>
         <Grid Name="grdWorkPlace"
-              Grid.Row="1"
-              Grid.Column="1" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="27*"/>
-                <ColumnDefinition Width="127*"/>
-                <ColumnDefinition Width="11*"/>
-                <ColumnDefinition Width="847*"/>
-            </Grid.ColumnDefinitions>
+              Grid.Row="2"
+              Grid.Column="1">
         </Grid>
     </Grid>
 </Window>

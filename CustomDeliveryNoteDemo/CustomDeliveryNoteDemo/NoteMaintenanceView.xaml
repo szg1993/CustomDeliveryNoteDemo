@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="260"/>
             <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -23,14 +23,18 @@
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="245"/>
-                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="115"/>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="145"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="145"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="145"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -64,11 +68,10 @@
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
                    Padding="0"
-                   FontSize="12"/>
+                   FontSize="{Binding LabelFontSize}"/>
 
             <ComboBox Grid.Column="2"
                       Grid.Row="0"
-                      Name="cmbreccode"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       DisplayMemberPath="Name"
                       AlternationCount="2"
@@ -76,7 +79,7 @@
                       HorizontalContentAlignment="Left"
                       VerticalAlignment="Center"
                       VerticalContentAlignment="Center"
-                      FontSize="12"                                                
+                      FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True"/>
 
             <Label Grid.Column="0"
@@ -87,7 +90,7 @@
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
                    Padding="0"
-                   FontSize="12"/>
+                   FontSize="{Binding LabelFontSize}"/>
 
             <TextBox Grid.Column="2"
                      Grid.Row="2"
@@ -96,7 +99,8 @@
                      HorizontalContentAlignment="Left"
                      TextWrapping="Wrap"
                      VerticalContentAlignment="Center"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                     FontSize="{Binding LabelFontSize}"/>
 
             <Label Grid.Column="0"
                    Grid.Row="4"                   
@@ -106,7 +110,7 @@
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
                    Padding="0"
-                   FontSize="12"/>
+                   FontSize="{Binding LabelFontSize}"/>
 
             <TextBox Grid.Column="2"
                      Grid.Row="4"
@@ -115,7 +119,8 @@
                      HorizontalContentAlignment="Left"
                      TextWrapping="Wrap"
                      VerticalContentAlignment="Center"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                     FontSize="{Binding LabelFontSize}"/>
 
             <Label Grid.Column="0"
                    Grid.Row="6"                   
@@ -125,7 +130,7 @@
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
                    Padding="0"
-                   FontSize="12"/>
+                   FontSize="{Binding LabelFontSize}"/>
 
             <TextBox Grid.Column="2"
                      Grid.Row="6"
@@ -134,7 +139,8 @@
                      HorizontalContentAlignment="Left"
                      TextWrapping="Wrap"
                      VerticalContentAlignment="Center"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                     FontSize="{Binding LabelFontSize}"/>
 
             <Label Grid.Column="0"
                    Grid.Row="8"                   
@@ -144,7 +150,7 @@
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
                    Padding="0"
-                   FontSize="12"/>
+                   FontSize="{Binding LabelFontSize}"/>
 
             <TextBox Grid.Column="2"
                      Grid.Row="8"
@@ -153,7 +159,354 @@
                      HorizontalContentAlignment="Left"
                      TextWrapping="Wrap"
                      VerticalContentAlignment="Center"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="4"
+                   Grid.Row="0"                   
+                   Content="Assigned to:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+            
+            <TextBox Grid.Column="6"
+                     Grid.Row="0"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="4"
+                   Grid.Row="2"                   
+                   Content="Assigned to phone:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="6"
+                     Grid.Row="2"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="4"
+                   Grid.Row="4"                   
+                   Content="Est. arrival date:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <DatePicker Grid.Column="6"
+                        Grid.Row="4"
+                        BorderThickness="0"
+                        FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="4"
+                   Grid.Row="6"                   
+                   Content="Comments:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="6"
+                     Grid.Row="6"
+                     Grid.RowSpan="3"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Top"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+            
+            <Label Grid.Column="4"
+                   Grid.Row="10"                   
+                   Content="Note category:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <ComboBox Grid.Column="6"
+                      Grid.Row="10"
+                      Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                      AlternationCount="2"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"                                               
+                      IsSynchronizedWithCurrentItem="True"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="0"                   
+                   Content="EKAER nbr:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+            
+            <TextBox Grid.Column="10"
+                     Grid.ColumnSpan="5"
+                     Grid.Row="0"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="2"                   
+                   Content="Place of receipt:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <ComboBox Grid.Column="10" Grid.ColumnSpan="5"
+                      Grid.Row="2"
+                      Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                      AlternationCount="2"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"                                               
+                      IsSynchronizedWithCurrentItem="True"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="4"                   
+                   Content="Contact (sender):"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+            
+            <TextBox Grid.Column="10"
+                     Grid.ColumnSpan="5"
+                     Grid.Row="4"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="6"                   
+                   Content="Contact phone (sender):"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="10"
+                     Grid.ColumnSpan="5"
+                     Grid.Row="6"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="8"                   
+                   Content="Date of receipt:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <DatePicker Grid.Column="10" Grid.ColumnSpan="5"
+                        Grid.Row="8"
+                        BorderThickness="0"
+                        FontSize="{Binding LabelFontSize}"/>
+            
+            <Label Grid.Column="8"
+                   Grid.Row="10"                   
+                   Content="Ship date:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <DatePicker Grid.Column="10" Grid.ColumnSpan="5"
+                        Grid.Row="10"
+                        BorderThickness="0"
+                        FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="12"                   
+                   Content="Tare weight:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="10"
+                     Grid.ColumnSpan="5"
+                     Grid.Row="12"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+            
+            <ComboBox Grid.Column="16"
+                      Grid.Row="12"
+                      Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                      AlternationCount="2"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"                                               
+                      IsSynchronizedWithCurrentItem="True"/>
+
+            <Label Grid.Column="8"
+                   Grid.Row="14"                   
+                   Content="Package quantity:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="10"
+                     Grid.ColumnSpan="5"
+                     Grid.Row="14"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <ComboBox Grid.Column="16"
+                      Grid.Row="14"
+                      Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                      AlternationCount="2"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"                                               
+                      IsSynchronizedWithCurrentItem="True"/>
+            
+            <Label Grid.Column="8"
+                   Grid.Row="16"                   
+                   Content="Package size:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="10"
+                     Grid.Row="16"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+            
+            <Label Grid.Column="11"
+                   Grid.Row="16"                   
+                   Content="X"
+                   HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="12"
+                     Grid.Row="16"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+
+            <Label Grid.Column="13"
+                   Grid.Row="16"                   
+                   Content="X"
+                   HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <TextBox Grid.Column="14"
+                     Grid.Row="16"
+                     Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left"
+                     TextWrapping="Wrap"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Stretch"
+                     FontSize="{Binding LabelFontSize}"/>
+            
+            <ComboBox Grid.Column="16"
+                      Grid.Row="16"
+                      Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                      AlternationCount="2"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"                                               
+                      IsSynchronizedWithCurrentItem="True"/>
 
         </Grid>
     </Grid>

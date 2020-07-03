@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Templates/DeliveryNoteButtonTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteComboBoxTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteTextBoxTemplate.xaml"/>
+                <ResourceDictionary Source="Templates/DeliveryNoteDatePickerTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -32,6 +32,8 @@ namespace ViewModel
         public delegate void MsgNotify(string msg, DeliveryNoteMessageBoxType type);
         public event MsgNotify MessageBoxEvent;
 
+        public int LabelFontSize { get; set; } = 12;
+
         #endregion
 
         #region Methods
