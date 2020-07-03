@@ -6,6 +6,15 @@ using System.Text;
 
 namespace ViewModel
 {
+    public enum DeliveryNoteMessageBoxType
+    {
+        ConfirmationWithYesNo,
+        ConfirmationWithYesNoCancel,
+        Information,
+        Error,
+        Warning
+    }
+
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         #region Declaration
@@ -20,21 +29,29 @@ namespace ViewModel
         public delegate void MouseNotify(bool isWaiting);
         public event MouseNotify MouseEvent;
 
-        public delegate void MsgNotify(string msg);
+        public delegate void MsgNotify(string msg, DeliveryNoteMessageBoxType type);
         public event MsgNotify MessageBoxEvent;
 
         #endregion
 
         #region Methods
 
+        /// <summary>
+        /// Begin changing the cursor.
+        /// </summary>
+        /// <param name="isWaiting"></param>
         protected virtual void OnCursorHandling(bool isWaiting)
         {
             MouseEvent.Invoke(isWaiting);
         }
 
-        protected virtual void OnMessageBoxHandling(string msg)
+        /// <summary>
+        /// Begin show the messagebox.
+        /// </summary>
+        /// <param name="msg"></param>
+        protected virtual void OnMessageBoxHandling(string msg, DeliveryNoteMessageBoxType type)
         {
-            MessageBoxEvent.Invoke(msg);
+            MessageBoxEvent.Invoke(msg, type);
         }
 
 
@@ -46,7 +63,7 @@ namespace ViewModel
         {
             if (TypeDescriptor.GetProperties(this)[propertyName_in] == null)
             {
-                throw new Exception(String.Format("Nincs ilyen nevű tulajdonság: {0} !", propertyName_in));
+                throw new Exception(String.Format("There is no property with this name: {0} !", propertyName_in));
             }
         }
 

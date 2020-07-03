@@ -39,6 +39,10 @@ namespace CustomDeliveryNoteDemo
 
         #region Events
 
+        /// <summary>
+        /// Change the mouse cursor.
+        /// </summary>
+        /// <param name="isWaiting"></param>
         private void MainWindow_MouseEvent(bool isWaiting)
         {
             if (isWaiting)
@@ -51,16 +55,23 @@ namespace CustomDeliveryNoteDemo
             }
         }
 
-        private void MainWindow_MessageBoxEvent(string msg)
+        /// <summary>
+        /// Show the MessageBox.
+        /// </summary>
+        /// <param name="msg"></param>
+        private void MainWindow_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
         {
-            MessageBox.Show(msg);
+            DeliveryNoteMessageBox.Show(msg, type);
         }
 
+        /// <summary>
+        /// Add new menu item based on the view's name.
+        /// </summary>
+        /// <param name="menuItemName"></param>
         private void MainWindow_NewMenuItemEvent(string menuItemName)
         {
             object ucType = menuItemName;
             Type t = Type.GetType((string)ucType);
-            Thread.Sleep(5000);
             UserControl uc = Activator.CreateInstance(t) as UserControl;
             this.grdWorkPlace.Children.Add(uc);
         }

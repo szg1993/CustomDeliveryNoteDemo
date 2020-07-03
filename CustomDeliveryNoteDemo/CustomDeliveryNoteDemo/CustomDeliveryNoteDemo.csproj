@@ -7,7 +7,49 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pictures\AddStandardNoteIcon.png" />
+    <None Remove="Pictures\LearnIcon.png" />
+    <None Remove="Pictures\PencilIcon.png" />
+    <None Remove="Pictures\ProgramIcon.ico" />
+    <None Remove="Pictures\SearchNoteIcon.png" />
+    <None Remove="Pictures\WpfErrorIcon.png" />
+    <None Remove="Pictures\WpfInformationIcon.png" />
+    <None Remove="Pictures\WpfQuestionIcon.png" />
+    <None Remove="Pictures\WpfWarningIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pictures\AddStandardNoteIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\LearnIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\PencilIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\ProgramIcon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\SearchNoteIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\WpfErrorIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\WpfInformationIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\WpfQuestionIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\WpfWarningIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Dictionary/StyleDictionary.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteWindowTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteMenuTemplate.xaml"/>
+                <ResourceDictionary Source="Templates/DeliveryNoteButtonTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

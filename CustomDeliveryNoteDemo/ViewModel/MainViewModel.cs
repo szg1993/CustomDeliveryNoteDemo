@@ -26,15 +26,18 @@ namespace ViewModel
             }
         }
 
-        public delegate void Notify(string menuItemName);
-        public event Notify NewMenuItemEvent;
+        public delegate void MenuItemNotify(string menuItemName);
+        public event MenuItemNotify NewMenuItemEvent;
 
         public MainViewModel()
         {
             
         }
 
-
+        /// <summary>
+        /// Create the corresponding view and open it.
+        /// </summary>
+        /// <param name="param"></param>
         private void OpenMenuItem(object param)
         {
             try
@@ -56,15 +59,14 @@ namespace ViewModel
                 {
                     NewMenuItemEvent.Invoke(menuItemName);
                 }
-
             }
             catch (MessageException mex)
             {
-                OnMessageBoxHandling(mex.Message);
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
             }
             catch(Exception ex)
             {
-                OnMessageBoxHandling(ex.Message);
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
             }
             finally
             {

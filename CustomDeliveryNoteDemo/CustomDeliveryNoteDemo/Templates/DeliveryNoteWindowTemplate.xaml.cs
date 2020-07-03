@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Shapes;
+using ViewModel;
 
 namespace CustomDeliveryNoteDemo.Templates
 {
@@ -20,12 +23,12 @@ namespace CustomDeliveryNoteDemo.Templates
         /// <param name="e"></param>
         private void HideWindowIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
 
-            //if (activeWindow != null)
-            //{
-            //    activeWindow.WindowState = WindowState.Minimized;
-            //}
+            if (activeWindow != null)
+            {
+                activeWindow.WindowState = WindowState.Minimized;
+            }
         }
 
         /// <summary>
@@ -45,21 +48,21 @@ namespace CustomDeliveryNoteDemo.Templates
         /// <param name="e"></param>
         private void WindowClosingIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //if (sender is Ellipse)
-            //{
-            //    if ((sender as Ellipse).DataContext is LoginWindow)
-            //    {
-            //        Application.Current.Shutdown();
-            //    }
-            //    else if ((sender as Ellipse).DataContext is MainWindow)
-            //    {
-            //        Application.Current.Shutdown();
-            //    }
-            //    else if ((sender as Ellipse).DataContext is Window)
-            //    {
-            //        ((sender as Ellipse).DataContext as Window).Close();
-            //    }
-            //}
+            if (sender is Ellipse)
+            {
+                //if ((sender as Ellipse).DataContext is LoginWindow)
+                //{
+                //    Application.Current.Shutdown();
+                //}
+                if ((sender as Ellipse).DataContext is MainViewModel)
+                {
+                    Application.Current.Shutdown();
+                }
+                //else if ((sender as Ellipse).DataContext is Window)
+                //{
+                //    ((sender as Ellipse).DataContext as Window).Close();
+                //}
+            }
         }
     }
 }

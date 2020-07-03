@@ -28,3 +28,6 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDem
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.csproj.CopyComplete
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\NoteMaintenanceView.g.cs
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\NoteMaintenanceView.baml
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\DeliveryNoteMessageBox.g.cs
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\DeliveryNoteMessageBox.baml
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Templates\DeliveryNoteButtonTemplate.baml
