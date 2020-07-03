@@ -27,6 +27,14 @@ namespace CustomDeliveryNoteDemo
         {
             InitializeComponent();
             this.DataContext = new MainViewModel();
+
+            ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
+        }
+
+        private void MainWindow_NewMenuItemEvent()
+        {
+            this.stkWorkPlace.Children.Add(new NoteMaintenanceView());
+            MessageBox.Show("Done");
         }
 
         #endregion

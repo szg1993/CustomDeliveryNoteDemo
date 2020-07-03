@@ -26,6 +26,9 @@ namespace ViewModel
             }
         }
 
+        public delegate void Notify();
+        public event Notify NewMenuItemEvent;
+
 
         public MainViewModel()
         {
@@ -35,6 +38,7 @@ namespace ViewModel
 
         private void OpenMenuItem(object param)
         {
+            NewMenuItemEvent.Invoke();
             if (param == null)
             {
                 return;
@@ -45,9 +49,7 @@ namespace ViewModel
             if (String.IsNullOrEmpty(className))
             {
                 throw new MessageException("There is no class attached to the menu item.");
-            }
-
-            
+            }          
         }
     }
 }
