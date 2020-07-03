@@ -31,3 +31,4 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDem
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\DeliveryNoteMessageBox.g.cs
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\DeliveryNoteMessageBox.baml
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Templates\DeliveryNoteButtonTemplate.baml
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Templates\DeliveryNoteComboBoxTemplate.baml

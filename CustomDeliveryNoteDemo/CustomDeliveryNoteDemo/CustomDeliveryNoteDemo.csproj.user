@@ -33,6 +33,9 @@
     <Page Update="Templates\DeliveryNoteButtonTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\DeliveryNoteComboBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\DeliveryNoteMenuTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
