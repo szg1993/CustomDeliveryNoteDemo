@@ -9,9 +9,10 @@
         ResizeMode="CanMinimize"
         WindowStyle="None"
         AllowsTransparency="True"
+        Icon="Pictures\ProgramIcon.ico"
         Template="{StaticResource DeliveryNoteWindowTemplate}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Height="720" Width="1034">
+        Height="720" Width="1035">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

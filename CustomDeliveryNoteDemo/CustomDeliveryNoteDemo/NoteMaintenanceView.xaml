@@ -4,9 +4,57 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CustomDeliveryNoteDemo"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Orange">
+             mc:Ignorable="d"  
+             d:DesignHeight="655" d:DesignWidth="1015" Background="White">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="245"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="115"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="145"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="145"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="145"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="22"/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </UserControl>
