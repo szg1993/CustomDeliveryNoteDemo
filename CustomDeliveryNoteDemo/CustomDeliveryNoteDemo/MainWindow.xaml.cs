@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,23 +27,40 @@ namespace CustomDeliveryNoteDemo
 
         public MainWindow()
         {
-            try
-            {
-                InitializeComponent();
-                this.DataContext = new MainViewModel();
+            InitializeComponent();
+            this.DataContext = new MainViewModel();
 
-                ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
-            }
-            catch (MessageException ex)
+            ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
+            ((MainViewModel)this.DataContext).MessageBoxEvent += MainWindow_MessageBoxEvent;
+            ((MainViewModel)this.DataContext).MouseEvent += MainWindow_MouseEvent;
+        }
+
+        #endregion
+
+        #region Events
+
+        private void MainWindow_MouseEvent(bool isWaiting)
+        {
+            if (isWaiting)
             {
-                MessageBox.Show(ex.Message);
+                Mouse.OverrideCursor = Cursors.Wait;
             }
+            else
+            {
+                Mouse.OverrideCursor = null;
+            }
+        }
+
+        private void MainWindow_MessageBoxEvent(string msg)
+        {
+            MessageBox.Show(msg);
         }
 
         private void MainWindow_NewMenuItemEvent(string menuItemName)
         {
             object ucType = menuItemName;
             Type t = Type.GetType((string)ucType);
+            Thread.Sleep(5000);
             UserControl uc = Activator.CreateInstance(t) as UserControl;
             this.grdWorkPlace.Children.Add(uc);
         }

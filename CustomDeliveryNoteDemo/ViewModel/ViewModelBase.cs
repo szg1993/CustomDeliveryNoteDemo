@@ -17,9 +17,26 @@ namespace ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public delegate void MouseNotify(bool isWaiting);
+        public event MouseNotify MouseEvent;
+
+        public delegate void MsgNotify(string msg);
+        public event MsgNotify MessageBoxEvent;
+
         #endregion
 
         #region Methods
+
+        protected virtual void OnCursorHandling(bool isWaiting)
+        {
+            MouseEvent.Invoke(isWaiting);
+        }
+
+        protected virtual void OnMessageBoxHandling(string msg)
+        {
+            MessageBoxEvent.Invoke(msg);
+        }
+
 
         /// <summary>
         /// Check if the property is exists.

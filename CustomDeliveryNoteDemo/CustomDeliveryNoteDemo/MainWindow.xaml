@@ -80,8 +80,8 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <Grid Name="grdWorkPlace" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
-            
-        </Grid>
+        <Grid Name="grdWorkPlace"
+              Grid.Row="1"
+              Grid.Column="1" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>
