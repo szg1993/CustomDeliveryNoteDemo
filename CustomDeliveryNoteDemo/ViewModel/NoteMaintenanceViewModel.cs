@@ -21,11 +21,11 @@ namespace ViewModel
             set { actNoteVM = value; OnPropertyChanged(); }
         }
 
-        private ObservableCollection<RecipientViewModel> allRecipientVMList;
+        private List<RecipientViewModel> allRecipientVMList;
         /// <summary>
         /// The list of the selectable recipients.
         /// </summary>
-        public ObservableCollection<RecipientViewModel> AllRecipientVMList
+        public List<RecipientViewModel> AllRecipientVMList
         {
             get { return allRecipientVMList; }
             set { allRecipientVMList = value; OnPropertyChanged(); }
@@ -38,9 +38,10 @@ namespace ViewModel
         public NoteMaintenanceViewModel()
         {
             this.ActNoteVM = new NoteViewModel();
-            //this.AllRecipientVMList = RecipientViewModel.GetAllRecipient();
+            this.AllRecipientVMList = RecipientViewModel.GetAllRecipient();
         }
 
         #endregion
+
     }
 }

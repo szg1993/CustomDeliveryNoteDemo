@@ -5,8 +5,8 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\bin\Debug\netco
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\bin\Debug\netcoreapp3.1\Model.pdb
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.dll
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.pdb
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.genruntimeconfig.cache
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache

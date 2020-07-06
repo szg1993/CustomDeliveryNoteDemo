@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using Model.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
+using ViewModel.ModelViewModel;
 
 namespace ViewModel
 {
@@ -35,7 +38,28 @@ namespace ViewModel
         public int LabelFontSize { get; set; } = 14;
         public int LineListLabelFontSize { get; set; } = 10;
 
+        private static MapperConfiguration mapperConfig;
+
+        public static MapperConfiguration MapperConfig
+        {
+            get { return mapperConfig; }
+            set { mapperConfig = value; }
+        }
+
         #endregion
+
+        public ViewModelBase()
+        {
+            MapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Note, NoteViewModel>();
+                cfg.CreateMap<NoteViewModel, Note>();
+                cfg.CreateMap<NoteLine, NoteLineViewModel>();
+                cfg.CreateMap<NoteLineViewModel, NoteLine>();
+                cfg.CreateMap<Recipient, RecipientViewModel>();
+                cfg.CreateMap<RecipientViewModel, Recipient>();
+            });
+        }
 
         #region Methods
 

@@ -1,8 +1,10 @@
-﻿using Model.Models;
+﻿using AutoMapper;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ViewModel.ModelViewModel
@@ -114,15 +116,25 @@ namespace ViewModel.ModelViewModel
 
         #region Static methods
 
-        //public static ObservableCollection<RecipientViewModel> GetAllRecipient()
-        //{
-        //    List<Recipient> allRecipientList = new List<Recipient>();
-                
-        //    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
-        //    {
-        //        allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
-        //    }
-        //}
+        public static List<RecipientViewModel> GetAllRecipient()
+        {
+            List<Recipient> allRecipientList = new List<Recipient>();
+            List<RecipientViewModel> vmList = new List<RecipientViewModel>();
+
+            using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+            {
+                allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
+            }
+
+            foreach (Recipient rec in allRecipientList)
+            {
+                var mapper = new Mapper(MapperConfig);
+                var vmi = mapper.Map<RecipientViewModel>(rec);
+                vmList.Add(vmi);
+            }
+
+            return vmList;
+        }
 
         #endregion
     }

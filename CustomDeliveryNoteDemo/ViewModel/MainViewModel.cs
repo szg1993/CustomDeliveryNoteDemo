@@ -1,10 +1,13 @@
-﻿using System;
+﻿using AutoMapper;
+using Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ViewModel.Excep;
+using ViewModel.ModelViewModel;
 using ViewModel.Util;
 
 namespace ViewModel
@@ -31,7 +34,7 @@ namespace ViewModel
 
         public MainViewModel()
         {
-            
+
         }
 
         /// <summary>
