@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Model.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace ViewModel.ModelViewModel
@@ -106,6 +109,20 @@ namespace ViewModel.ModelViewModel
         {
             this.NoteVMList = new HashSet<NoteViewModel>();
         }
+
+        #endregion
+
+        #region Static methods
+
+        //public static ObservableCollection<RecipientViewModel> GetAllRecipient()
+        //{
+        //    List<Recipient> allRecipientList = new List<Recipient>();
+                
+        //    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+        //    {
+        //        allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
+        //    }
+        //}
 
         #endregion
     }

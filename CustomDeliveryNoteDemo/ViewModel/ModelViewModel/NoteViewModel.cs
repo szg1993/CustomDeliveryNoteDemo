@@ -335,13 +335,15 @@ namespace ViewModel.ModelViewModel
             set { modifiedBy = value; OnPropertyChanged(); }
         }
 
-        //private virtual RecipientViewModel recVM;
-
-        //public virtual RecipientViewModel RecVM
-        //{
-        //    get { return recVM; }
-        //    set { recVM = value; OnPropertyChanged(); }
-        //}
+        private RecipientViewModel recVM;
+        /// <summary>
+        /// The recipient of the note.
+        /// </summary>
+        public RecipientViewModel RecVM
+        {
+            get { return recVM; }
+            set { recVM = value; OnPropertyChanged(); }
+        }
 
         private ICollection<NoteLineViewModel> noteLineVMList;
         /// <summary>
