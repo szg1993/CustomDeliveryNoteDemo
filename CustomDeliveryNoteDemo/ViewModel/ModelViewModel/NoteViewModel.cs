@@ -353,17 +353,15 @@ namespace ViewModel.ModelViewModel
             set { noteLineVMList = value; OnPropertyChanged(); }
         }
 
-
         #endregion
-
 
         #region Ctors
 
         public NoteViewModel()
         {
-
+            this.NoteLineVMList = new HashSet<NoteLineViewModel>();
         }
-
+       
         #endregion
     }
 }

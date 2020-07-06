@@ -118,8 +118,6 @@ namespace ViewModel.ModelViewModel
             set { noteVM = value; OnPropertyChanged(); }
         }
 
-
-
         #endregion
 
 
