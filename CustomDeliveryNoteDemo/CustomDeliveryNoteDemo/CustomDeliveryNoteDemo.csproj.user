@@ -39,6 +39,9 @@
     <Page Update="Templates\DeliveryNoteDatePickerTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\DeliveryNoteGridViewColumnHeaderTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\DeliveryNoteMenuTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -46,6 +49,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\DeliveryNoteWindowTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\NoteLineListViewTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\DeliveryNoteListViewItemTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

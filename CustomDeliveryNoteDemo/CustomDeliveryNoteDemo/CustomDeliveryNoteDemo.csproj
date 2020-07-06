@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pictures\AddLineIcon.png" />
     <None Remove="Pictures\AddStandardNoteIcon.png" />
     <None Remove="Pictures\LearnIcon.png" />
     <None Remove="Pictures\PencilIcon.png" />
     <None Remove="Pictures\ProgramIcon.ico" />
+    <None Remove="Pictures\RedCrossIcon.png" />
+    <None Remove="Pictures\RubbishIcon.png" />
     <None Remove="Pictures\SearchNoteIcon.png" />
     <None Remove="Pictures\WpfErrorIcon.png" />
     <None Remove="Pictures\WpfInformationIcon.png" />
@@ -23,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Pictures\AddLineIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Pictures\AddStandardNoteIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -33,6 +39,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\ProgramIcon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\RedCrossIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\RubbishIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\SearchNoteIcon.png">

@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="260"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="245"/>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="115"/>
+                <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="10"/>
@@ -261,7 +261,7 @@
 
             <Label Grid.Column="8"
                    Grid.Row="0"                   
-                   Content="EKAER nbr:"
+                   Content="EKAER number:"
                    HorizontalAlignment="Left"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Center"
@@ -496,7 +496,7 @@
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
-            
+
             <ComboBox Grid.Column="16"
                       Grid.Row="16"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
@@ -507,7 +507,34 @@
                       VerticalContentAlignment="Center"
                       FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True"/>
-
         </Grid>
+        <ListView Grid.Row="1"
+                  Grid.Column="0" Grid.ColumnSpan="4"
+                  Template="{StaticResource NoteLineListViewTemplate}">
+        </ListView>
+
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Content="FELTÖLTÉS"
+                FontSize="20"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Height="65"
+                Style="{StaticResource DeliveryNoteButtonTemplate}"/>
+
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                Content="MÓDOSÍTÁS"
+                FontSize="20"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Height="65"
+                Style="{StaticResource DeliveryNoteButtonTemplate}"/>
     </Grid>
 </UserControl>
