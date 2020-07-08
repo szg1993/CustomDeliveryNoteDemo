@@ -46,6 +46,14 @@ namespace ViewModel
             set { mapperConfig = value; }
         }
 
+        private bool isBusy;
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { isBusy = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         public ViewModelBase()
@@ -102,6 +110,11 @@ namespace ViewModel
         {
             VerifyPropertyName(propertyName);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public bool CanExecuteAsyncCommand()
+        {
+            return !IsBusy;
         }
 
         #endregion

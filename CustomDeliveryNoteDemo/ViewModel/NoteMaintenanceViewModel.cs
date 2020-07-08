@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using ViewModel.Excep;
 using ViewModel.ModelViewModel;
+using ViewModel.Util;
 
 namespace ViewModel
 {
@@ -35,6 +38,21 @@ namespace ViewModel
             set { allRecipientVMList = value; OnPropertyChanged(); }
         }
 
+        private IAsyncCommand getRecipientsCommand;
+
+        public IAsyncCommand GetRecipientsCommand
+        {
+            get
+            {
+                if (getRecipientsCommand == null)
+                {
+                    getRecipientsCommand = new AsyncCommand(GetRecipientList, CanExecuteAsyncCommand);
+                }
+
+                return getRecipientsCommand;
+            }
+        }
+
         #endregion
 
         #region Ctors
@@ -47,42 +65,98 @@ namespace ViewModel
         /// <summary>
         /// Get the available recipients from the database.
         /// </summary>
-        public void GetRecipientList()
+        //public void GetRecipientList()
+        //{
+        //    try
+        //    {
+        //        OnCursorHandling(true);
+
+        //        List<Recipient> allRecipientList = new List<Recipient>();
+        //        this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
+
+        //        using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+        //        {
+        //            allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
+        //        }
+
+        //        foreach (Recipient rec in allRecipientList)
+        //        {
+        //            Mapper mapper = new Mapper(MapperConfig);
+        //            RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
+        //            this.AllRecipientVMList.Add(recVM);
+        //        }
+
+        //        for (int i = 0; i < 2_000_000_000; i++)
+        //        {
+
+        //        }
+        //    }
+        //    catch (MessageException mex)
+        //    {
+        //        OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+        //    }
+        //    finally
+        //    {
+        //        OnCursorHandling(false);
+        //    }
+        //}
+
+        private void GetRecipientListInternal()
         {
-            try
-            {
-                OnCursorHandling(true);
+            List<Recipient> allRecipientList = new List<Recipient>();
+            this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
 
-                List<Recipient> allRecipientList = new List<Recipient>();
-                this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
+            using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+            {
+                allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
+            }
 
-                using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
-                {
-                    allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
-                }
-
-                foreach (Recipient rec in allRecipientList)
-                {
-                    Mapper mapper = new Mapper(MapperConfig);
-                    RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
-                    this.AllRecipientVMList.Add(recVM);
-                }
-            }
-            catch (MessageException mex)
+            foreach (Recipient rec in allRecipientList)
             {
-                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
-            }
-            catch (Exception ex)
-            {
-                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
-            }
-            finally
-            {
-                OnCursorHandling(false);
+                Mapper mapper = new Mapper(MapperConfig);
+                RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
+                this.AllRecipientVMList.Add(recVM);
             }
         }
 
-        #endregion
+        public async Task GetRecipientList()
+        {
+            OnCursorHandling(true);
 
+            await Task.Run(() =>
+            {
+                try
+                {                    
+                    this.IsBusy = true;
+                    
+                    for (int i = 0; i < 2_000_000_000; i++)
+                    {
+
+                    }
+
+                    throw new MessageException("Megálltam a task futása közben.");
+                }
+                catch (MessageException mex)
+                {
+                    OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+                }
+                catch (Exception ex)
+                {
+                    OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+                }
+                finally
+                {
+                    this.IsBusy = false;
+                }                
+            });
+
+            OnCursorHandling(false);
+        }
+
+        #endregion
     }
 }

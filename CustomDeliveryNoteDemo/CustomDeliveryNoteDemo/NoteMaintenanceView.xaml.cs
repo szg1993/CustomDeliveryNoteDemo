@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -31,8 +32,6 @@ namespace CustomDeliveryNoteDemo
             this.DataContext = new NoteMaintenanceViewModel();
             ((NoteMaintenanceViewModel)this.DataContext).MessageBoxEvent += NoteMaintenanceView_MessageBoxEvent;
             ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
-
-            ((NoteMaintenanceViewModel)this.DataContext).GetRecipientList();
         }
 
         private void NoteMaintenanceView_MouseEvent(bool isWaiting)
