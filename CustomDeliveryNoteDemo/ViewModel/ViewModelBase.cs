@@ -35,7 +35,7 @@ namespace ViewModel
         public delegate void MsgNotify(string msg, DeliveryNoteMessageBoxType type);
         public event MsgNotify MessageBoxEvent;
 
-        public int LabelFontSize { get; set; } = 14;
+        public int LabelFontSize { get; set; } = 12;
         public int LineListLabelFontSize { get; set; } = 10;
 
         private static MapperConfiguration mapperConfig;
@@ -73,7 +73,7 @@ namespace ViewModel
         }
 
         /// <summary>
-        /// Begin show the messagebox.
+        /// Begin to show the messagebox.
         /// </summary>
         /// <param name="msg"></param>
         protected virtual void OnMessageBoxHandling(string msg, DeliveryNoteMessageBoxType type)

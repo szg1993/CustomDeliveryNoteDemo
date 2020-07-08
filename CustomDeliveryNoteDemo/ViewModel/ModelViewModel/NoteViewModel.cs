@@ -362,6 +362,7 @@ namespace ViewModel.ModelViewModel
         public NoteViewModel()
         {
             this.NoteLineVMList = new HashSet<NoteLineViewModel>();
+            this.RecVM = new RecipientViewModel();
         }
        
         #endregion

@@ -19,8 +19,6 @@ namespace CustomDeliveryNoteDemo
     /// </summary>
     public partial class NoteMaintenanceView : UserControl
     {
-        public NoteMaintenanceViewModel NoteMaintenanceViewModel { get; set; }
-
         public static string MenuName
         {
             get { return "Note maintenance"; }        
@@ -29,8 +27,29 @@ namespace CustomDeliveryNoteDemo
         public NoteMaintenanceView()
         {
             InitializeComponent();
-            this.NoteMaintenanceViewModel = new NoteMaintenanceViewModel();
-            this.DataContext = this.NoteMaintenanceViewModel;
+
+            this.DataContext = new NoteMaintenanceViewModel();
+            ((NoteMaintenanceViewModel)this.DataContext).MessageBoxEvent += NoteMaintenanceView_MessageBoxEvent;
+            ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
+
+            ((NoteMaintenanceViewModel)this.DataContext).GetRecipientList();
+        }
+
+        private void NoteMaintenanceView_MouseEvent(bool isWaiting)
+        {
+            if (isWaiting)
+            {
+                Mouse.OverrideCursor = Cursors.Wait;
+            }
+            else
+            {
+                Mouse.OverrideCursor = null;
+            }
+        }
+
+        private void NoteMaintenanceView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
+        {
+            DeliveryNoteMessageBox.Show(msg, type);
         }
     }
 }
