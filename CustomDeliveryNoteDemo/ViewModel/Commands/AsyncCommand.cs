@@ -4,8 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ViewModel.Interfaces;
+using ViewModel.Util;
 
-namespace ViewModel.Util
+namespace ViewModel.Commands
 {
     public class AsyncCommand : IAsyncCommand
     {

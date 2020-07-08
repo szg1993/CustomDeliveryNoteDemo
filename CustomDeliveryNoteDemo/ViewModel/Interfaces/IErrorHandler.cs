@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ViewModel.Util
+namespace ViewModel.Interfaces
 {
     public interface IErrorHandler
     {

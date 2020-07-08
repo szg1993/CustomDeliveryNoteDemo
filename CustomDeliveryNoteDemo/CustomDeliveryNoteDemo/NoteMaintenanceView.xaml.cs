@@ -38,11 +38,11 @@ namespace CustomDeliveryNoteDemo
         {
             if (isWaiting)
             {
-                Mouse.OverrideCursor = Cursors.Wait;
+                Application.Current.Dispatcher.Invoke(() => Mouse.OverrideCursor = Cursors.Wait);
             }
             else
             {
-                Mouse.OverrideCursor = null;
+                Application.Current.Dispatcher.Invoke(() => Mouse.OverrideCursor = null);
             }
         }
 

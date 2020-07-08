@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Model.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModel.Commands;
 using ViewModel.Excep;
 using ViewModel.Interfaces;
 using ViewModel.ModelViewModel;
@@ -29,11 +31,11 @@ namespace ViewModel
             set { actNoteVM = value; OnPropertyChanged(); }
         }
 
-        private ObservableCollection<RecipientViewModel> allRecipientVMList;
+        private AsyncObservableCollection<RecipientViewModel> allRecipientVMList = new AsyncObservableCollection<RecipientViewModel>();
         /// <summary>
         /// The list of the selectable recipients.
         /// </summary>
-        public ObservableCollection<RecipientViewModel> AllRecipientVMList
+        public AsyncObservableCollection<RecipientViewModel> AllRecipientVMList
         {
             get { return allRecipientVMList; }
             set { allRecipientVMList = value; OnPropertyChanged(); }
@@ -63,96 +65,29 @@ namespace ViewModel
             this.ActNoteVM = new NoteViewModel();
         }
 
-        /// <summary>
-        /// Get the available recipients from the database.
-        /// </summary>
-        //public void GetRecipientList()
-        //{
-        //    try
-        //    {
-        //        OnCursorHandling(true);
-
-        //        List<Recipient> allRecipientList = new List<Recipient>();
-        //        this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
-
-        //        using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
-        //        {
-        //            allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
-        //        }
-
-        //        foreach (Recipient rec in allRecipientList)
-        //        {
-        //            Mapper mapper = new Mapper(MapperConfig);
-        //            RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
-        //            this.AllRecipientVMList.Add(recVM);
-        //        }
-
-        //        for (int i = 0; i < 2_000_000_000; i++)
-        //        {
-
-        //        }
-        //    }
-        //    catch (MessageException mex)
-        //    {
-        //        OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
-        //    }
-        //    finally
-        //    {
-        //        OnCursorHandling(false);
-        //    }
-        //}
-
-        private void GetRecipientListInternal()
-        {
-            List<Recipient> allRecipientList = new List<Recipient>();
-            this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
-
-            using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
-            {
-                allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
-            }
-
-            foreach (Recipient rec in allRecipientList)
-            {
-                Mapper mapper = new Mapper(MapperConfig);
-                RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
-                this.AllRecipientVMList.Add(recVM);
-            }
-        }
-
         public async Task GetRecipientList()
-        {
-            OnCursorHandling(true);
-
-            await Task.Run(() =>
+        {           
+            await Task.Run(async () =>
             {
                 try
-                {                    
+                {
                     this.IsBusy = true;
 
-                    //for (int i = 0; i < 2_000_000_000; i++)
-                    //{
-
-                    //}
-
-                    List<Recipient> allRecipientList = new List<Recipient>();
-                    this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
+                    OnCursorHandling(true);
+                    
+                    this.AllRecipientVMList.Clear();
 
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
-                        allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
-                    }
+                        var list = await ctx.Recipient.Where(x => x.Code != null).ToListAsync();
 
-                    foreach (Recipient rec in allRecipientList)
-                    {
-                        Mapper mapper = new Mapper(MapperConfig);
-                        RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
-                        this.AllRecipientVMList.Add(recVM);
-                    }
+                        foreach (Recipient rec in list)
+                        {
+                            Mapper mapper = new Mapper(MapperConfig);
+                            RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
+                            this.AllRecipientVMList.Add(recVM);
+                        }
+                    }                   
                 }
                 catch (MessageException mex)
                 {
@@ -164,11 +99,11 @@ namespace ViewModel
                 }
                 finally
                 {
+                    OnCursorHandling(false);
+
                     this.IsBusy = false;
                 }                
             });
-
-            OnCursorHandling(false);
         }
 
         #endregion
