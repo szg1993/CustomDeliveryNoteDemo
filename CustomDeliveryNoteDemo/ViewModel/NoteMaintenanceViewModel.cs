@@ -4,6 +4,7 @@ using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
@@ -41,20 +42,20 @@ namespace ViewModel
             set { allRecipientVMList = value; OnPropertyChanged(); }
         }
 
-        private IAsyncCommand getRecipientsCommand;
+        //private IAsyncCommand getRecipientsCommand;
 
-        public IAsyncCommand GetRecipientsCommand
-        {
-            get
-            {
-                if (getRecipientsCommand == null)
-                {
-                    getRecipientsCommand = new AsyncCommand(GetRecipientList, CanExecuteAsyncCommand);
-                }
+        //public IAsyncCommand GetRecipientsCommand
+        //{
+        //    get
+        //    {
+        //        if (getRecipientsCommand == null)
+        //        {
+        //            getRecipientsCommand = new AsyncCommand(GetRecipientList, CanExecuteAsyncCommand);
+        //        }
 
-                return getRecipientsCommand;
-            }
-        }
+        //        return getRecipientsCommand;
+        //    }
+        //}
 
         #endregion
 
@@ -65,8 +66,8 @@ namespace ViewModel
             this.ActNoteVM = new NoteViewModel();
         }
 
-        public async Task GetRecipientList()
-        {           
+        private async Task GetRecipientList()
+        {
             await Task.Run(async () =>
             {
                 try
@@ -74,20 +75,20 @@ namespace ViewModel
                     this.IsBusy = true;
 
                     OnCursorHandling(true);
-                    
+
                     this.AllRecipientVMList.Clear();
 
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
-                        var list = await ctx.Recipient.Where(x => x.Code != null).ToListAsync();
+                        List<Recipient> recList = await ctx.Recipient.Where(x => x.Code != null).ToListAsync();
 
-                        foreach (Recipient rec in list)
+                        foreach (Recipient rec in recList)
                         {
                             Mapper mapper = new Mapper(MapperConfig);
                             RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
                             this.AllRecipientVMList.Add(recVM);
                         }
-                    }                   
+                    }
                 }
                 catch (MessageException mex)
                 {
@@ -102,8 +103,13 @@ namespace ViewModel
                     OnCursorHandling(false);
 
                     this.IsBusy = false;
-                }                
+                }
             });
+        }
+
+        public void CallGetRecipientList()
+        {
+            Task.Run(() => GetRecipientList());
         }
 
         #endregion

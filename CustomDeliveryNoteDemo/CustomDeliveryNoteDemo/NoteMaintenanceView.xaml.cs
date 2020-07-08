@@ -32,23 +32,27 @@ namespace CustomDeliveryNoteDemo
             this.DataContext = new NoteMaintenanceViewModel();
             ((NoteMaintenanceViewModel)this.DataContext).MessageBoxEvent += NoteMaintenanceView_MessageBoxEvent;
             ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
+
+            //Task.Run(() => ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList());
+
+            ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList();                 
         }
 
         private void NoteMaintenanceView_MouseEvent(bool isWaiting)
         {
             if (isWaiting)
             {
-                Application.Current.Dispatcher.Invoke(() => Mouse.OverrideCursor = Cursors.Wait);
+                this.Dispatcher.Invoke(() => Mouse.OverrideCursor = Cursors.Wait);
             }
             else
             {
-                Application.Current.Dispatcher.Invoke(() => Mouse.OverrideCursor = null);
+                this.Dispatcher.Invoke(() => Mouse.OverrideCursor = null);
             }
         }
 
         private void NoteMaintenanceView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
         {
-            Application.Current.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));           
+            this.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));           
         }
     }
 }
