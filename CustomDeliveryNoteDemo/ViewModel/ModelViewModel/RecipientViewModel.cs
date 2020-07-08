@@ -114,9 +114,5 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
-
-        #region Static methods
-
-        #endregion
     }
 }

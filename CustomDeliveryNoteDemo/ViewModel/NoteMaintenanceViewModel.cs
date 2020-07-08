@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Excep;
+using ViewModel.Interfaces;
 using ViewModel.ModelViewModel;
 using ViewModel.Util;
 
@@ -132,13 +133,26 @@ namespace ViewModel
                 try
                 {                    
                     this.IsBusy = true;
-                    
-                    for (int i = 0; i < 2_000_000_000; i++)
-                    {
 
+                    //for (int i = 0; i < 2_000_000_000; i++)
+                    //{
+
+                    //}
+
+                    List<Recipient> allRecipientList = new List<Recipient>();
+                    this.AllRecipientVMList = new ObservableCollection<RecipientViewModel>();
+
+                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    {
+                        allRecipientList = ctx.Recipient.Where(x => x.Code != null).ToList();
                     }
 
-                    throw new MessageException("Megálltam a task futása közben.");
+                    foreach (Recipient rec in allRecipientList)
+                    {
+                        Mapper mapper = new Mapper(MapperConfig);
+                        RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
+                        this.AllRecipientVMList.Add(recVM);
+                    }
                 }
                 catch (MessageException mex)
                 {

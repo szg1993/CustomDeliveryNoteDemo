@@ -48,7 +48,7 @@ namespace CustomDeliveryNoteDemo
 
         private void NoteMaintenanceView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
         {
-            DeliveryNoteMessageBox.Show(msg, type);
+            Application.Current.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));           
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ViewModel.Util
+namespace ViewModel.Interfaces
 {
     public interface IAsyncCommand : ICommand
     {

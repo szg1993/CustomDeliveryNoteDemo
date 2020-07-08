@@ -24,7 +24,7 @@ namespace CustomDeliveryNoteDemo
         public DeliveryNoteMessageBox()
         {
             InitializeComponent();
-            //Mouse.OverrideCursor = null; //remove the wait cursor when the box apperars.
+            Mouse.OverrideCursor = null;
         }
 
         /// <summary>
