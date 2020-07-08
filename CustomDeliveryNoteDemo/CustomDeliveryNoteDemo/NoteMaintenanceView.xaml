@@ -249,8 +249,8 @@
                    FontSize="{Binding LabelFontSize}"/>
 
             <DatePicker Grid.Column="6"
-                        Grid.Row="4"
-                        Text="{Binding ActNoteVM.EstimatedArrivalDate}"
+                        Grid.Row="4"                       
+                        SelectedDate="{Binding ActNoteVM.EstimatedArrivalDate}"
                         BorderThickness="0"
                         FontSize="{Binding LabelFontSize}"/>
 
@@ -288,6 +288,7 @@
 
             <ComboBox Grid.Column="6"
                       Grid.Row="10"
+                      SelectedItem="{Binding ActNoteVM.Category}"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       AlternationCount="2"
                       HorizontalAlignment="Stretch"
@@ -310,6 +311,7 @@
             <TextBox Grid.Column="10"
                      Grid.ColumnSpan="5"
                      Grid.Row="0"
+                     Text="{Binding ActNoteVM.EkaerNbr}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -330,6 +332,7 @@
 
             <ComboBox Grid.Column="10" Grid.ColumnSpan="5"
                       Grid.Row="2"
+                      SelectedItem="{Binding ActNoteVM.TakeoverPlace}"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       AlternationCount="2"
                       HorizontalAlignment="Stretch"
@@ -352,6 +355,7 @@
             <TextBox Grid.Column="10"
                      Grid.ColumnSpan="5"
                      Grid.Row="4"
+                     Text="{Binding ActNoteVM.Contact}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -373,6 +377,7 @@
             <TextBox Grid.Column="10"
                      Grid.ColumnSpan="5"
                      Grid.Row="6"
+                     Text="{Binding ActNoteVM.ContactPhone}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -393,6 +398,7 @@
 
             <DatePicker Grid.Column="10" Grid.ColumnSpan="5"
                         Grid.Row="8"
+                        SelectedDate="{Binding ActNoteVM.TakeoverDate}"
                         BorderThickness="0"
                         FontSize="{Binding LabelFontSize}"/>
             
@@ -408,6 +414,7 @@
 
             <DatePicker Grid.Column="10" Grid.ColumnSpan="5"
                         Grid.Row="10"
+                        SelectedDate="{Binding ActNoteVM.ShipDate}"
                         BorderThickness="0"
                         FontSize="{Binding LabelFontSize}"/>
 
@@ -424,6 +431,7 @@
             <TextBox Grid.Column="10"
                      Grid.ColumnSpan="5"
                      Grid.Row="12"
+                     Text="{Binding ActNoteVM.TareWgt}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -434,6 +442,7 @@
             
             <ComboBox Grid.Column="16"
                       Grid.Row="12"
+                      SelectedItem="{Binding ActNoteVM.TareWgtUm}"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       AlternationCount="2"
                       HorizontalAlignment="Stretch"
@@ -456,6 +465,7 @@
             <TextBox Grid.Column="10"
                      Grid.ColumnSpan="5"
                      Grid.Row="14"
+                     Text="{Binding ActNoteVM.PkgQty}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -466,6 +476,7 @@
 
             <ComboBox Grid.Column="16"
                       Grid.Row="14"
+                      SelectedItem="{Binding ActNoteVM.PkgScale}"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       AlternationCount="2"
                       HorizontalAlignment="Stretch"
@@ -487,6 +498,7 @@
 
             <TextBox Grid.Column="10"
                      Grid.Row="16"
+                     Text="{Binding ActNoteVM.SizeX}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -507,6 +519,7 @@
 
             <TextBox Grid.Column="12"
                      Grid.Row="16"
+                     Text="{Binding ActNoteVM.SizeY}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -527,6 +540,7 @@
 
             <TextBox Grid.Column="14"
                      Grid.Row="16"
+                     Text="{Binding ActNoteVM.SizeZ}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -537,6 +551,7 @@
 
             <ComboBox Grid.Column="16"
                       Grid.Row="16"
+                      SelectedItem="{Binding ActNoteVM.PkgSizeUm}"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       AlternationCount="2"
                       HorizontalAlignment="Stretch"
@@ -560,7 +575,6 @@
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
-                Command="{Binding GetRecipientsCommand}"
                 Height="50"
                 Style="{StaticResource DeliveryNoteButtonTemplate}"/>
 
