@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ViewModel.Commands;
 
 namespace ViewModel.ModelViewModel
 {
@@ -119,7 +120,6 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
-
 
         #region Ctors
 

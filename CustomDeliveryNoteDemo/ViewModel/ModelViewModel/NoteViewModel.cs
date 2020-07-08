@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Model.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Security.Principal;
 using System.Text;
+using ViewModel.Commands;
 
 namespace ViewModel.ModelViewModel
 {
@@ -345,11 +348,11 @@ namespace ViewModel.ModelViewModel
             set { recVM = value; OnPropertyChanged(); }
         }
 
-        private ICollection<NoteLineViewModel> noteLineVMList;
+        private ObservableCollection<NoteLineViewModel> noteLineVMList;
         /// <summary>
         /// The line view models of the note.
         /// </summary>
-        public ICollection<NoteLineViewModel> NoteLineVMList
+        public ObservableCollection<NoteLineViewModel> NoteLineVMList
         {
             get { return noteLineVMList; }
             set { noteLineVMList = value; OnPropertyChanged(); }
@@ -361,10 +364,10 @@ namespace ViewModel.ModelViewModel
 
         public NoteViewModel()
         {
-            this.NoteLineVMList = new HashSet<NoteLineViewModel>();
+            this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
             this.RecVM = new RecipientViewModel();
         }
-       
+
         #endregion
     }
 }

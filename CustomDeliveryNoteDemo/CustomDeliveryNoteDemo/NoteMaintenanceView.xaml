@@ -563,6 +563,7 @@
         </Grid>
         <ListView Grid.Row="1"
                   Grid.Column="0" Grid.ColumnSpan="4"
+                  ItemsSource="{Binding ActNoteVM.NoteLineVMList}"
                   Template="{StaticResource NoteLineListViewTemplate}">
         </ListView>
 

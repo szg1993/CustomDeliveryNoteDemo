@@ -24,7 +24,7 @@ namespace Model.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=A-PC-473\\SQLEXPRESS;Database=CustomDeliveryNote;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=CustomDeliveryNote;Trusted_Connection=True;");
             }
         }
 
@@ -39,6 +39,10 @@ namespace Model.Models
                 entity.Property(e => e.AssignToPhone).HasMaxLength(50);
 
                 entity.Property(e => e.Category).HasMaxLength(50);
+
+                entity.Property(e => e.Contact)
+                    .IsRequired()
+                    .HasMaxLength(150);
 
                 entity.Property(e => e.ContactPhone).HasMaxLength(50);
 

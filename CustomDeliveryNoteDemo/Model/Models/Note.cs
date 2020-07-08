@@ -28,7 +28,6 @@ namespace Model.Models
         public string PkgSizeUm { get; set; }
         public string TakeoverPlace { get; set; }
         public DateTime? TakeoverDate { get; set; }
-        public TimeSpan? TakeoverTime { get; set; }
         public DateTime? EstimatedArrivalDate { get; set; }
         public TimeSpan? EstimatedArrivalTime { get; set; }
         public string Category { get; set; }
@@ -46,6 +45,7 @@ namespace Model.Models
         public int Status { get; set; }
         public string ModifiedBy { get; set; }
         public byte[] ModifiedDate { get; set; }
+        public string Contact { get; set; }
 
         public virtual Recipient Rec { get; set; }
         public virtual ICollection<NoteLine> NoteLine { get; set; }

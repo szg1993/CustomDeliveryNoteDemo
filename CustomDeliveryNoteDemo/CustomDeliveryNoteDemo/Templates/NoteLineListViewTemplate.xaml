@@ -15,9 +15,9 @@
                     <GridViewColumn Width="65">
                         <GridViewColumnHeader>
                             <Button Style="{StaticResource DeliveryNoteButtonTemplate}"
+                                    Command="{Binding AddLineCommand}"
                                     Width="50"
-                                    Height="30"
-                                    IsEnabled="{Binding IsAddNewRowEnabled}">
+                                    Height="30">
                                 <Image Source="pack://application:,,,/Pictures/AddLineIcon.png"/>
                             </Button>
                         </GridViewColumnHeader>
@@ -45,6 +45,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Width="65"
+                                         Text="{Binding PartCode}"
                                          HorizontalAlignment="Left"
                                          Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                                          FontSize="{Binding LineListLabelFontSize}"
