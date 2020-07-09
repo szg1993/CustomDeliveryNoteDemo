@@ -162,6 +162,7 @@
                     <GridViewColumn Width="50">
                         <GridViewColumnHeader>
                             <Button Style="{StaticResource DeliveryNoteButtonTemplate}"
+                                    Command="{Binding DeleteLinesCommand}"
                                     Width="30"
                                     Height="30">
                                 <Image Source = "pack://application:,,,/Pictures/RubbishIcon.png"/>

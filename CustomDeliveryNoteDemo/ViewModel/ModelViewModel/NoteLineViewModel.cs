@@ -119,29 +119,9 @@ namespace ViewModel.ModelViewModel
             set { noteVM = value; OnPropertyChanged(); }
         }
 
-        //private RelayCommand addLineCommand;
-
-        //public RelayCommand AddLineCommand
-        //{
-        //    get
-        //    {
-        //        if (addLineCommand == null)
-        //        {
-        //            addLineCommand = new RelayCommand(c => AddNewLine());
-        //        }
-
-        //        return addLineCommand;
-        //    }
-        //}
-
         #endregion
 
         #region Ctors
-
-        public NoteLineViewModel()
-        {
-
-        }
 
         public NoteLineViewModel(NoteViewModel noteVM)
         {
@@ -149,10 +129,5 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
-
-        //public void AddNewLine()
-        //{
-        //    this.NoteVM.NoteLineVMList.Add(new NoteLineViewModel(this.NoteVM));
-        //}
     }
 }

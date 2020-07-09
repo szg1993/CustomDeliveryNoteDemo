@@ -358,10 +358,6 @@ namespace ViewModel.ModelViewModel
             set { noteLineVMList = value; OnPropertyChanged(); }
         }
 
-        public delegate void NewLineNotify();
-        public event NewLineNotify NewLineEvent;
-
-
         private RelayCommand addLineCommand;
 
         public RelayCommand AddLineCommand
@@ -370,12 +366,28 @@ namespace ViewModel.ModelViewModel
             {
                 if (addLineCommand == null)
                 {
-                    addLineCommand = new RelayCommand(c => AddNewLine());
+                    addLineCommand = new RelayCommand(c => this.NoteLineVMList?.Add(new NoteLineViewModel(this)));
                 }
 
                 return addLineCommand;
             }
         }
+
+        private RelayCommand deleteLinesCommand;
+
+        public RelayCommand DeleteLinesCommand
+        {
+            get
+            {
+                if (deleteLinesCommand == null)
+                {
+                    deleteLinesCommand = new RelayCommand(c => this.NoteLineVMList?.Clear());
+                }
+
+                return deleteLinesCommand;
+            }
+        }
+
 
         #endregion
 
@@ -384,15 +396,9 @@ namespace ViewModel.ModelViewModel
         public NoteViewModel()
         {
             this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
-            this.NoteLineVMList.Add(new NoteLineViewModel(this) { PartCode = "Pot"});
             this.RecVM = new RecipientViewModel();
         }
 
         #endregion
-
-        public void AddNewLine()
-        {
-            this.NoteLineVMList.Add(new NoteLineViewModel(this) { PartCode = "Potkívánok" });
-        }
     }
 }
