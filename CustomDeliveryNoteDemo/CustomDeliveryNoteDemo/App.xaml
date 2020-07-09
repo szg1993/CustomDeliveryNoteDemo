@@ -18,6 +18,8 @@
                 <ResourceDictionary Source="Templates/NoteLineListViewTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteListViewItemTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteGridViewColumnHeaderTemplate.xaml"/>
+                <ResourceDictionary Source="Templates/DeliveryNoteCheckBoxTemplate.xaml"/>
+                <ResourceDictionary Source="Templates/DeliveryNoteRadioButtonTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

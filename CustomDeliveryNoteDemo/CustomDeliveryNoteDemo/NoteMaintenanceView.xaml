@@ -24,7 +24,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="245"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="145"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="5"/>
@@ -72,7 +73,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="2"
+            <ComboBox Grid.Column="2" Grid.ColumnSpan="2"
                       Grid.Row="0"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       SelectedItem="{Binding ActNoteVM.RecVM}"
@@ -96,7 +97,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="2"
+            <TextBox Grid.Column="2" Grid.ColumnSpan="2"
                      Grid.Row="2"
                      IsEnabled="False"
                      Text="{Binding ActNoteVM.RecVM.Code}"
@@ -118,7 +119,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="2"
+            <TextBox Grid.Column="2" Grid.ColumnSpan="2"
                      Grid.Row="4"
                      IsEnabled="False"
                      Text="{Binding ActNoteVM.RecVM.Country}"
@@ -140,7 +141,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="2"
+            <TextBox Grid.Column="2" Grid.ColumnSpan="2"
                      Grid.Row="6"
                      IsEnabled="False"
                      Text="{Binding ActNoteVM.RecVM.Zip}"
@@ -162,7 +163,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="2"
+            <TextBox Grid.Column="2" Grid.ColumnSpan="2"
                      Grid.Row="8"
                      IsEnabled="False"
                      Text="{Binding ActNoteVM.RecVM.City}"
@@ -184,7 +185,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="2"
+            <TextBox Grid.Column="2" Grid.ColumnSpan="2"
                      Grid.Row="10"
                      IsEnabled="False"
                      Text="{Binding ActNoteVM.RecVM.Address}"
@@ -196,7 +197,27 @@
                      VerticalAlignment="Center"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="4"
+            <Label Grid.Column="0"
+                   Grid.Row="12"          
+                   Content="Foreign partner:"
+                   HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   FontSize="{Binding LabelFontSize}"/>
+
+            <CheckBox Grid.Column="2"
+                      Grid.Row="12"
+                      Style="{StaticResource DeliveryNoteCheckBoxTemplate}"
+                      IsChecked="{Binding ActNoteVM.RecVM.IsOutlander}"
+                      IsEnabled="False"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      VerticalAlignment="Center"/>
+
+            <Label Grid.Column="5"
                    Grid.Row="0"                   
                    Content="Assigned to:"
                    HorizontalAlignment="Left"
@@ -206,7 +227,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="6"
+            <TextBox Grid.Column="7"
                      Grid.Row="0"
                      Text="{Binding ActNoteVM.AssignedTo}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
@@ -217,7 +238,7 @@
                      VerticalAlignment="Center"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="4"
+            <Label Grid.Column="5"
                    Grid.Row="2"                   
                    Content="Assigned to phone:"
                    HorizontalAlignment="Left"
@@ -227,7 +248,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="6"
+            <TextBox Grid.Column="7"
                      Grid.Row="2"
                      Text="{Binding ActNoteVM.AssignToPhone}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
@@ -238,7 +259,7 @@
                      VerticalAlignment="Center"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="4"
+            <Label Grid.Column="5"
                    Grid.Row="4"                   
                    Content="Est. arrival date:"
                    HorizontalAlignment="Left"
@@ -248,13 +269,13 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <DatePicker Grid.Column="6"
+            <DatePicker Grid.Column="7"
                         Grid.Row="4"                       
                         SelectedDate="{Binding ActNoteVM.EstimatedArrivalDate}"
                         BorderThickness="0"
                         FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="4"
+            <Label Grid.Column="5"
                    Grid.Row="6"                   
                    Content="Comments:"
                    HorizontalAlignment="Left"
@@ -264,7 +285,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="6"
+            <TextBox Grid.Column="7"
                      Grid.Row="6"
                      Grid.RowSpan="3"
                      Text="{Binding ActNoteVM.Comments}"
@@ -276,7 +297,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="4"
+            <Label Grid.Column="5"
                    Grid.Row="10"                   
                    Content="Note category:"
                    HorizontalAlignment="Left"
@@ -286,7 +307,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="6"
+            <ComboBox Grid.Column="7"
                       Grid.Row="10"
                       ItemsSource="{Binding ActNoteVM.CategoryList}"
                       SelectedItem="{Binding ActNoteVM.Category}"
@@ -299,7 +320,7 @@
                       FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="0"                   
                    Content="EKAER number:"
                    HorizontalAlignment="Left"
@@ -309,7 +330,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="10"
+            <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="0"
                      Text="{Binding ActNoteVM.EkaerNbr}"
@@ -321,7 +342,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="2"                   
                    Content="Place of receipt:"
                    HorizontalAlignment="Left"
@@ -331,7 +352,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="10" Grid.ColumnSpan="5"
+            <ComboBox Grid.Column="11" Grid.ColumnSpan="5"
                       Grid.Row="2"
                       ItemsSource="{Binding ActNoteVM.TakeoverPlaceList}"
                       SelectedItem="{Binding ActNoteVM.TakeoverPlace}"
@@ -343,7 +364,7 @@
                       FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True" Margin="0,0,0,1"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="4"                   
                    Content="Contact (sender):"
                    HorizontalAlignment="Left"
@@ -353,7 +374,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="10"
+            <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="4"
                      Text="{Binding ActNoteVM.Contact}"
@@ -365,7 +386,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="6"                   
                    Content="Contact phone (sender):"
                    HorizontalAlignment="Left"
@@ -375,7 +396,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="10"
+            <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="6"
                      Text="{Binding ActNoteVM.ContactPhone}"
@@ -387,7 +408,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="8"                   
                    Content="Date of receipt:"
                    HorizontalAlignment="Left"
@@ -397,13 +418,13 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <DatePicker Grid.Column="10" Grid.ColumnSpan="5"
+            <DatePicker Grid.Column="11" Grid.ColumnSpan="5"
                         Grid.Row="8"
                         SelectedDate="{Binding ActNoteVM.TakeoverDate}"
                         BorderThickness="0"
                         FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="10"                   
                    Content="Ship date:"
                    HorizontalAlignment="Left"
@@ -413,13 +434,13 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <DatePicker Grid.Column="10" Grid.ColumnSpan="5"
+            <DatePicker Grid.Column="11" Grid.ColumnSpan="5"
                         Grid.Row="10"
                         SelectedDate="{Binding ActNoteVM.ShipDate}"
                         BorderThickness="0"
                         FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="12"                   
                    Content="Tare weight:"
                    HorizontalAlignment="Left"
@@ -429,7 +450,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="10"
+            <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="12"
                      Text="{Binding ActNoteVM.TareWgt}"
@@ -441,7 +462,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="16"
+            <ComboBox Grid.Column="17"
                       Grid.Row="12"
                       ItemsSource="{Binding ActNoteVM.TareWeightUmList}"
                       SelectedItem="{Binding ActNoteVM.TareWgtUm}"
@@ -454,7 +475,7 @@
                       FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="14"                   
                    Content="Package quantity:"
                    HorizontalAlignment="Left"
@@ -464,7 +485,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="10"
+            <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="14"
                      Text="{Binding ActNoteVM.PkgQty}"
@@ -476,7 +497,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="16"
+            <ComboBox Grid.Column="17"
                       Grid.Row="14"
                       ItemsSource="{Binding ActNoteVM.PkgScaleList}"
                       SelectedItem="{Binding ActNoteVM.PkgScale}"
@@ -489,7 +510,7 @@
                       FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True"/>
 
-            <Label Grid.Column="8"
+            <Label Grid.Column="9"
                    Grid.Row="16"                   
                    Content="Package size:"
                    HorizontalAlignment="Left"
@@ -499,7 +520,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="10"
+            <TextBox Grid.Column="11"
                      Grid.Row="16"
                      Text="{Binding ActNoteVM.SizeX}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
@@ -510,7 +531,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="11"
+            <Label Grid.Column="12"
                    Grid.Row="16"                   
                    Content="X"
                    HorizontalAlignment="Center"
@@ -520,7 +541,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="12"
+            <TextBox Grid.Column="13"
                      Grid.Row="16"
                      Text="{Binding ActNoteVM.SizeY}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
@@ -531,7 +552,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <Label Grid.Column="13"
+            <Label Grid.Column="14"
                    Grid.Row="16"                   
                    Content="X"
                    HorizontalAlignment="Center"
@@ -541,7 +562,7 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <TextBox Grid.Column="14"
+            <TextBox Grid.Column="15"
                      Grid.Row="16"
                      Text="{Binding ActNoteVM.SizeZ}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
@@ -552,7 +573,7 @@
                      VerticalAlignment="Stretch"
                      FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="16"
+            <ComboBox Grid.Column="17"
                       Grid.Row="16"
                       ItemsSource="{Binding ActNoteVM.PkgSizeUmList}"
                       SelectedItem="{Binding ActNoteVM.PkgSizeUm}"
@@ -563,6 +584,55 @@
                       VerticalContentAlignment="Center"
                       FontSize="{Binding LabelFontSize}"                                               
                       IsSynchronizedWithCurrentItem="True" Margin="0,0,0,1"/>
+
+            <CheckBox Grid.Column="0"
+                      Grid.Row="14"
+                      Content="Express"
+                      Style="{StaticResource DeliveryNoteCheckBoxTemplate}"
+                      IsChecked="{Binding ActNoteVM.IsUrgent}"
+                      IsEnabled="False"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"/>
+
+            <CheckBox Grid.Column="2"
+                      Grid.Row="14"
+                      Content="Crackable"
+                      Style="{StaticResource DeliveryNoteCheckBoxTemplate}"
+                      IsChecked="{Binding ActNoteVM.IsCrackable}"
+                      IsEnabled="False"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"/>
+
+            <CheckBox Grid.Column="0"
+                      Grid.Row="16"
+                      Content="Dangerous"
+                      Style="{StaticResource DeliveryNoteCheckBoxTemplate}"
+                      IsChecked="{Binding ActNoteVM.IsDangerous}"
+                      IsEnabled="False"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"/>
+
+            <CheckBox Grid.Column="2"
+                      Grid.Row="16"
+                      Content="Own cost"
+                      Style="{StaticResource DeliveryNoteCheckBoxTemplate}"
+                      IsChecked="{Binding ActNoteVM.IsOwnCost}"
+                      IsEnabled="False"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontSize="{Binding LabelFontSize}"/>
+
         </Grid>
         <ListView Grid.Row="1"
                   Grid.Column="0" Grid.ColumnSpan="4"
