@@ -33,20 +33,8 @@ namespace CustomDeliveryNoteDemo
             this.DataContext = new NoteMaintenanceViewModel();
             ((NoteMaintenanceViewModel)this.DataContext).MessageBoxEvent += NoteMaintenanceView_MessageBoxEvent;
             ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
-            ((NoteMaintenanceViewModel)this.DataContext).NewLineEvent += NoteMaintenanceView_NewLineEvent;
-
-            //Task.Run(() => ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList());
 
             ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList();                 
-        }
-
-        private void NoteMaintenanceView_NewLineEvent()
-        {
-            ICollectionView lineView = CollectionViewSource.GetDefaultView(((NoteMaintenanceViewModel)this.DataContext).ActNoteVM.NoteLineVMList);
-            lineView.Refresh();
-
-            ICollectionView lineView2 = CollectionViewSource.GetDefaultView(((NoteMaintenanceViewModel)this.DataContext).LineList);
-            lineView2.Refresh();
         }
 
         private void NoteMaintenanceView_MouseEvent(bool isWaiting)

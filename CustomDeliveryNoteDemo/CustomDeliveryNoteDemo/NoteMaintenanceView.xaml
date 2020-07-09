@@ -563,8 +563,9 @@
         </Grid>
         <ListView Grid.Row="1"
                   Grid.Column="0" Grid.ColumnSpan="4"
-                  ItemsSource="{Binding ActNoteVM.NoteLineVMList}"
+                  DataContext="{Binding ActNoteVM}"                 
                   Template="{StaticResource NoteLineListViewTemplate}">
+
         </ListView>
 
         <Button Grid.Row="3"

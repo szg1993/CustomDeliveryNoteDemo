@@ -22,9 +22,6 @@ namespace ViewModel
     {
         #region Declaration
 
-        public delegate void NewLineNotify();
-        public event NewLineNotify NewLineEvent;
-
         private NoteViewModel actNoteVM;
         /// <summary>
         /// The actual note.
@@ -35,15 +32,6 @@ namespace ViewModel
             set { actNoteVM = value; OnPropertyChanged(); }
         }
 
-        private ObservableCollection<NoteLineViewModel> lineList = new ObservableCollection<NoteLineViewModel>();
-
-        public ObservableCollection<NoteLineViewModel> LineList
-        {
-            get { return lineList; }
-            set { lineList = value; OnPropertyChanged(); }
-        }
-
-
         private AsyncObservableCollection<RecipientViewModel> allRecipientVMList = new AsyncObservableCollection<RecipientViewModel>();
         /// <summary>
         /// The list of the selectable recipients.
@@ -52,21 +40,6 @@ namespace ViewModel
         {
             get { return allRecipientVMList; }
             set { allRecipientVMList = value; OnPropertyChanged(); }
-        }
-
-        private RelayCommand addLineCommand;
-
-        public RelayCommand AddLineCommand
-        {
-            get
-            {
-                if (addLineCommand == null)
-                {
-                    addLineCommand = new RelayCommand(c => AddNewLine());
-                }
-
-                return addLineCommand;
-            }
         }
 
 
@@ -98,24 +71,9 @@ namespace ViewModel
 
         #region Methods
 
-        private void AddNewLine()
-        {
-            NoteLineViewModel newLineVM = new NoteLineViewModel();
-            this.ActNoteVM?.NoteLineVMList?.Add(newLineVM);
-
-            this.LineList.Add(newLineVM);
-
-            OnNewLineHandling();
-        }
-
         public void CallGetRecipientList()
         {
             Task.Run(() => GetRecipientList());
-        }
-
-        protected virtual void OnNewLineHandling()
-        {
-            NewLineEvent.Invoke();
         }
 
         #endregion

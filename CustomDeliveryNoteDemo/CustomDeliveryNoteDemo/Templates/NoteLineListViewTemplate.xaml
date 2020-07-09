@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:CustomDeliveryNoteDemo.Templates">
     
     <ControlTemplate x:Key="NoteLineListViewTemplate" TargetType="ListView">
-        <ListView ItemsSource="{Binding .}"
+        <ListView ItemsSource="{Binding NoteLineVMList}" 
                   BorderThickness="0"
                   SelectionMode="Single"                 
                   ItemContainerStyle="{DynamicResource DeliveryNoteListViewItemTemplate}"
@@ -44,9 +44,9 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Width="65"
-                                         Text="{Binding PartCode}"
-                                         HorizontalAlignment="Left"
+                                <TextBox Text="{Binding PartCode}"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Left"
                                          Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                                          FontSize="{Binding LineListLabelFontSize}"
                                          Height="20"
@@ -64,9 +64,9 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Width="135"
-                                         Template="{StaticResource DeliveryNoteTextBoxTemplate}"
-                                         HorizontalAlignment="Left"
+                                <TextBox Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Left"
                                          FontSize="{Binding LineListLabelFontSize}"
                                          Height="20"/>
                             </DataTemplate>
@@ -81,9 +81,9 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Width="115"
-                                         Template="{StaticResource DeliveryNoteTextBoxTemplate}"
-                                         HorizontalAlignment="Left"
+                                <TextBox Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Left"
                                          FontSize="{Binding LineListLabelFontSize}"
                                          Height="20"/>
                             </DataTemplate>
@@ -98,9 +98,9 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Width="45"
-                                         Template="{StaticResource DeliveryNoteTextBoxTemplate}"
-                                         HorizontalAlignment="Center"
+                                <TextBox Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Center"
                                          FontSize="{Binding LineListLabelFontSize}"
                                          Height="20"
                                          Text="{Binding PartQty}"/>
@@ -116,9 +116,9 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox Width="45"
-                                          Style="{StaticResource DeliveryNoteComboBoxTemplate}"
-                                          HorizontalAlignment="Center"
+                                <ComboBox Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                                          HorizontalAlignment="Stretch"
+                                          HorizontalContentAlignment="Center"
                                           AlternationCount="2"
                                           FontSize="{Binding LineListLabelFontSize}"
                                           Height="20"/>
@@ -134,9 +134,9 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Width="40"
-                                         Template="{StaticResource DeliveryNoteTextBoxTemplate}"
-                                         HorizontalAlignment="Center"
+                                <TextBox Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Center"
                                          FontSize="{Binding LineListLabelFontSize}"
                                          Height="20"/>
                             </DataTemplate>
@@ -151,8 +151,7 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Width="40"
-                                       HorizontalAlignment="Center"
+                                <Label HorizontalAlignment="Stretch"
                                        HorizontalContentAlignment="Center"
                                        FontSize="{Binding LineListLabelFontSize}"
                                        Height="20"/>
