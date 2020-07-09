@@ -12,7 +12,7 @@ namespace ViewModel.ModelViewModel
 {
     public class RecipientViewModel: ModelViewModelBase
     {
-        #region Declaration
+        #region Properties
 
         private int id;
         /// <summary>

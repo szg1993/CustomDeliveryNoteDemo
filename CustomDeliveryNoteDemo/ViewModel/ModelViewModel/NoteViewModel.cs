@@ -2,15 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using System.Text;
+using System.Threading.Tasks;
 using ViewModel.Commands;
+using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
 {
     public class NoteViewModel : ModelViewModelBase
     {
-        #region Declaration
+        #region Properties
 
         private int id;
         /// <summary>
@@ -358,6 +361,60 @@ namespace ViewModel.ModelViewModel
             set { noteLineVMList = value; OnPropertyChanged(); }
         }
 
+        private AsyncObservableCollection<string> categoryList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available delivery note categories.
+        /// </summary>
+        public AsyncObservableCollection<string> CategoryList
+        {
+            get { return categoryList; }
+            set { categoryList = value; OnPropertyChanged(); }
+        }
+
+        private AsyncObservableCollection<string> takeoverPlaceList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available takeover places.
+        /// </summary>
+        public AsyncObservableCollection<string> TakeoverPlaceList
+        {
+            get { return takeoverPlaceList; }
+            set { takeoverPlaceList = value; OnPropertyChanged(); }
+        }
+
+        private AsyncObservableCollection<string> pkgScaleList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available package scales.
+        /// </summary>
+        public AsyncObservableCollection<string> PkgScaleList
+        {
+            get { return pkgScaleList; }
+            set { pkgScaleList = value; OnPropertyChanged(); }
+        }
+
+        private AsyncObservableCollection<string> pkgSizeUmList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available package size units.
+        /// </summary>
+        public AsyncObservableCollection<string> PkgSizeUmList
+        {
+            get { return pkgSizeUmList; }
+            set { pkgSizeUmList = value; OnPropertyChanged(); }
+        }
+
+        private AsyncObservableCollection<string> tareWeightUmList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available tare weight units.
+        /// </summary>
+        public AsyncObservableCollection<string> TareWeightUmList
+        {
+            get { return tareWeightUmList; }
+            set { tareWeightUmList = value; OnPropertyChanged(); }
+        }
+
+        #endregion
+
+        #region Commands
+
         private RelayCommand addLineCommand;
 
         public RelayCommand AddLineCommand
@@ -388,7 +445,6 @@ namespace ViewModel.ModelViewModel
             }
         }
 
-
         #endregion
 
         #region Ctors
@@ -397,6 +453,94 @@ namespace ViewModel.ModelViewModel
         {
             this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
             this.RecVM = new RecipientViewModel();
+
+            Task.Run(() => GetCategoryListAsync());
+            Task.Run(() => GetTakeoverPlaceListAsync());
+            Task.Run(() => GetPkgScaleListAsync());
+            Task.Run(() => GetPkgSizeUmListAsync());
+            Task.Run(() => GetTareWeightUmListAsync());
+        }
+
+        #endregion
+
+        #region Methods
+
+        #endregion
+
+        #region Tasks
+
+        /// <summary>
+        /// Get the list of the available categories async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetCategoryListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.CategoryList.Clear();
+                this.CategoryList.Add("Other");
+                this.CategoryList.Add("Quality complaint");
+                this.CategoryList.Add("Return cargo");
+                this.CategoryList.Add("Sample");
+                this.CategoryList.Add("Tool test");
+            });
+        }
+
+        /// <summary>
+        /// Get the list of the available takeover places async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetTakeoverPlaceListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.TakeoverPlaceList.Clear();
+                this.TakeoverPlaceList.Add("Logistics office");
+                this.TakeoverPlaceList.Add("Special storage");
+                this.TakeoverPlaceList.Add("Tooling storage");
+            });
+        }
+
+        /// <summary>
+        /// Get the list of the available package scales async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetPkgScaleListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.PkgScaleList.Clear();
+                this.PkgScaleList.Add("Box");
+                this.PkgScaleList.Add("Envelope");
+                this.PkgScaleList.Add("Pallet");
+            });
+        }
+
+        /// <summary>
+        /// Get the list of the available package size units async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetPkgSizeUmListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.PkgSizeUmList.Clear();
+                this.PkgSizeUmList.Add("cm");
+                this.PkgSizeUmList.Add("mm");
+            });
+        }
+
+        /// <summary>
+        /// Get the list of the available tare weight units async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetTareWeightUmListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.TareWeightUmList.Clear();
+                this.TareWeightUmList.Add("kg");
+            });
         }
 
         #endregion

@@ -76,6 +76,19 @@ namespace CustomDeliveryNoteDemo
             this.grdWorkPlace.Children.Add(uc);
         }
 
+        /// <summary>
+        /// Need to call the DragMove, because of the custom window template.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
         #endregion
     }
 }

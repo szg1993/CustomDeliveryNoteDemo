@@ -20,7 +20,7 @@ namespace ViewModel
 {
     public class NoteMaintenanceViewModel : ViewModelBase
     {
-        #region Declaration
+        #region Properties
 
         private NoteViewModel actNoteVM;
         /// <summary>
@@ -42,6 +42,9 @@ namespace ViewModel
             set { allRecipientVMList = value; OnPropertyChanged(); }
         }
 
+        #endregion
+
+        #region Commands
 
         //private IAsyncCommand getRecipientsCommand;
 
@@ -58,6 +61,21 @@ namespace ViewModel
         //    }
         //}
 
+        private RelayCommand uploadCommand;
+
+        public RelayCommand UploadCommand
+        {
+            get
+            {
+                if (uploadCommand == null)
+                {
+                    uploadCommand = new RelayCommand(c => Upload());
+                }
+
+                return uploadCommand;
+            }
+        }
+
         #endregion
 
         #region Ctors
@@ -73,14 +91,19 @@ namespace ViewModel
 
         public void CallGetRecipientList()
         {
-            Task.Run(() => GetRecipientList());
+            Task.Run(() => GetRecipientListAsync());
+        }
+
+        private void Upload()
+        {
+
         }
 
         #endregion
 
         #region Tasks
 
-        private async Task GetRecipientList()
+        private async Task GetRecipientListAsync()
         {
             await Task.Run(async () =>
             {

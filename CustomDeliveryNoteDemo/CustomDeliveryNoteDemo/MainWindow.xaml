@@ -12,6 +12,7 @@
         Icon="Pictures\ProgramIcon.ico"
         Template="{StaticResource DeliveryNoteWindowTemplate}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        MouseDown="Window_MouseDown"
         Height="720" Width="1035">
     <Grid>
         <Grid.RowDefinitions>

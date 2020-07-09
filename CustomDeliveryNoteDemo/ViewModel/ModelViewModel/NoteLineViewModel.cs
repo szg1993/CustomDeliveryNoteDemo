@@ -7,7 +7,7 @@ namespace ViewModel.ModelViewModel
 {
     public class NoteLineViewModel: ModelViewModelBase
     {
-        #region Declaration
+        #region Properties
 
         private int id;
         /// <summary>
