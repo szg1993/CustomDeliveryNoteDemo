@@ -46,30 +46,15 @@ namespace ViewModel
 
         #region Commands
 
-        //private IAsyncCommand getRecipientsCommand;
+        private IAsyncCommand uploadCommand;
 
-        //public IAsyncCommand GetRecipientsCommand
-        //{
-        //    get
-        //    {
-        //        if (getRecipientsCommand == null)
-        //        {
-        //            getRecipientsCommand = new AsyncCommand(GetRecipientList, CanExecuteAsyncCommand);
-        //        }
-
-        //        return getRecipientsCommand;
-        //    }
-        //}
-
-        private RelayCommand uploadCommand;
-
-        public RelayCommand UploadCommand
+        public IAsyncCommand UploadCommand
         {
             get
             {
                 if (uploadCommand == null)
                 {
-                    uploadCommand = new RelayCommand(c => Upload());
+                    uploadCommand = new AsyncCommand(UploadAsync, CanExecuteAsyncCommand);
                 }
 
                 return uploadCommand;
@@ -94,48 +79,14 @@ namespace ViewModel
             Task.Run(() => GetRecipientListAsync());
         }
 
-        private void Upload()
-        {
-            try
-            {
-                OnCursorHandling(true);
-
-                using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
-                {
-                    Mapper mapper = new Mapper(MapperConfig);
-                    Note note = mapper.Map<Note>(this.ActNoteVM);
-                    Recipient rec = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
-                    note.RecId = rec.Id;
-
-                    foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
-                    {
-                        NoteLine noteLine = mapper.Map<NoteLine>(lineVM);
-                        note.NoteLine.Add(noteLine);
-                    }
-
-                    ctx.Note.Add(note);
-
-                    ctx.SaveChanges();
-                }
-            }
-            catch (MessageException mex)
-            {
-                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
-            }
-            catch (Exception ex)
-            {
-                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
-            }
-            finally
-            {
-                OnCursorHandling(false);
-            }
-        }
-
         #endregion
 
         #region Tasks
 
+        /// <summary>
+        /// Get the list of the available recipients async.
+        /// </summary>
+        /// <returns></returns>
         private async Task GetRecipientListAsync()
         {
             await Task.Run(async () =>
@@ -173,6 +124,56 @@ namespace ViewModel
                     OnCursorHandling(false);
 
                     this.IsBusy = false;
+                }
+            });
+        }
+
+        /// <summary>
+        /// Upload the new delivery note async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task UploadAsync()
+        {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    this.IsBusy = true;
+
+                    OnCursorHandling(true);
+
+                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    {
+                        this.ActNoteVM.NoteNbr = NoteViewModel.CreateNoteNbr(ctx);
+
+                        Mapper mapper = new Mapper(MapperConfig);
+                        Note note = mapper.Map<Note>(this.ActNoteVM);
+                        Recipient rec = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
+                        note.RecId = rec.Id;
+
+                        foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
+                        {
+                            NoteLine noteLine = mapper.Map<NoteLine>(lineVM);
+                            note.NoteLine.Add(noteLine);
+                        }
+
+                        ctx.Note.Add(note);
+
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (MessageException mex)
+                {
+                    OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+                }
+                catch (Exception ex)
+                {
+                    OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+                }
+                finally
+                {
+                    this.IsBusy = false;
+                    OnCursorHandling(false);
                 }
             });
         }

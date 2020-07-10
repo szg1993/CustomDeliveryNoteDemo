@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Commands;
+using ViewModel.Excep;
 using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
@@ -248,7 +250,7 @@ namespace ViewModel.ModelViewModel
         public bool IsUrgent
         {
             get { return isUrgent; }
-            set { isUrgent = value; OnPropertyChanged();  }
+            set { isUrgent = value; OnPropertyChanged(); }
         }
 
         private bool isCrackable;
@@ -474,6 +476,37 @@ namespace ViewModel.ModelViewModel
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Create a new unique ID for the deliver note.
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateNoteNbr(CustomDeliveryNoteContext ctx)
+        {
+            string prefix = "N";
+            string postfix;
+            string nbrSerialFormat = "00000";
+
+            Note lastNote = ctx.Note.OrderByDescending(x => x.Id).FirstOrDefault();
+
+            if (lastNote != null)
+            {
+                postfix = String.IsNullOrEmpty(lastNote.NoteNbr) ? nbrSerialFormat : lastNote.NoteNbr.Substring(prefix.Length, nbrSerialFormat.Length);
+
+                if (Convert.ToInt32(postfix) < Convert.ToInt32(nbrSerialFormat.Replace('0', '5')))
+                {
+                    return prefix + (Convert.ToInt32(postfix) + 1).ToString(nbrSerialFormat);
+                }
+                else
+                {
+                    throw new MessageException("The program is unable to calculate the next delivery note number, because there is more available serial number.");
+                }
+            }
+            else
+            {
+                return prefix + "00001";
+            }
+        }
 
         #endregion
 

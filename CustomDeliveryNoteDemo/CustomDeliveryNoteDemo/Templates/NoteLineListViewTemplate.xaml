@@ -37,7 +37,7 @@
                     
                     <GridViewColumn Width="100">
                         <GridViewColumnHeader>
-                            <Label Content="Tételkód"
+                            <Label Content="Part code"
                                    HorizontalContentAlignment="Left"
                                    HorizontalAlignment="Stretch"
                                    FontSize="{Binding LabelFontSize}"/>
@@ -57,14 +57,15 @@
 
                     <GridViewColumn Width="175">
                         <GridViewColumnHeader>
-                            <Label Content="Megnevezés"
+                            <Label Content="Description"
                                    HorizontalContentAlignment="Left"
                                    HorizontalAlignment="Stretch"
                                    FontSize="{Binding LabelFontSize}"/>
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                                <TextBox Text="{Binding PartDesc}"
+                                         Template="{StaticResource DeliveryNoteTextBoxTemplate}"                                        
                                          HorizontalAlignment="Stretch"
                                          HorizontalContentAlignment="Left"
                                          FontSize="{Binding LineListLabelFontSize}"
@@ -75,13 +76,14 @@
 
                     <GridViewColumn Width="175">
                         <GridViewColumnHeader>
-                            <Label Content="Megjegyzés"
+                            <Label Content="Comment"
                                    HorizontalContentAlignment="Left"
                                    HorizontalAlignment="Stretch"/>
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                                <TextBox Text="{Binding PartCmt}"
+                                         Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                                          HorizontalAlignment="Stretch"
                                          HorizontalContentAlignment="Left"
                                          FontSize="{Binding LineListLabelFontSize}"
@@ -92,7 +94,7 @@
 
                     <GridViewColumn Width="60">
                         <GridViewColumnHeader>
-                            <Label Content="Menny"
+                            <Label Content="Qty."
                                    HorizontalContentAlignment="Center"
                                    HorizontalAlignment="Center"/>
                         </GridViewColumnHeader>
@@ -108,9 +110,9 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="60">
+                    <GridViewColumn Width="75">
                         <GridViewColumnHeader>
-                            <Label Content="Mért"
+                            <Label Content="Qty. um"
                                    HorizontalContentAlignment="Center"
                                    HorizontalAlignment="Center"/>
                         </GridViewColumnHeader>
@@ -130,7 +132,7 @@
 
                     <GridViewColumn Width="55">
                         <GridViewColumnHeader>
-                            <Label Content="Súly"
+                            <Label Content="Weight"
                                    HorizontalContentAlignment="Center"
                                    HorizontalAlignment="Center"/>
                         </GridViewColumnHeader>
@@ -147,7 +149,7 @@
 
                     <GridViewColumn Width="55">
                         <GridViewColumnHeader>
-                            <Label Content="Súly m."
+                            <Label Content="W. um"
                                    HorizontalContentAlignment="Center"
                                    HorizontalAlignment="Center"/>
                         </GridViewColumnHeader>
