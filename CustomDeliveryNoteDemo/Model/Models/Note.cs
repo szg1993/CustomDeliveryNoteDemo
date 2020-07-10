@@ -31,21 +31,17 @@ namespace Model.Models
         public DateTime? EstimatedArrivalDate { get; set; }
         public TimeSpan? EstimatedArrivalTime { get; set; }
         public string Category { get; set; }
+        public string Contact { get; set; }
         public string ContactPhone { get; set; }
         public bool IsUrgent { get; set; }
         public bool IsCrackable { get; set; }
         public bool IsDangerous { get; set; }
         public bool IsOwnCost { get; set; }
-        public int CargoType { get; set; }
-        public bool IsInsuranceNeeded { get; set; }
-        public decimal? InsuranceCost { get; set; }
-        public string InsuranceDev { get; set; }
         public string Comments { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int Status { get; set; }
         public string ModifiedBy { get; set; }
         public byte[] ModifiedDate { get; set; }
-        public string Contact { get; set; }
 
         public virtual Recipient Rec { get; set; }
         public virtual ICollection<NoteLine> NoteLine { get; set; }

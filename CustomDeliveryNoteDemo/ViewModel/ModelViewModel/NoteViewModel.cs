@@ -79,7 +79,7 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The id of the recipient.
         /// </summary>
-        public int RedId
+        public int RecId
         {
             get { return recId; }
             set { recId = value; OnPropertyChanged(); }
@@ -219,6 +219,16 @@ namespace ViewModel.ModelViewModel
         {
             get { return category; }
             set { category = value; OnPropertyChanged(); }
+        }
+
+        private string contact;
+        /// <summary>
+        /// The contact at the target company.
+        /// </summary>
+        public string Contact
+        {
+            get { return contact; }
+            set { contact = value; OnPropertyChanged(); }
         }
 
         private string contactPhone;

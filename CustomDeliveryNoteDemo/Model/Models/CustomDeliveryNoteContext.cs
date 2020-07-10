@@ -54,10 +54,6 @@ namespace Model.Models
 
                 entity.Property(e => e.EstimatedArrivalDate).HasColumnType("date");
 
-                entity.Property(e => e.InsuranceCost).HasColumnType("decimal(12, 4)");
-
-                entity.Property(e => e.InsuranceDev).HasMaxLength(8);
-
                 entity.Property(e => e.ModifiedBy).HasMaxLength(10);
 
                 entity.Property(e => e.ModifiedDate)

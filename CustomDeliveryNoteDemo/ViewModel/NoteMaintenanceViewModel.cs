@@ -96,7 +96,42 @@ namespace ViewModel
 
         private void Upload()
         {
+            try
+            {
+                OnCursorHandling(true);
 
+                using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                {
+                    Mapper mapper = new Mapper(MapperConfig);
+                    Note note = mapper.Map<Note>(this.ActNoteVM);
+                    Recipient rec = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
+                    note.Rec = rec;
+
+                    foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
+                    {
+                        NoteLine noteLine = mapper.Map<NoteLine>(lineVM);
+                        note.NoteLine.Add(noteLine);
+                    }
+
+                    note.NoteNbr = "Valami";
+
+                    ctx.Note.Add(note);
+
+                    ctx.SaveChanges();
+                }
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.InnerException.ToString(), DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+            }
         }
 
         #endregion
