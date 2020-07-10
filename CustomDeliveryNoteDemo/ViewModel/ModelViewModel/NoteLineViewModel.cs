@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using ViewModel.Commands;
+using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
 {
@@ -79,14 +81,14 @@ namespace ViewModel.ModelViewModel
             set { partQty = value; OnPropertyChanged(); }
         }
 
-        private string partUm;
+        private string partQtyUm;
         /// <summary>
         /// The unit of the part quantity.
         /// </summary>
-        public string PartUm
+        public string PartQtyUm
         {
-            get { return partUm; }
-            set { partUm = value; OnPropertyChanged(); }
+            get { return partQtyUm; }
+            set { partQtyUm = value; OnPropertyChanged(); }
         }
 
         private decimal? partWgt;
@@ -119,6 +121,26 @@ namespace ViewModel.ModelViewModel
             set { noteVM = value; OnPropertyChanged(); }
         }
 
+        private AsyncObservableCollection<string> partQtyUmList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available tare weight units.
+        /// </summary>
+        public AsyncObservableCollection<string> PartQtyUmList
+        {
+            get { return partQtyUmList; }
+            set { partQtyUmList = value; OnPropertyChanged(); }
+        }
+
+        private AsyncObservableCollection<string> partWeightUmList = new AsyncObservableCollection<string>();
+        /// <summary>
+        /// The list of the available tare weight units.
+        /// </summary>
+        public AsyncObservableCollection<string> PartWeightUmList
+        {
+            get { return partWeightUmList; }
+            set { partWeightUmList = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region Ctors
@@ -126,6 +148,43 @@ namespace ViewModel.ModelViewModel
         public NoteLineViewModel(NoteViewModel noteVM)
         {
             this.NoteVM = noteVM;
+            Task.Run(() => GetPartQtyUmListAsync());
+            Task.Run(() => GetPartWeightUmListAsync());
+        }
+
+        #endregion
+
+        #region Tasks
+
+        /// <summary>
+        /// Get the list of the available part qty units async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetPartQtyUmListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.PartQtyUmList.Clear();
+                this.PartQtyUmList.Add("piece");
+                this.PartQtyUmList.Add("kg");
+                this.PartQtyUmList.Add("cm");
+                this.PartQtyUmList.Add("m");
+                this.PartQtyUmList.Add("l");
+            });
+        }
+
+        /// <summary>
+        /// Get the list of the available part qty units async.
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetPartWeightUmListAsync()
+        {
+            await Task.Run(() =>
+            {
+                this.PartWeightUmList.Clear();
+                this.PartWeightUmList.Add("kg");
+                this.PartWeightUmList.Add("t");
+            });
         }
 
         #endregion

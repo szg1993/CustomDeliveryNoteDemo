@@ -550,6 +550,7 @@ namespace ViewModel.ModelViewModel
             {
                 this.TareWeightUmList.Clear();
                 this.TareWeightUmList.Add("kg");
+                this.TareWeightUmList.Add("t");
             });
         }
 

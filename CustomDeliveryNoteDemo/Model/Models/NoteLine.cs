@@ -12,7 +12,7 @@ namespace Model.Models
         public string PartDesc { get; set; }
         public string PartCmt { get; set; }
         public decimal? PartQty { get; set; }
-        public string PartUm { get; set; }
+        public string PartQtyUm { get; set; }
         public decimal? PartWgt { get; set; }
         public string PartWgtUm { get; set; }
 

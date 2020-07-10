@@ -117,6 +117,8 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                                          ItemsSource="{Binding PartQtyUmList}"
+                                          SelectedItem="{Binding PartQtyUm}"
                                           HorizontalAlignment="Stretch"
                                           HorizontalContentAlignment="Center"
                                           AlternationCount="2"
@@ -151,10 +153,14 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Label HorizontalAlignment="Stretch"
-                                       HorizontalContentAlignment="Center"
-                                       FontSize="{Binding LineListLabelFontSize}"
-                                       Height="20"/>
+                                <ComboBox Style="{StaticResource DeliveryNoteComboBoxTemplate}"
+                                          ItemsSource="{Binding PartWeightUmList}"
+                                          SelectedItem="{Binding PartWgtUm}"
+                                          HorizontalAlignment="Stretch"
+                                          HorizontalContentAlignment="Center"
+                                          AlternationCount="2"
+                                          FontSize="{Binding LineListLabelFontSize}"
+                                          Height="20"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

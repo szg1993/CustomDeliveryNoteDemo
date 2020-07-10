@@ -105,15 +105,13 @@ namespace ViewModel
                     Mapper mapper = new Mapper(MapperConfig);
                     Note note = mapper.Map<Note>(this.ActNoteVM);
                     Recipient rec = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
-                    note.Rec = rec;
+                    note.RecId = rec.Id;
 
                     foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
                     {
                         NoteLine noteLine = mapper.Map<NoteLine>(lineVM);
                         note.NoteLine.Add(noteLine);
                     }
-
-                    note.NoteNbr = "Valami";
 
                     ctx.Note.Add(note);
 
@@ -126,7 +124,7 @@ namespace ViewModel
             }
             catch (Exception ex)
             {
-                OnMessageBoxHandling(ex.InnerException.ToString(), DeliveryNoteMessageBoxType.Error);
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
             }
             finally
             {

@@ -106,7 +106,7 @@ namespace Model.Models
 
                 entity.Property(e => e.PartQty).HasColumnType("decimal(12, 4)");
 
-                entity.Property(e => e.PartUm).HasMaxLength(10);
+                entity.Property(e => e.PartQtyUm).HasMaxLength(10);
 
                 entity.Property(e => e.PartWgt).HasColumnType("decimal(12, 4)");
 
