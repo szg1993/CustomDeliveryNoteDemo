@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,8 @@ namespace ViewModel
             {
                 if (uploadCommand == null)
                 {
-                    uploadCommand = new AsyncCommand(UploadAsync, CanExecuteAsyncCommand);
+                    uploadCommand = new AsyncCommand(UploadAsync);
+                    //uploadCommand = new AsyncCommand(UploadAsync, CanExecuteAsyncCommand);
                 }
 
                 return uploadCommand;
@@ -77,6 +79,42 @@ namespace ViewModel
         public void CallGetRecipientList()
         {
             Task.Run(() => GetRecipientListAsync());
+        }
+
+        /// <summary>
+        /// Check the date before upload.
+        /// </summary>
+        private void CheckData()
+        {
+            if (this.ActNoteVM != null)
+            {
+                this.ActNoteVM.CheckErrors();
+
+                if (this.ActNoteVM.RecVM != null)
+                {
+                    this.ActNoteVM.RecVM.CheckErrors();
+                    
+                    if (this.ActNoteVM.NoteLineVMList != null && this.ActNoteVM.NoteLineVMList.Count > 0)
+                    {
+                        foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
+                        {
+                            lineVM.CheckErrors();
+                        }
+                    }
+                    else
+                    {
+                        throw new MessageException("Please add line(s) to the delivery note before the upload.");
+                    }
+                }
+                else
+                {
+                    throw new MessageException("Please choose the recipient delivery note.");
+                }
+            }
+            else
+            {
+                throw new MessageException("The program is unable to create a delivery note. Please reload the menu.");
+            }
         }
 
         #endregion
@@ -141,6 +179,8 @@ namespace ViewModel
                     this.IsBusy = true;
 
                     OnCursorHandling(true);
+
+                    CheckData();
 
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {

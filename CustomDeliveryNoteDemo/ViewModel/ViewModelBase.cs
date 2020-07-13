@@ -56,6 +56,8 @@ namespace ViewModel
 
         #endregion
 
+        #region Ctors
+
         public ViewModelBase()
         {
             MapperConfig = new MapperConfiguration(cfg =>
@@ -68,6 +70,8 @@ namespace ViewModel
                 cfg.CreateMap<RecipientViewModel, Recipient>();
             });
         }
+
+        #endregion
 
         #region Methods
 

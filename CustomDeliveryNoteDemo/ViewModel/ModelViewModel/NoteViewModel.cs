@@ -478,6 +478,89 @@ namespace ViewModel.ModelViewModel
         #region Methods
 
         /// <summary>
+        /// Validate the data of the note.
+        /// </summary>
+        public override void CheckErrors()
+        {
+            if (String.IsNullOrEmpty(this.AssignTo))
+            {
+                throw new MessageException("The assigned to field cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.AssignToPhone))
+            {
+                throw new MessageException("The assigned to phone field cannot be empty.");
+            }
+            else if (this.EstimatedArrivalDate == null)
+            {
+                throw new MessageException("Please choose the estimated arrival date.");
+            }
+            else if (this.EstimatedArrivalDate < DateTime.Now)
+            {
+                throw new MessageException("The estimated arrival date cannot be in the past.");
+            }
+            else if (String.IsNullOrEmpty(this.Category))
+            {
+                throw new MessageException("Please choose the category of the delivery note.");
+            }
+            else if (String.IsNullOrEmpty(this.TakeoverPlace))
+            {
+                throw new MessageException("Please choose the place of receipt.");
+            }
+            else if (String.IsNullOrEmpty(this.Contact))
+            {
+                throw new MessageException("The contanct (sender) field cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.ContactPhone))
+            {
+                throw new MessageException("The contanct phone (sender) field cannot be empty.");
+            }
+            else if (this.TakeoverDate == null)
+            {
+                throw new MessageException("Please choose the date of receipt.");
+            }
+            else if (this.TakeoverDate < DateTime.Now)
+            {
+                throw new MessageException("The date of receipt cannot be in the past.");
+            }
+            else if (this.ShipDate == null)
+            {
+                throw new MessageException("Please choose the ship date.");
+            }
+            else if (this.ShipDate < DateTime.Now)
+            {
+                throw new MessageException("The ship date cannot be in the past.");
+            }
+            else if (!IsValidDecimal(this.TareWgt))
+            {
+                throw new MessageException("The tare weight field must contains a positive number.");
+            }
+            else if (String.IsNullOrEmpty(this.TareWgtUm))
+            {
+                throw new MessageException("Please choose the unit of the tare weight.");
+            }
+            else if (!IsValidDecimal(this.PkgQty))
+            {
+                throw new MessageException("The package quantity field must contains a positive number.");
+            }
+            else if (String.IsNullOrEmpty(this.TareWgtUm))
+            {
+                throw new MessageException("Please choose the scale of the package quantity.");
+            }
+            else if (!IsValidDecimal(this.PkgSizeX) || !IsValidDecimal(this.PkgSizeY) || !IsValidDecimal(this.PkgSizeZ))
+            {
+                throw new MessageException("The X, Y, Z dimensions of the package must contain a positive number.");
+            }
+            else if (String.IsNullOrEmpty(this.PkgSizeUm))
+            {
+                throw new MessageException("Please choose the unit of the package size.");
+            }
+        }
+
+        #endregion
+
+        #region Static
+
+        /// <summary>
         /// Create a new unique ID for the deliver note.
         /// </summary>
         /// <returns></returns>

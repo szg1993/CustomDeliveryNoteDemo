@@ -114,5 +114,36 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Validate the properties of the recipient.
+        /// </summary>
+        public override void CheckErrors()
+        {
+            if (String.IsNullOrEmpty(this.Name))
+            {
+                throw new MessageException("The name of the recipient cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.Code))
+            {
+                throw new MessageException("The code of the recipient cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.Country))
+            {
+                throw new MessageException("The country of the recipient cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.Zip))
+            {
+                throw new MessageException("The ZIP code of the recipient cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.City))
+            {
+                throw new MessageException("The city of the recipient cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.Address))
+            {
+                throw new MessageException("The city of the recipient cannot be empty.");
+            }
+        }
     }
 }

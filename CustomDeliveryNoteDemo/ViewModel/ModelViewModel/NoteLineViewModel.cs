@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Commands;
+using ViewModel.Excep;
 using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
@@ -150,6 +151,41 @@ namespace ViewModel.ModelViewModel
             this.NoteVM = noteVM;
             Task.Run(() => GetPartQtyUmListAsync());
             Task.Run(() => GetPartWeightUmListAsync());
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Validate the data of the delivery note lines.
+        /// </summary>
+        public override void CheckErrors()
+        {
+            if (String.IsNullOrEmpty(this.PartCode))
+            {
+                throw new MessageException("The part code in the delivery note line list cannot be empty.");
+            }
+            else if (String.IsNullOrEmpty(this.PartDesc))
+            {
+                throw new MessageException("The description in the delivery note line list cannot be empty.");
+            }
+            else if (!IsValidDecimal(this.PartQty))
+            {
+                throw new MessageException("The quantity field in the delivery note line list must contains a positive number.");
+            }
+            else if (String.IsNullOrEmpty(this.PartQtyUm))
+            {
+                throw new MessageException("Please choose the unit of the part quantity in the delivery note line list.");
+            }
+            else if (!IsValidDecimal(this.PartWgt))
+            {
+                throw new MessageException("The weight field in the delivery note line list must contains a positive number.");
+            }
+            else if (String.IsNullOrEmpty(this.PartWgtUm))
+            {
+                throw new MessageException("Please choose the unit of the part weight in the delivery note line list.");
+            }
         }
 
         #endregion
