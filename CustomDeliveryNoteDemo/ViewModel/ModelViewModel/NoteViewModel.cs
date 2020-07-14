@@ -99,13 +99,13 @@ namespace ViewModel.ModelViewModel
             set { recId = value; OnPropertyChanged(); }
         }
 
-        private decimal tareWgt;
+        private decimal? tareWgt;
         /// <summary>
         /// The weight of the tare.
         /// </summary>
         [Required]
         [Description("Tare weight")]
-        public decimal TareWgt
+        public decimal? TareWgt
         {
             get { return tareWgt; }
             set { tareWgt = value; OnPropertyChanged(); }
@@ -135,13 +135,13 @@ namespace ViewModel.ModelViewModel
             set { shipDate = value; OnPropertyChanged(); }
         }
 
-        private decimal pkgQty;
+        private decimal? pkgQty;
         /// <summary>
         /// the quantity of the boxes or palettes.
         /// </summary>
         [Required]
         [Description("Package quantity")]
-        public decimal PkgQty
+        public decimal? PkgQty
         {
             get { return pkgQty; }
             set { pkgQty = value; OnPropertyChanged(); }
@@ -159,37 +159,37 @@ namespace ViewModel.ModelViewModel
             set { pkgScale = value; OnPropertyChanged(); }
         }
 
-        private decimal pkgSizeX;
+        private decimal? pkgSizeX;
         /// <summary>
         /// The x dimension of the package.
         /// </summary>
         [Required]
         [Description("Package size X dimension")]
-        public decimal PkgSizeX
+        public decimal? PkgSizeX
         {
             get { return pkgSizeX; }
             set { pkgSizeX = value; OnPropertyChanged(); }
         }
 
-        private decimal pkgSizeY;
+        private decimal? pkgSizeY;
         /// <summary>
         /// The y dimension of the package.
         /// </summary>
         [Required]
         [Description("Package size Y dimension")]
-        public decimal PkgSizeY
+        public decimal? PkgSizeY
         {
             get { return pkgSizeY; }
             set { pkgSizeY = value; OnPropertyChanged(); }
         }
 
-        private decimal pkgSizeZ;
+        private decimal? pkgSizeZ;
         /// <summary>
         /// The z dimension of the package.
         /// </summary>
         [Required]
         [Description("Package size Z dimension")]
-        public decimal PkgSizeZ
+        public decimal? PkgSizeZ
         {
             get { return pkgSizeZ; }
             set { pkgSizeZ = value; OnPropertyChanged(); }

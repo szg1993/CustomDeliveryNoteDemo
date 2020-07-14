@@ -33,8 +33,14 @@ namespace CustomDeliveryNoteDemo
             this.DataContext = new NoteMaintenanceViewModel();
             ((NoteMaintenanceViewModel)this.DataContext).MessageBoxEvent += NoteMaintenanceView_MessageBoxEvent;
             ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
+            ((NoteMaintenanceViewModel)this.DataContext).ComboBoxEvent += NoteMaintenanceView_ComboBoxEvent;
 
             ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList();                 
+        }
+
+        private void NoteMaintenanceView_ComboBoxEvent()
+        {
+            this.Dispatcher.Invoke(() => this.cmbRecipient.SelectedItem = null);           
         }
 
         private void NoteMaintenanceView_MouseEvent(bool isWaiting)

@@ -80,13 +80,13 @@ namespace ViewModel.ModelViewModel
             set { partCmt = value; OnPropertyChanged(); }
         }
 
-        private decimal partQty;
+        private decimal? partQty;
         /// <summary>
         /// The quantity of the desired part.
         /// </summary>
         [Required]
         [Description("Line part quantity")]
-        public decimal PartQty
+        public decimal? PartQty
         {
             get { return partQty; }
             set { partQty = value; OnPropertyChanged(); }
@@ -104,13 +104,13 @@ namespace ViewModel.ModelViewModel
             set { partQtyUm = value; OnPropertyChanged(); }
         }
 
-        private decimal partWgt;
+        private decimal? partWgt;
         /// <summary>
         /// The weight of the part.
         /// </summary>
         [Required]
         [Description("Line part weight")]
-        public decimal PartWgt
+        public decimal? PartWgt
         {
             get { return partWgt; }
             set { partWgt = value; OnPropertyChanged(); }

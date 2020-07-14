@@ -43,6 +43,9 @@ namespace ViewModel
             set { allRecipientVMList = value; OnPropertyChanged(); }
         }
 
+        public delegate void ComboBoxNotify();
+        public event ComboBoxNotify ComboBoxEvent;
+
         #endregion
 
         #region Commands
@@ -75,6 +78,11 @@ namespace ViewModel
         #endregion
 
         #region Methods
+
+        protected virtual void OnComboBoxHandling()
+        {
+            ComboBoxEvent.Invoke();
+        }
 
         public void CallGetRecipientList()
         {
@@ -112,6 +120,7 @@ namespace ViewModel
             this.ActNoteVM = new NoteViewModel();
             this.ActNoteVM.RecVM = new RecipientViewModel();
             this.ActNoteVM.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
+            OnComboBoxHandling();
 
             OnMessageBoxHandling("The upload was successful!", DeliveryNoteMessageBoxType.Information);
         }

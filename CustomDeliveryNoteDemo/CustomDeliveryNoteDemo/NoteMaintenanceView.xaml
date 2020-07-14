@@ -73,7 +73,8 @@
                    Padding="0"
                    FontSize="{Binding LabelFontSize}"/>
 
-            <ComboBox Grid.Column="2" Grid.ColumnSpan="2"
+            <ComboBox Name="cmbRecipient"
+                      Grid.Column="2" Grid.ColumnSpan="2"
                       Grid.Row="0"
                       Style="{StaticResource DeliveryNoteComboBoxTemplate}"
                       SelectedItem="{Binding ActNoteVM.RecVM}"

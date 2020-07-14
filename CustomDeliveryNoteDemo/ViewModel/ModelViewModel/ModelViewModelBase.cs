@@ -29,6 +29,8 @@ namespace ViewModel.ModelViewModel
         /// </summary>
         public void CheckErros()
         {
+            string ex = null;
+
             foreach (PropertyInfo prop in this.GetType().GetProperties())
             {
                 if (Attribute.IsDefined(prop, typeof(RequiredAttribute)))
@@ -40,23 +42,21 @@ namespace ViewModel.ModelViewModel
 
                     if (prop.PropertyType == typeof(string) && String.IsNullOrEmpty((string)propValue))
                     {
-                        throw new MessageException("The following field cannot be empty: " + descAttr.Description + ".");
+                        ex = "The following field cannot be empty: " + descAttr.Description + ".";
                     }
-                    else if (prop.PropertyType == typeof(decimal) && (decimal)propValue <= 0)
+                    else if (prop.PropertyType == typeof(decimal?) && ((decimal?)propValue == null || (decimal)propValue <= 0))
                     {
-                        throw new MessageException("The following field must contains a positive number: " + descAttr.Description + ".");
+                        ex = "The following field must contains a positive number: " + descAttr.Description + ".";
                     }
-                    else if (prop.PropertyType == typeof(DateTime?))
+                    else if (prop.PropertyType == typeof(DateTime?) && ((DateTime?)propValue == null || ((DateTime)propValue).Date < DateTime.Now.Date))
                     {
-                        if ((DateTime?)propValue == null)
-                        {
-                            throw new MessageException("Please select a date in the following field: " + descAttr.Description + ".");
-                        }
-                        else if (((DateTime)propValue).Date < DateTime.Now.Date)
-                        {
-                            throw new MessageException("The following date cannot be in the past: " + descAttr.Description + ".");
-                        }
+                        ex = "Please select a future date in the following field: " + descAttr.Description + ".";
                     }
+                }
+
+                if (!String.IsNullOrEmpty(ex))
+                {
+                    throw new MessageException(ex);
                 }
             }
         }
