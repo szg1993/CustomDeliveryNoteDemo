@@ -1,8 +1,12 @@
-﻿using Model.Models;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using System.Text;
@@ -31,9 +35,11 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The number of the note.
         /// </summary>
+        [Required]
+        [Description("Note number")]
         public string NoteNbr
         {
-            get { return noteNbr; }
+            get { return noteNbr;}
             set { noteNbr = value; OnPropertyChanged(); }
         }
 
@@ -51,6 +57,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The creator of the note.
         /// </summary>
+        [Required]
+        [Description("Date of creation")]
         public string CreatedBy
         {
             get { return createdBy; }
@@ -61,6 +69,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The person who responsible for the note from sender side.
         /// </summary>
+        [Required]
+        [Description("Assigned to")]
         public string AssignTo
         {
             get { return assignTo; }
@@ -71,6 +81,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The phone number of the responsible person.
         /// </summary>
+        [Required]
+        [Description("Assigned to phone")]
         public string AssignToPhone
         {
             get { return assignToPhone; }
@@ -87,11 +99,13 @@ namespace ViewModel.ModelViewModel
             set { recId = value; OnPropertyChanged(); }
         }
 
-        private decimal? tareWgt;
+        private decimal tareWgt;
         /// <summary>
         /// The weight of the tare.
         /// </summary>
-        public decimal? TareWgt
+        [Required]
+        [Description("Tare weight")]
+        public decimal TareWgt
         {
             get { return tareWgt; }
             set { tareWgt = value; OnPropertyChanged(); }
@@ -101,6 +115,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The unit of the tare weight.
         /// </summary>
+        [Required]
+        [Description("Tare weight unit")]
         public string TareWgtUm
         {
             get { return tareWgtUm; }
@@ -108,56 +124,72 @@ namespace ViewModel.ModelViewModel
         }
 
         private DateTime? shipDate;
-
+        /// <summary>
+        /// The ship date of the delivery note.
+        /// </summary>
+        [Required]
+        [Description("Ship date")]
         public DateTime? ShipDate
         {
             get { return shipDate; }
             set { shipDate = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgQty;
+        private decimal pkgQty;
         /// <summary>
         /// the quantity of the boxes or palettes.
         /// </summary>
-        public decimal? PkgQty
+        [Required]
+        [Description("Package quantity")]
+        public decimal PkgQty
         {
             get { return pkgQty; }
             set { pkgQty = value; OnPropertyChanged(); }
         }
 
         private string pkgScale;
-
+        /// <summary>
+        /// The scale of the package
+        /// </summary>
+        [Required]
+        [Description("Package scale")]
         public string PkgScale
         {
             get { return pkgScale; }
             set { pkgScale = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgSizeX;
+        private decimal pkgSizeX;
         /// <summary>
         /// The x dimension of the package.
         /// </summary>
-        public decimal? PkgSizeX
+        [Required]
+        [Description("Package size X dimension")]
+        public decimal PkgSizeX
         {
             get { return pkgSizeX; }
             set { pkgSizeX = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgSizeY;
+        private decimal pkgSizeY;
         /// <summary>
         /// The y dimension of the package.
         /// </summary>
-        public decimal? PkgSizeY
+        [Required]
+        [Description("Package size Y dimension")]
+        public decimal PkgSizeY
         {
             get { return pkgSizeY; }
             set { pkgSizeY = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgSizeZ;
+        private decimal pkgSizeZ;
         /// <summary>
         /// The z dimension of the package.
         /// </summary>
-        public decimal? PkgSizeZ
+        [Required]
+        [Description("Package size Z dimension")]
+        public decimal PkgSizeZ
         {
             get { return pkgSizeZ; }
             set { pkgSizeZ = value; OnPropertyChanged(); }
@@ -167,6 +199,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The unit of the package size.
         /// </summary>
+        [Required]
+        [Description("Package size unit")]
         public string PkgSizeUm
         {
             get { return pkgSizeUm; }
@@ -177,6 +211,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The place where sender will pick up the package.
         /// </summary>
+        [Required]
+        [Description("Place of receipt")]
         public string TakeoverPlace
         {
             get { return takeoverPlace; }
@@ -187,26 +223,20 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The date of the take over.
         /// </summary>
+        [Required]
+        [Description("Date of receipt")]
         public DateTime? TakeoverDate
         {
             get { return takeoverDate; }
             set { takeoverDate = value; OnPropertyChanged(); }
         }
 
-        private TimeSpan? takeoverTime;
-        /// <summary>
-        /// The time of the take over.
-        /// </summary>
-        public TimeSpan? TakeoverTime
-        {
-            get { return takeoverTime; }
-            set { takeoverTime = value; OnPropertyChanged(); }
-        }
-
         private DateTime? estimatedArrivalDate;
         /// <summary>
         /// The estimated date when the package arrives to the destination.
         /// </summary>
+        [Required]
+        [Description("Estimated arrival date")]
         public DateTime? EstimatedArrivalDate
         {
             get { return estimatedArrivalDate; }
@@ -217,6 +247,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The category of the Note.
         /// </summary>
+        [Required]
+        [Description("Note category")]
         public string Category
         {
             get { return category; }
@@ -227,6 +259,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The contact at the target company.
         /// </summary>
+        [Required]
+        [Description("Contact (sender)")]
         public string Contact
         {
             get { return contact; }
@@ -237,6 +271,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The contact phone at the target company.
         /// </summary>
+        [Required]
+        [Description("Contact phone (sender)")]
         public string ContactPhone
         {
             get { return contactPhone; }
@@ -283,36 +319,6 @@ namespace ViewModel.ModelViewModel
             set { isOwnCost = value; OnPropertyChanged(); }
         }
 
-        private int cargoType;
-        /// <summary>
-        /// The type of the cargo.
-        /// </summary>
-        public int CargoType
-        {
-            get { return cargoType; }
-            set { cargoType = value; OnPropertyChanged(); }
-        }
-
-        private bool isInsuranceNeeded;
-        /// <summary>
-        /// True when need to buy insurance for the delivery.
-        /// </summary>
-        public bool IsInsuranceNeeded
-        {
-            get { return isInsuranceNeeded; }
-            set { isInsuranceNeeded = value; OnPropertyChanged(); }
-        }
-
-        private string insuranceDev;
-        /// <summary>
-        /// The devisa of the insurance.
-        /// </summary>
-        public string InsuranceDev
-        {
-            get { return insuranceDev; }
-            set { insuranceDev = value; OnPropertyChanged(); }
-        }
-
         private string comments;
         /// <summary>
         /// Comments.
@@ -323,11 +329,13 @@ namespace ViewModel.ModelViewModel
             set { comments = value; OnPropertyChanged(); }
         }
 
-        private DateTime? createdDate;
+        private DateTime createdDate;
         /// <summary>
         /// The creation date of the note.
         /// </summary>
-        public DateTime? CreatedDate
+        [Required]
+        [Description("Date of creation")]
+        public DateTime CreatedDate
         {
             get { return createdDate; }
             set { createdDate = value; OnPropertyChanged(); }
@@ -341,16 +349,6 @@ namespace ViewModel.ModelViewModel
         {
             get { return status; }
             set { status = value; OnPropertyChanged(); }
-        }
-
-        private string modifiedBy;
-        /// <summary>
-        /// The name of the last modifier.
-        /// </summary>
-        public string ModifiedBy
-        {
-            get { return modifiedBy; }
-            set { modifiedBy = value; OnPropertyChanged(); }
         }
 
         private RecipientViewModel recVM;
@@ -465,6 +463,7 @@ namespace ViewModel.ModelViewModel
         {
             this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
             this.RecVM = new RecipientViewModel();
+            this.CreatedBy = "admin"; //Hard coded because this is just a demo application without login system.
 
             Task.Run(() => GetCategoryListAsync());
             Task.Run(() => GetTakeoverPlaceListAsync());
@@ -476,85 +475,6 @@ namespace ViewModel.ModelViewModel
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// Validate the data of the note.
-        /// </summary>
-        public override void CheckErrors()
-        {
-            if (String.IsNullOrEmpty(this.AssignTo))
-            {
-                throw new MessageException("The assigned to field cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.AssignToPhone))
-            {
-                throw new MessageException("The assigned to phone field cannot be empty.");
-            }
-            else if (this.EstimatedArrivalDate == null)
-            {
-                throw new MessageException("Please choose the estimated arrival date.");
-            }
-            else if (this.EstimatedArrivalDate < DateTime.Now)
-            {
-                throw new MessageException("The estimated arrival date cannot be in the past.");
-            }
-            else if (String.IsNullOrEmpty(this.Category))
-            {
-                throw new MessageException("Please choose the category of the delivery note.");
-            }
-            else if (String.IsNullOrEmpty(this.TakeoverPlace))
-            {
-                throw new MessageException("Please choose the place of receipt.");
-            }
-            else if (String.IsNullOrEmpty(this.Contact))
-            {
-                throw new MessageException("The contanct (sender) field cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.ContactPhone))
-            {
-                throw new MessageException("The contanct phone (sender) field cannot be empty.");
-            }
-            else if (this.TakeoverDate == null)
-            {
-                throw new MessageException("Please choose the date of receipt.");
-            }
-            else if (this.TakeoverDate < DateTime.Now)
-            {
-                throw new MessageException("The date of receipt cannot be in the past.");
-            }
-            else if (this.ShipDate == null)
-            {
-                throw new MessageException("Please choose the ship date.");
-            }
-            else if (this.ShipDate < DateTime.Now)
-            {
-                throw new MessageException("The ship date cannot be in the past.");
-            }
-            else if (!IsValidDecimal(this.TareWgt))
-            {
-                throw new MessageException("The tare weight field must contains a positive number.");
-            }
-            else if (String.IsNullOrEmpty(this.TareWgtUm))
-            {
-                throw new MessageException("Please choose the unit of the tare weight.");
-            }
-            else if (!IsValidDecimal(this.PkgQty))
-            {
-                throw new MessageException("The package quantity field must contains a positive number.");
-            }
-            else if (String.IsNullOrEmpty(this.TareWgtUm))
-            {
-                throw new MessageException("Please choose the scale of the package quantity.");
-            }
-            else if (!IsValidDecimal(this.PkgSizeX) || !IsValidDecimal(this.PkgSizeY) || !IsValidDecimal(this.PkgSizeZ))
-            {
-                throw new MessageException("The X, Y, Z dimensions of the package must contain a positive number.");
-            }
-            else if (String.IsNullOrEmpty(this.PkgSizeUm))
-            {
-                throw new MessageException("Please choose the unit of the package size.");
-            }
-        }
 
         #endregion
 

@@ -34,27 +34,35 @@ namespace Model.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.AssignTo).HasMaxLength(150);
+                entity.Property(e => e.AssignTo)
+                    .IsRequired()
+                    .HasMaxLength(150);
 
-                entity.Property(e => e.AssignToPhone).HasMaxLength(50);
+                entity.Property(e => e.AssignToPhone)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Category).HasMaxLength(50);
+                entity.Property(e => e.Category)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Contact)
                     .IsRequired()
                     .HasMaxLength(150);
 
-                entity.Property(e => e.ContactPhone).HasMaxLength(50);
+                entity.Property(e => e.ContactPhone)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.CreatedBy).HasMaxLength(10);
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.EkaerNbr).HasMaxLength(30);
 
                 entity.Property(e => e.EstimatedArrivalDate).HasColumnType("date");
-
-                entity.Property(e => e.ModifiedBy).HasMaxLength(10);
 
                 entity.Property(e => e.ModifiedDate)
                     .IsRequired()
@@ -67,9 +75,13 @@ namespace Model.Models
 
                 entity.Property(e => e.PkgQty).HasColumnType("decimal(8, 4)");
 
-                entity.Property(e => e.PkgScale).HasMaxLength(15);
+                entity.Property(e => e.PkgScale)
+                    .IsRequired()
+                    .HasMaxLength(15);
 
-                entity.Property(e => e.PkgSizeUm).HasMaxLength(10);
+                entity.Property(e => e.PkgSizeUm)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.PkgSizeX).HasColumnType("decimal(12, 4)");
 
@@ -83,11 +95,15 @@ namespace Model.Models
 
                 entity.Property(e => e.TakeoverDate).HasColumnType("date");
 
-                entity.Property(e => e.TakeoverPlace).HasMaxLength(30);
+                entity.Property(e => e.TakeoverPlace)
+                    .IsRequired()
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.TareWgt).HasColumnType("decimal(12, 4)");
 
-                entity.Property(e => e.TareWgtUm).HasMaxLength(10);
+                entity.Property(e => e.TareWgtUm)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.HasOne(d => d.Rec)
                     .WithMany(p => p.Note)
@@ -102,15 +118,23 @@ namespace Model.Models
 
                 entity.Property(e => e.NoteId).HasColumnName("NoteID");
 
-                entity.Property(e => e.PartCode).HasMaxLength(20);
+                entity.Property(e => e.PartCode)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.PartDesc).IsRequired();
 
                 entity.Property(e => e.PartQty).HasColumnType("decimal(12, 4)");
 
-                entity.Property(e => e.PartQtyUm).HasMaxLength(10);
+                entity.Property(e => e.PartQtyUm)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.PartWgt).HasColumnType("decimal(12, 4)");
 
-                entity.Property(e => e.PartWgtUm).HasMaxLength(10);
+                entity.Property(e => e.PartWgtUm)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.HasOne(d => d.Note)
                     .WithMany(p => p.NoteLine)
@@ -123,15 +147,27 @@ namespace Model.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Address).HasMaxLength(200);
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(200);
 
-                entity.Property(e => e.City).HasMaxLength(100);
+                entity.Property(e => e.City)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
-                entity.Property(e => e.Code).HasMaxLength(10);
+                entity.Property(e => e.Code)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
-                entity.Property(e => e.Country).HasMaxLength(50);
+                entity.Property(e => e.Country)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Zip).HasMaxLength(20);
+                entity.Property(e => e.Name).IsRequired();
+
+                entity.Property(e => e.Zip)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             OnModelCreatingPartial(modelBuilder);

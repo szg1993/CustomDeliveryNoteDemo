@@ -142,7 +142,8 @@
                                          HorizontalAlignment="Stretch"
                                          HorizontalContentAlignment="Center"
                                          FontSize="{Binding LineListLabelFontSize}"
-                                         Height="20"/>
+                                         Height="20"
+                                         Text="{Binding PartWgt}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

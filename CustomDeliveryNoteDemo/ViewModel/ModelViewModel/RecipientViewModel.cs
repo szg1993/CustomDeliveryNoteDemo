@@ -3,6 +3,8 @@ using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -28,6 +30,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The code of the recipient.
         /// </summary>
+        [Required]
+        [Description("Recipient code")]
         public string Code
         {
             get { return code; }
@@ -38,6 +42,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The name of the recipient.
         /// </summary>
+        [Required]
+        [Description("Recipient name")]
         public string Name
         {
             get { return name; }
@@ -48,6 +54,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The country of the recipient.
         /// </summary>
+        [Required]
+        [Description("Recipient country")]
         public string Country
         {
             get { return country; }
@@ -58,6 +66,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The Zip code the recipient.
         /// </summary>
+        [Required]
+        [Description("Recipient code")]
         public string Zip
         {
             get { return zip; }
@@ -68,6 +78,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The city of the recipient.
         /// </summary>
+        [Required]
+        [Description("Recipient city")]
         public string City
         {
             get { return city; }
@@ -78,6 +90,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The address of the recipient.
         /// </summary>
+        [Required]
+        [Description("Recipient address")]
         public string Address
         {
             get { return address; }
@@ -114,36 +128,5 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
-
-        /// <summary>
-        /// Validate the properties of the recipient.
-        /// </summary>
-        public override void CheckErrors()
-        {
-            if (String.IsNullOrEmpty(this.Name))
-            {
-                throw new MessageException("The name of the recipient cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.Code))
-            {
-                throw new MessageException("The code of the recipient cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.Country))
-            {
-                throw new MessageException("The country of the recipient cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.Zip))
-            {
-                throw new MessageException("The ZIP code of the recipient cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.City))
-            {
-                throw new MessageException("The city of the recipient cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.Address))
-            {
-                throw new MessageException("The city of the recipient cannot be empty.");
-            }
-        }
     }
 }

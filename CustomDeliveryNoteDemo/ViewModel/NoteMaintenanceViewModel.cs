@@ -82,39 +82,38 @@ namespace ViewModel
         }
 
         /// <summary>
-        /// Check the date before upload.
+        /// Check the data before upload.
         /// </summary>
         private void CheckData()
         {
-            if (this.ActNoteVM != null)
+            if (this.ActNoteVM != null && this.ActNoteVM.RecVM != null
+                && this.ActNoteVM.NoteLineVMList != null
+                && this.ActNoteVM.NoteLineVMList.Count > 0)
             {
-                this.ActNoteVM.CheckErrors();
-
-                if (this.ActNoteVM.RecVM != null)
+                this.ActNoteVM.CheckErros();
+                this.ActNoteVM.RecVM.CheckErros();
+                
+                foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
                 {
-                    this.ActNoteVM.RecVM.CheckErrors();
-                    
-                    if (this.ActNoteVM.NoteLineVMList != null && this.ActNoteVM.NoteLineVMList.Count > 0)
-                    {
-                        foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
-                        {
-                            lineVM.CheckErrors();
-                        }
-                    }
-                    else
-                    {
-                        throw new MessageException("Please add line(s) to the delivery note before the upload.");
-                    }
-                }
-                else
-                {
-                    throw new MessageException("Please choose the recipient delivery note.");
+                    lineVM.CheckErros();
                 }
             }
             else
             {
-                throw new MessageException("The program is unable to create a delivery note. Please reload the menu.");
+                throw new MessageException("The program is unable to create a delivery note until it doesn't have a recipient and a least one line.");
             }
+        }
+
+        /// <summary>
+        /// Reset the view and report success.
+        /// </summary>
+        private void ReportSuccess()
+        {
+            this.ActNoteVM = new NoteViewModel();
+            this.ActNoteVM.RecVM = new RecipientViewModel();
+            this.ActNoteVM.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
+
+            OnMessageBoxHandling("The upload was successful!", DeliveryNoteMessageBoxType.Information);
         }
 
         #endregion
@@ -180,16 +179,17 @@ namespace ViewModel
 
                     OnCursorHandling(true);
 
-                    CheckData();
-
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
                         this.ActNoteVM.NoteNbr = NoteViewModel.CreateNoteNbr(ctx);
+                        this.ActNoteVM.CreatedDate = DateTime.Now; //Because this is just a demo app, I don't use the server time.
+                        this.ActNoteVM.RecId = this.ActNoteVM.RecVM.Id;
+                        
+                        CheckData();
 
                         Mapper mapper = new Mapper(MapperConfig);
                         Note note = mapper.Map<Note>(this.ActNoteVM);
                         Recipient rec = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
-                        note.RecId = rec.Id;
 
                         foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
                         {
@@ -201,6 +201,8 @@ namespace ViewModel
 
                         ctx.SaveChanges();
                     }
+
+                    ReportSuccess();
                 }
                 catch (MessageException mex)
                 {

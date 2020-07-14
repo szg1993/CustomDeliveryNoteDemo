@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Commands;
@@ -46,6 +50,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The item code on the note line.
         /// </summary>
+        [Required]
+        [Description("Line part code")]
         public string PartCode
         {
             get { return partCode; }
@@ -56,6 +62,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The description of the part code.
         /// </summary>
+        [Required]
+        [Description("Line part description")]
         public string PartDesc
         {
             get { return partDesc; }
@@ -72,11 +80,13 @@ namespace ViewModel.ModelViewModel
             set { partCmt = value; OnPropertyChanged(); }
         }
 
-        private decimal? partQty;
+        private decimal partQty;
         /// <summary>
         /// The quantity of the desired part.
         /// </summary>
-        public decimal? PartQty
+        [Required]
+        [Description("Line part quantity")]
+        public decimal PartQty
         {
             get { return partQty; }
             set { partQty = value; OnPropertyChanged(); }
@@ -86,17 +96,21 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The unit of the part quantity.
         /// </summary>
+        [Required]
+        [Description("Line part quantity unit")]
         public string PartQtyUm
         {
             get { return partQtyUm; }
             set { partQtyUm = value; OnPropertyChanged(); }
         }
 
-        private decimal? partWgt;
+        private decimal partWgt;
         /// <summary>
         /// The weight of the part.
         /// </summary>
-        public decimal? PartWgt
+        [Required]
+        [Description("Line part weight")]
+        public decimal PartWgt
         {
             get { return partWgt; }
             set { partWgt = value; OnPropertyChanged(); }
@@ -106,6 +120,8 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// The unit of the weight.
         /// </summary>
+        [Required]
+        [Description("Line part weight unit")]
         public string PartWgtUm
         {
             get { return partWgtUm; }
@@ -156,37 +172,6 @@ namespace ViewModel.ModelViewModel
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// Validate the data of the delivery note lines.
-        /// </summary>
-        public override void CheckErrors()
-        {
-            if (String.IsNullOrEmpty(this.PartCode))
-            {
-                throw new MessageException("The part code in the delivery note line list cannot be empty.");
-            }
-            else if (String.IsNullOrEmpty(this.PartDesc))
-            {
-                throw new MessageException("The description in the delivery note line list cannot be empty.");
-            }
-            else if (!IsValidDecimal(this.PartQty))
-            {
-                throw new MessageException("The quantity field in the delivery note line list must contains a positive number.");
-            }
-            else if (String.IsNullOrEmpty(this.PartQtyUm))
-            {
-                throw new MessageException("Please choose the unit of the part quantity in the delivery note line list.");
-            }
-            else if (!IsValidDecimal(this.PartWgt))
-            {
-                throw new MessageException("The weight field in the delivery note line list must contains a positive number.");
-            }
-            else if (String.IsNullOrEmpty(this.PartWgtUm))
-            {
-                throw new MessageException("Please choose the unit of the part weight in the delivery note line list.");
-            }
-        }
 
         #endregion
 

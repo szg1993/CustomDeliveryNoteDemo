@@ -17,19 +17,18 @@ namespace Model.Models
         public string AssignTo { get; set; }
         public string AssignToPhone { get; set; }
         public int RecId { get; set; }
-        public decimal? TareWgt { get; set; }
+        public decimal TareWgt { get; set; }
         public string TareWgtUm { get; set; }
-        public DateTime? ShipDate { get; set; }
-        public decimal? PkgQty { get; set; }
+        public DateTime ShipDate { get; set; }
+        public decimal PkgQty { get; set; }
         public string PkgScale { get; set; }
-        public decimal? PkgSizeX { get; set; }
-        public decimal? PkgSizeY { get; set; }
-        public decimal? PkgSizeZ { get; set; }
+        public decimal PkgSizeX { get; set; }
+        public decimal PkgSizeY { get; set; }
+        public decimal PkgSizeZ { get; set; }
         public string PkgSizeUm { get; set; }
         public string TakeoverPlace { get; set; }
-        public DateTime? TakeoverDate { get; set; }
-        public DateTime? EstimatedArrivalDate { get; set; }
-        public TimeSpan? EstimatedArrivalTime { get; set; }
+        public DateTime TakeoverDate { get; set; }
+        public DateTime EstimatedArrivalDate { get; set; }
         public string Category { get; set; }
         public string Contact { get; set; }
         public string ContactPhone { get; set; }
@@ -38,9 +37,8 @@ namespace Model.Models
         public bool IsDangerous { get; set; }
         public bool IsOwnCost { get; set; }
         public string Comments { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         public int Status { get; set; }
-        public string ModifiedBy { get; set; }
         public byte[] ModifiedDate { get; set; }
 
         public virtual Recipient Rec { get; set; }

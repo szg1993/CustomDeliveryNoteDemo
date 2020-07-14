@@ -229,7 +229,7 @@
 
             <TextBox Grid.Column="7"
                      Grid.Row="0"
-                     Text="{Binding ActNoteVM.AssignedTo}"
+                     Text="{Binding ActNoteVM.AssignTo}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -522,7 +522,7 @@
 
             <TextBox Grid.Column="11"
                      Grid.Row="16"
-                     Text="{Binding ActNoteVM.SizeX}"
+                     Text="{Binding ActNoteVM.PkgSizeX}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -543,7 +543,7 @@
 
             <TextBox Grid.Column="13"
                      Grid.Row="16"
-                     Text="{Binding ActNoteVM.SizeY}"
+                     Text="{Binding ActNoteVM.PkgSizeY}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
@@ -564,7 +564,7 @@
 
             <TextBox Grid.Column="15"
                      Grid.Row="16"
-                     Text="{Binding ActNoteVM.SizeZ}"
+                     Text="{Binding ActNoteVM.PkgSizeZ}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
