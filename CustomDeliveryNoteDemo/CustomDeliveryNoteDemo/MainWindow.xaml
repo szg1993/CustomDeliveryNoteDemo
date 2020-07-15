@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomDeliveryNoteDemo"
+        xmlns:conv="clr-namespace:CustomDeliveryNoteDemo.Converters"
         mc:Ignorable="d"
         Title="Delivery note maker"
         ResizeMode="CanMinimize"
@@ -14,6 +15,9 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         MouseDown="Window_MouseDown"
         Height="720" Width="1035">
+    <Window.Resources>
+        <conv:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

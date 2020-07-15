@@ -35,7 +35,7 @@ namespace ViewModel
 
         public MainViewModel()
         {
-
+            
         }
 
         /// <summary>

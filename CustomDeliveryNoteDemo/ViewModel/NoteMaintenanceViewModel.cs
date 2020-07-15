@@ -58,8 +58,8 @@ namespace ViewModel
             {
                 if (uploadCommand == null)
                 {
-                    uploadCommand = new AsyncCommand(UploadAsync);
-                    //uploadCommand = new AsyncCommand(UploadAsync, CanExecuteAsyncCommand);
+                    //uploadCommand = new AsyncCommand(UploadAsync);
+                    uploadCommand = new AsyncCommand(UploadAsync, CanExecuteAsyncCommand);
                 }
 
                 return uploadCommand;
@@ -117,9 +117,12 @@ namespace ViewModel
         /// </summary>
         private void ReportSuccess()
         {
-            this.ActNoteVM = new NoteViewModel();
-            this.ActNoteVM.RecVM = new RecipientViewModel();
-            this.ActNoteVM.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
+            this.ActNoteVM = new NoteViewModel
+            {
+                RecVM = new RecipientViewModel(),
+                NoteLineVMList = new ObservableCollection<NoteLineViewModel>()
+            };
+
             OnComboBoxHandling();
 
             OnMessageBoxHandling("The upload was successful!", DeliveryNoteMessageBoxType.Information);
@@ -139,8 +142,6 @@ namespace ViewModel
             {
                 try
                 {
-                    this.IsBusy = true;
-
                     OnCursorHandling(true);
 
                     this.AllRecipientVMList.Clear();
@@ -168,8 +169,6 @@ namespace ViewModel
                 finally
                 {
                     OnCursorHandling(false);
-
-                    this.IsBusy = false;
                 }
             });
         }

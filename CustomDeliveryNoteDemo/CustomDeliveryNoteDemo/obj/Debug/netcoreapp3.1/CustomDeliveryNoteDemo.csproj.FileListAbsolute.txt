@@ -71,3 +71,4 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDem
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\bin\Debug\netcoreapp3.1\Model.pdb
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Templates\DeliveryNoteCheckBoxTemplate.baml
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Templates\DeliveryNoteRadioButtonTemplate.baml
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs

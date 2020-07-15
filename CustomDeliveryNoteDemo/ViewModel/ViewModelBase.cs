@@ -119,7 +119,7 @@ namespace ViewModel
 
         public bool CanExecuteAsyncCommand()
         {
-            return !IsBusy;
+            return !this.IsBusy;
         }
 
         #endregion

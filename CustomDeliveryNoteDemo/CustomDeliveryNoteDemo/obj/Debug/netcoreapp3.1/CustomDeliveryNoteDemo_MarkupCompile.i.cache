@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\App.xaml
 16-1888868996
 
-8-344641691
+92140027020
 213-2105844345
 DeliveryNoteMessageBox.xaml;Dictionary\BrushDictionary.xaml;Dictionary\StyleDictionary.xaml;MainWindow.xaml;NoteMaintenanceView.xaml;Templates\DeliveryNoteButtonTemplate.xaml;Templates\DeliveryNoteCheckBoxTemplate.xaml;Templates\DeliveryNoteComboBoxTemplate.xaml;Templates\DeliveryNoteDatePickerTemplate.xaml;Templates\DeliveryNoteGridViewColumnHeaderTemplate.xaml;Templates\DeliveryNoteListViewItemTemplate.xaml;Templates\DeliveryNoteMenuTemplate.xaml;Templates\DeliveryNoteRadioButtonTemplate.xaml;Templates\DeliveryNoteTextBoxTemplate.xaml;Templates\DeliveryNoteWindowTemplate.xaml;Templates\NoteLineListViewTemplate.xaml;
 
-False
+True
 
