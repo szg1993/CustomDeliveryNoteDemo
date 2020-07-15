@@ -641,7 +641,7 @@
 
         <Button Grid.Row="3"
                 Grid.Column="0"
-                Content="FELTÖLTÉS"
+                Content="UPLOAD"
                 Command="{Binding UploadCommand}"
                 FontSize="14"
                 FontWeight="Bold"

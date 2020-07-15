@@ -21,10 +21,7 @@ namespace CustomDeliveryNoteDemo
     /// </summary>
     public partial class NoteMaintenanceView : UserControl
     {
-        public static string MenuName
-        {
-            get { return "Note maintenance"; }        
-        }
+        #region Ctors
 
         public NoteMaintenanceView()
         {
@@ -35,12 +32,16 @@ namespace CustomDeliveryNoteDemo
             ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
             ((NoteMaintenanceViewModel)this.DataContext).ComboBoxEvent += NoteMaintenanceView_ComboBoxEvent;
 
-            ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList();                 
+            ((NoteMaintenanceViewModel)this.DataContext).CallGetRecipientList();
         }
+
+        #endregion
+
+        #region Methods
 
         private void NoteMaintenanceView_ComboBoxEvent()
         {
-            this.Dispatcher.Invoke(() => this.cmbRecipient.SelectedItem = null);           
+            this.Dispatcher.Invoke(() => this.cmbRecipient.SelectedItem = null);
         }
 
         private void NoteMaintenanceView_MouseEvent(bool isWaiting)
@@ -57,7 +58,9 @@ namespace CustomDeliveryNoteDemo
 
         private void NoteMaintenanceView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
         {
-            this.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));           
+            this.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));
         }
+
+        #endregion
     }
 }

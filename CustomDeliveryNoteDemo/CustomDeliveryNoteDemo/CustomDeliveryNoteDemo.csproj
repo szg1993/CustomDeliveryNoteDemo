@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Pictures\AddLineIcon.png" />
     <None Remove="Pictures\AddStandardNoteIcon.png" />
+    <None Remove="Pictures\EarthIcon.png" />
     <None Remove="Pictures\LearnIcon.png" />
     <None Remove="Pictures\PencilIcon.png" />
     <None Remove="Pictures\ProgramIcon.ico" />
@@ -34,6 +35,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\AddStandardNoteIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\EarthIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\LearnIcon.png">
