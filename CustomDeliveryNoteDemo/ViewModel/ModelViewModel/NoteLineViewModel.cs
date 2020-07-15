@@ -179,6 +179,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available part qty units async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetPartQtyUmListAsync()
@@ -196,6 +197,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available part qty units async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetPartWeightUmListAsync()

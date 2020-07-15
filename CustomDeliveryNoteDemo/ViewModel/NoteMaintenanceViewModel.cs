@@ -58,7 +58,6 @@ namespace ViewModel
             {
                 if (uploadCommand == null)
                 {
-                    //uploadCommand = new AsyncCommand(UploadAsync);
                     uploadCommand = new AsyncCommand(UploadAsync, CanExecuteAsyncCommand);
                 }
 

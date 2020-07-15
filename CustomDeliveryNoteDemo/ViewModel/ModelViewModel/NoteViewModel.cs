@@ -517,6 +517,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available categories async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetCategoryListAsync()
@@ -534,6 +535,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available takeover places async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetTakeoverPlaceListAsync()
@@ -549,6 +551,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available package scales async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetPkgScaleListAsync()
@@ -564,6 +567,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available package size units async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetPkgSizeUmListAsync()
@@ -578,6 +582,7 @@ namespace ViewModel.ModelViewModel
 
         /// <summary>
         /// Get the list of the available tare weight units async.
+        /// If this weren't a demo app, then this values should be come from database or something else.
         /// </summary>
         /// <returns></returns>
         private async Task GetTareWeightUmListAsync()

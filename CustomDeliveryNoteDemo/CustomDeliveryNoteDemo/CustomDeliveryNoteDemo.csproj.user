@@ -21,6 +21,9 @@
     <Page Update="Dictionary\BrushDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Dictionary\ConverterDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionary\StyleDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
