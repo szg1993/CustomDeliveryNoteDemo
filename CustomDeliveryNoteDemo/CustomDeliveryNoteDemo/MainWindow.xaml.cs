@@ -28,9 +28,12 @@ namespace CustomDeliveryNoteDemo
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.DataContext = new MainViewModel();
 
             ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
+            ((MainViewModel)this.DataContext).NewWindowEvent += MainWindow_NewWindowEvent;
             ((MainViewModel)this.DataContext).MessageBoxEvent += MainWindow_MessageBoxEvent;
             ((MainViewModel)this.DataContext).MouseEvent += MainWindow_MouseEvent;
         }
@@ -74,6 +77,14 @@ namespace CustomDeliveryNoteDemo
             Type t = Type.GetType((string)ucType);
             UserControl uc = Activator.CreateInstance(t) as UserControl;
             this.grdWorkPlace.Children.Add(uc);
+        }
+
+        private void MainWindow_NewWindowEvent(string windowName)
+        {
+            object windowType = windowName;
+            Type t = Type.GetType((string)windowType);
+            Window w = Activator.CreateInstance(t) as Window;
+            w.Show();
         }
 
         /// <summary>

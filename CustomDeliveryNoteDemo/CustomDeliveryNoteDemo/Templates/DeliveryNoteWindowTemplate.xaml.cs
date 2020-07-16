@@ -50,18 +50,15 @@ namespace CustomDeliveryNoteDemo.Templates
         {
             if (sender is Ellipse)
             {
-                //if ((sender as Ellipse).DataContext is LoginWindow)
-                //{
-                //    Application.Current.Shutdown();
-                //}
                 if ((sender as Ellipse).DataContext is MainViewModel)
                 {
                     Application.Current.Shutdown();
                 }
-                //else if ((sender as Ellipse).DataContext is Window)
-                //{
-                //    ((sender as Ellipse).DataContext as Window).Close();
-                //}
+                else if ((sender as Ellipse).DataContext is RecipientMaintenanceViewModel)
+                {
+                    Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+                    activeWindow.Close();
+                }
             }
         }
     }

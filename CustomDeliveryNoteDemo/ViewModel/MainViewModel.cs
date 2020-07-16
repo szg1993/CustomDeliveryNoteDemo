@@ -33,6 +33,9 @@ namespace ViewModel
         public delegate void MenuItemNotify(string menuItemName);
         public event MenuItemNotify NewMenuItemEvent;
 
+        public delegate void NewWindowNotify(string windowName);
+        public event NewWindowNotify NewWindowEvent;
+
         public MainViewModel()
         {
             
@@ -52,16 +55,21 @@ namespace ViewModel
                 {
                     return;
                 }
-
-                string menuItemName = param is object[]? Convert.ToString((param as object[])[0]) : Convert.ToString(param);
-
-                if (String.IsNullOrEmpty(menuItemName))
-                {
-                    throw new MessageException("There is no class attached to the menu item.");
-                }
                 else
                 {
-                    NewMenuItemEvent.Invoke(menuItemName);
+                    string menuItemName = param is object[]? Convert.ToString((param as object[])[0]) : Convert.ToString(param);
+                    if (String.IsNullOrEmpty(menuItemName))
+                    {
+                        throw new MessageException("There is no class attached to the menu item.");
+                    }
+                    else if (menuItemName.Contains("RecipientMaintenanceView"))
+                    {
+                        NewWindowEvent.Invoke(menuItemName);
+                    }
+                    else
+                    {
+                        NewMenuItemEvent.Invoke(menuItemName);
+                    }
                 }
             }
             catch (MessageException mex)

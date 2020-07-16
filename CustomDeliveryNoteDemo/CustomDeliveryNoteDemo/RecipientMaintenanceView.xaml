@@ -9,6 +9,8 @@
         Icon="Pictures/EarthIcon.png"
         WindowStyle="None"
         ResizeMode="CanMinimize"
+        MouseDown="Window_MouseDown"
+        AllowsTransparency="True"
         Template="{StaticResource DeliveryNoteWindowTemplate}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Topmost="True"

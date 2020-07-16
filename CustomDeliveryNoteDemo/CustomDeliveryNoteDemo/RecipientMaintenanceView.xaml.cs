@@ -23,8 +23,21 @@ namespace CustomDeliveryNoteDemo
         public RecipientMaintenanceView()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.DataContext = new RecipientMaintenanceViewModel();
+        }
+
+        #endregion
+        
+        #region Events
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
 
         #endregion
