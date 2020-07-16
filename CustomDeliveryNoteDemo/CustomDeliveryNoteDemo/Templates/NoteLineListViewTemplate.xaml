@@ -24,6 +24,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Style="{StaticResource DeliveryNoteButtonTemplate}"
+                                        Command="{Binding DeleteLineCommand}"
                                         Width="30"
                                         Height="22">
                                     <Image Source="pack://application:,,,/Pictures/RedCrossIcon.png"
