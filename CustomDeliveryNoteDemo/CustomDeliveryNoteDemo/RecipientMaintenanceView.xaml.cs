@@ -26,11 +26,31 @@ namespace CustomDeliveryNoteDemo
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.DataContext = new RecipientMaintenanceViewModel();
+
+            ((RecipientMaintenanceViewModel)this.DataContext).MessageBoxEvent += RecipientMaintenanceView_MessageBoxEvent;
+            ((RecipientMaintenanceViewModel)this.DataContext).MouseEvent += RecipientMaintenanceView_MouseEvent;
         }
 
         #endregion
-        
+
         #region Events
+
+        private void RecipientMaintenanceView_MouseEvent(bool isWaiting)
+        {
+            if (isWaiting)
+            {
+                this.Dispatcher.Invoke(() => Mouse.OverrideCursor = Cursors.Wait);
+            }
+            else
+            {
+                this.Dispatcher.Invoke(() => Mouse.OverrideCursor = null);
+            }
+        }
+
+        private void RecipientMaintenanceView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
+        {
+            this.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));
+        }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {

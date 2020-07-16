@@ -114,7 +114,7 @@ namespace ViewModel
         /// <summary>
         /// Reset the view and report success.
         /// </summary>
-        private void ReportSuccess()
+        public override void ReportSuccess()
         {
             this.ActNoteVM = new NoteViewModel
             {
@@ -124,7 +124,7 @@ namespace ViewModel
 
             OnComboBoxHandling();
 
-            OnMessageBoxHandling("The upload was successful!", DeliveryNoteMessageBoxType.Information);
+            base.ReportSuccess();
         }
 
         #endregion

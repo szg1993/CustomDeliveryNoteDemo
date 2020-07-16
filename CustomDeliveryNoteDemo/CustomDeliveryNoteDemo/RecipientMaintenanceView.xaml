@@ -13,6 +13,7 @@
         AllowsTransparency="True"
         Template="{StaticResource DeliveryNoteWindowTemplate}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
         Topmost="True"
         Height="360"
         Width="380">

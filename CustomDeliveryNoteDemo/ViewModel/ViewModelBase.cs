@@ -76,6 +76,11 @@ namespace ViewModel
 
         #region Methods
 
+        public virtual void ReportSuccess()
+        {
+            OnMessageBoxHandling("The upload was successful!", DeliveryNoteMessageBoxType.Information);
+        }
+
         /// <summary>
         /// Begin changing the cursor.
         /// </summary>
