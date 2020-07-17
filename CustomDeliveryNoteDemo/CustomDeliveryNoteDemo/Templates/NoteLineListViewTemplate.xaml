@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:CustomDeliveryNoteDemo.Templates">
     
     <ControlTemplate x:Key="NoteLineListViewTemplate" TargetType="ListView">
-        <ListView ItemsSource="{Binding NoteLineVMList}" 
+        <ListView ItemsSource="{Binding .}" 
                   BorderThickness="0"
                   SelectionMode="Single"                 
                   ItemContainerStyle="{DynamicResource DeliveryNoteListViewItemTemplate}"
@@ -15,7 +15,8 @@
                     <GridViewColumn Width="65">
                         <GridViewColumnHeader>
                             <Button Style="{StaticResource DeliveryNoteButtonTemplate}"
-                                    Command="{Binding AddLineCommand}"
+                                    Command="{Binding AddLineCommand}"                                   
+                                    DataContext="{Binding DataContext.ActNoteVM, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
                                     Width="50"
                                     Height="30">
                                 <Image Source="pack://application:,,,/Pictures/AddLineIcon.png"/>
@@ -24,7 +25,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Style="{StaticResource DeliveryNoteButtonTemplate}"
-                                        Command="{Binding DeleteLineCommand}"
+                                        Command="{Binding DeleteLineCommand}"                                        
                                         Width="30"
                                         Height="22">
                                     <Image Source="pack://application:,,,/Pictures/RedCrossIcon.png"
@@ -173,6 +174,7 @@
                         <GridViewColumnHeader>
                             <Button Style="{StaticResource DeliveryNoteButtonTemplate}"
                                     Command="{Binding DeleteLinesCommand}"
+                                    DataContext="{Binding DataContext.ActNoteVM, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
                                     Width="30"
                                     Height="30">
                                 <Image Source = "pack://application:,,,/Pictures/RubbishIcon.png"/>

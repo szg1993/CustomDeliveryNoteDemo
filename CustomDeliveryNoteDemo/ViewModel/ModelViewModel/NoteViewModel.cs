@@ -455,21 +455,6 @@ namespace ViewModel.ModelViewModel
             }
         }
 
-        private RelayCommand deleteLineCommand;
-
-        public RelayCommand DeleteLineCommand
-        {
-            get
-            {
-                if (deleteLineCommand == null)
-                {
-                    deleteLineCommand = new RelayCommand(c => DeleteLine());
-                }
-
-                return deleteLineCommand;
-            }
-        }
-
         #endregion
 
         #region Ctors

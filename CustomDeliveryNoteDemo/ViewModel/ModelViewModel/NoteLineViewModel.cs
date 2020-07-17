@@ -160,6 +160,25 @@ namespace ViewModel.ModelViewModel
 
         #endregion
 
+        #region Commands
+
+        private RelayCommand deleteLineCommand;
+
+        public RelayCommand DeleteLineCommand
+        {
+            get
+            {
+                if (deleteLineCommand == null)
+                {
+                    deleteLineCommand = new RelayCommand(c => this.NoteVM.NoteLineVMList.Remove(this));
+                }
+
+                return deleteLineCommand;
+            }
+        }
+
+        #endregion
+
         #region Ctors
 
         public NoteLineViewModel(NoteViewModel noteVM)
