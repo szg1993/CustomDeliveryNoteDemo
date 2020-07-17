@@ -634,7 +634,7 @@
         </Grid>
         <ListView Grid.Row="1"
                   Grid.Column="0" Grid.ColumnSpan="4"
-                  DataContext="{Binding ActNoteVM}"                 
+                  DataContext="{Binding ActNoteVM}"          
                   Template="{StaticResource NoteLineListViewTemplate}">
 
         </ListView>
