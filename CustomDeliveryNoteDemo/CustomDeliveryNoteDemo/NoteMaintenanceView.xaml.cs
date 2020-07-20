@@ -37,7 +37,7 @@ namespace CustomDeliveryNoteDemo
 
         #endregion
 
-        #region Methods
+        #region Events
 
         private void NoteMaintenanceView_ComboBoxEvent()
         {

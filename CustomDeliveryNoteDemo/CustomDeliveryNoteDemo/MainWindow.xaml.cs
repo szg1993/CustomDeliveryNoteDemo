@@ -33,7 +33,6 @@ namespace CustomDeliveryNoteDemo
             this.DataContext = new MainViewModel();
 
             ((MainViewModel)this.DataContext).NewMenuItemEvent += MainWindow_NewMenuItemEvent;
-            ((MainViewModel)this.DataContext).NewWindowEvent += MainWindow_NewWindowEvent;
             ((MainViewModel)this.DataContext).MessageBoxEvent += MainWindow_MessageBoxEvent;
             ((MainViewModel)this.DataContext).MouseEvent += MainWindow_MouseEvent;
         }
@@ -75,16 +74,17 @@ namespace CustomDeliveryNoteDemo
         {
             object ucType = menuItemName;
             Type t = Type.GetType((string)ucType);
-            UserControl uc = Activator.CreateInstance(t) as UserControl;
-            this.grdWorkPlace.Children.Add(uc);
-        }
-
-        private void MainWindow_NewWindowEvent(string windowName)
-        {
-            object windowType = windowName;
-            Type t = Type.GetType((string)windowType);
-            Window w = Activator.CreateInstance(t) as Window;
-            w.Show();
+            
+            if (t.BaseType.Name == "UserControl")
+            {
+                UserControl uc = Activator.CreateInstance(t) as UserControl;
+                this.grdWorkPlace.Children.Add(uc);
+            }
+            else if (t.BaseType.Name == "Window")
+            {
+                Window w = Activator.CreateInstance(t) as Window;
+                w.Show();
+            }           
         }
 
         /// <summary>

@@ -1,0 +1,173 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CustomDeliveryNoteDemo.Templates">
+    
+    <ControlTemplate x:Key="SearchNoteLineListViewTemplate" TargetType="ListView">
+        <ListView ItemsSource="{Binding .}" 
+                  BorderThickness="0"
+                  SelectionMode="Single"                 
+                  ItemContainerStyle="{DynamicResource DeliveryNoteListViewItemTemplate}"
+                  AlternationCount="2">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False"
+                          ColumnHeaderContainerStyle="{DynamicResource DeliveryNoteGridViewColumnHeaderTemplate}">
+
+                    <GridViewColumn Width="80">
+                        <GridViewColumnHeader>
+                            <Label Content="Note nbr"
+                                   HorizontalContentAlignment="Left"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NoteVM.NoteNbr}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="75">
+                        <GridViewColumnHeader>
+                            <Label Content="Created by"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NoteVM.CreatedBy}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="90">
+                        <GridViewColumnHeader>
+                            <Label Content="Created date"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NoteVM.CreatedDate}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="90">
+                        <GridViewColumnHeader>
+                            <Label Content="Ship date"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NoteVM.ShipDate}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="75">
+                        <GridViewColumnHeader>
+                            <Label Content="Recipient"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NoteVM.RecVM.Code}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="150">
+                        <GridViewColumnHeader>
+                            <Label Content="Recipient name"
+                                   HorizontalContentAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NoteVM.RecVM.Name}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="50">
+                        <GridViewColumnHeader>
+                            <Label Content="Line"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Line}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="100">
+                        <GridViewColumnHeader>
+                            <Label Content="Part code"
+                                   HorizontalContentAlignment="Left"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PartCode}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn Width="275">
+                        <GridViewColumnHeader>
+                            <Label Content="Part description"
+                                   HorizontalContentAlignment="Left"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PartDesc}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </ControlTemplate>
+    
+</ResourceDictionary>

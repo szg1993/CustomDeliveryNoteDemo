@@ -62,7 +62,9 @@
                                    Height="20"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Note search">
+                    <MenuItem Name="mnnotesearch"
+                              Header="Note search"
+                              Command="{Binding OpenMenuItemCommand}" CommandParameter="CustomDeliveryNoteDemo.NoteSearchView">
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Pictures/SearchNoteIcon.png"
                                    Width="20"

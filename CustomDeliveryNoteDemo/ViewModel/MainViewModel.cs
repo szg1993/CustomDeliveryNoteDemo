@@ -33,12 +33,9 @@ namespace ViewModel
         public delegate void MenuItemNotify(string menuItemName);
         public event MenuItemNotify NewMenuItemEvent;
 
-        public delegate void NewWindowNotify(string windowName);
-        public event NewWindowNotify NewWindowEvent;
-
         public MainViewModel()
         {
-            
+
         }
 
         /// <summary>
@@ -62,21 +59,15 @@ namespace ViewModel
                     {
                         throw new MessageException("There is no class attached to the menu item.");
                     }
-                    else if (menuItemName.Contains("RecipientMaintenanceView"))
-                    {
-                        NewWindowEvent.Invoke(menuItemName);
-                    }
-                    else
-                    {
-                        NewMenuItemEvent.Invoke(menuItemName);
-                    }
+
+                    NewMenuItemEvent.Invoke(menuItemName);
                 }
             }
             catch (MessageException mex)
             {
                 OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
             }

@@ -13,6 +13,9 @@
     <Compile Update="NoteMaintenanceView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="NoteSearchView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="RecipientMaintenanceView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="NoteMaintenanceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="NoteSearchView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RecipientMaintenanceView.xaml">
@@ -70,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\DeliveryNoteListViewItemTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\SearchNoteLineListViewTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

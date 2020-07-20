@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Templates/DeliveryNoteDatePickerTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteListViewItemTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/NoteLineListViewTemplate.xaml"/>
+                <ResourceDictionary Source="Templates/SearchNoteLineListViewTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteListViewItemTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteGridViewColumnHeaderTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteCheckBoxTemplate.xaml"/>

@@ -6,6 +6,7 @@ FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDe
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Dictionary\StyleDictionary.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\MainWindow.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\NoteMaintenanceView.xaml;;
+FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\NoteSearchView.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\RecipientMaintenanceView.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Templates\DeliveryNoteButtonTemplate.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Templates\DeliveryNoteCheckBoxTemplate.xaml;;
@@ -17,4 +18,5 @@ FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDe
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Templates\DeliveryNoteRadioButtonTemplate.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Templates\DeliveryNoteTextBoxTemplate.xaml;;
 FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Templates\NoteLineListViewTemplate.xaml;;
+FC:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Templates\SearchNoteLineListViewTemplate.xaml;;
 

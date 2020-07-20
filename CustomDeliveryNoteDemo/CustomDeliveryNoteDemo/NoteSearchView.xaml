@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="CustomDeliveryNoteDemo.NoteSearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomDeliveryNoteDemo"
+             mc:Ignorable="d" 
+             IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+             d:DesignHeight="655" d:DesignWidth="1015" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="2"
+               Grid.Row="0"
+               Content="Search:"
+               HorizontalAlignment="Left"
+               HorizontalContentAlignment="Left"
+               VerticalContentAlignment="Center"
+               VerticalAlignment="Center"
+               Padding="0"
+               FontSize="{Binding LabelFontSize}"/>
+
+        <TextBox Grid.Column="2" Grid.ColumnSpan="2"
+                 Grid.Row="0"
+                 Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                 HorizontalAlignment="Stretch"
+                 HorizontalContentAlignment="Left"
+                 TextWrapping="Wrap"
+                 VerticalContentAlignment="Center"
+                 VerticalAlignment="Center"
+                 FontSize="{Binding LabelFontSize}"/>
+
+        <Button Grid.Row="3"
+                Grid.Column="0"
+                Command="{Binding UploadCommand}"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Height="28"
+                Width="28"
+                Style="{StaticResource DeliveryNoteButtonTemplate}"/>
+
+        <ListView Grid.Row="1"
+                  Grid.Column="1" Grid.ColumnSpan="4"
+                  DataContext="{Binding ActNoteVM.NoteLineVMList}"          
+                  Template="{StaticResource SearchNoteLineListViewTemplate}">
+        </ListView>
+    </Grid>
+</UserControl>
