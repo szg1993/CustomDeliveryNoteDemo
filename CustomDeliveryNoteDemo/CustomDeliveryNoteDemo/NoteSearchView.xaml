@@ -9,18 +9,25 @@
              d:DesignHeight="655" d:DesignWidth="1015" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.ColumnSpan="2"
+        <Label Grid.Column="1" Grid.ColumnSpan="2"
                Grid.Row="0"
                Content="Search:"
                HorizontalAlignment="Left"
@@ -30,7 +37,7 @@
                Padding="0"
                FontSize="{Binding LabelFontSize}"/>
 
-        <TextBox Grid.Column="2" Grid.ColumnSpan="2"
+        <TextBox Grid.Column="3" Grid.ColumnSpan="2"
                  Grid.Row="0"
                  Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                  HorizontalAlignment="Stretch"
@@ -41,20 +48,53 @@
                  FontSize="{Binding LabelFontSize}"/>
 
         <Button Grid.Row="3"
-                Grid.Column="0"
-                Command="{Binding UploadCommand}"
-                FontWeight="Bold"
+                Grid.Column="0" Grid.ColumnSpan="2"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
                 Height="28"
                 Width="28"
-                Style="{StaticResource DeliveryNoteButtonTemplate}"/>
+                Style="{StaticResource DeliveryNoteButtonTemplate}">
+            <Image Source = "Pictures/EyeIcon.png"
+                   Width="24"
+                   Height="24">
+            </Image>
+        </Button>
 
-        <ListView Grid.Row="1"
-                  Grid.Column="1" Grid.ColumnSpan="4"
-                  DataContext="{Binding ActNoteVM.NoteLineVMList}"          
+        <Button Grid.Row="4"
+                Grid.Column="0" Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Height="28"
+                Width="28"
+                Style="{StaticResource DeliveryNoteButtonTemplate}">
+            <Image Source = "Pictures/LikeIcon.png"
+                   Width="24"
+                   Height="24">
+            </Image>
+        </Button>
+
+        <Button Grid.Row="5"
+                Grid.Column="0" Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Height="28"
+                Width="28"
+                Style="{StaticResource DeliveryNoteButtonTemplate}">
+            <Image Source = "Pictures/InfirmIcon.png"
+                   Width="24"
+                   Height="24">
+            </Image>
+        </Button>
+
+        <ListView Grid.Row="2" Grid.RowSpan="5"
+                  Grid.Column="2" Grid.ColumnSpan="6"
+                  DataContext="{Binding NoteLineVMList}"          
                   Template="{StaticResource SearchNoteLineListViewTemplate}">
         </ListView>
     </Grid>

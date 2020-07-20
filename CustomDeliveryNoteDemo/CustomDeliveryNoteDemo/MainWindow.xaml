@@ -22,9 +22,7 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0"
                     Grid.Column="0" Grid.ColumnSpan="3"
@@ -87,7 +85,7 @@
         </StackPanel>
         <Grid Name="grdWorkPlace"
               Grid.Row="2"
-              Grid.Column="1">
+              Grid.Column="0">
         </Grid>
     </Grid>
 </Window>

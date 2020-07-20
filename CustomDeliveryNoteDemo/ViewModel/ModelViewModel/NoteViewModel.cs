@@ -474,15 +474,6 @@ namespace ViewModel.ModelViewModel
 
         #endregion
 
-        #region Methods
-
-        private void DeleteLine()
-        {
-            
-        }
-
-        #endregion
-
         #region Static
 
         /// <summary>

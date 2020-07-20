@@ -181,6 +181,11 @@ namespace ViewModel.ModelViewModel
 
         #region Ctors
 
+        public NoteLineViewModel()
+        {
+
+        }
+
         public NoteLineViewModel(NoteViewModel noteVM)
         {
             this.NoteVM = noteVM;

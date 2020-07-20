@@ -10,7 +10,10 @@
     <None Remove="Pictures\AddLineIcon.png" />
     <None Remove="Pictures\AddStandardNoteIcon.png" />
     <None Remove="Pictures\EarthIcon.png" />
+    <None Remove="Pictures\EyeIcon.png" />
+    <None Remove="Pictures\InfirmIcon.png" />
     <None Remove="Pictures\LearnIcon.png" />
+    <None Remove="Pictures\LikeIcon.png" />
     <None Remove="Pictures\PencilIcon.png" />
     <None Remove="Pictures\ProgramIcon.ico" />
     <None Remove="Pictures\RedCrossIcon.png" />
@@ -40,7 +43,16 @@
     <Resource Include="Pictures\EarthIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\EyeIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\InfirmIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Pictures\LearnIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\LikeIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\PencilIcon.png">

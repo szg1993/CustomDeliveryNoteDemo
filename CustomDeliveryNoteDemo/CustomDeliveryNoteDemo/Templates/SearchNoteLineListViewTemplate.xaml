@@ -46,7 +46,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="90">
+                    <GridViewColumn Width="125">
                         <GridViewColumnHeader>
                             <Label Content="Created date"
                                    HorizontalContentAlignment="Center"
@@ -55,7 +55,7 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding NoteVM.CreatedDate}"
+                                <TextBlock Text="{Binding NoteVM.CreatedDate, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontSize="{Binding LineListLabelFontSize}"/>
@@ -72,7 +72,7 @@
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding NoteVM.ShipDate}"
+                                <TextBlock Text="{Binding NoteVM.ShipDate, StringFormat=\{0:yyyy-MM-dd\}}"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontSize="{Binding LineListLabelFontSize}"/>
@@ -148,7 +148,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     
-                    <GridViewColumn Width="275">
+                    <GridViewColumn Width="250">
                         <GridViewColumnHeader>
                             <Label Content="Part description"
                                    HorizontalContentAlignment="Left"

@@ -27,6 +27,8 @@ namespace CustomDeliveryNoteDemo
             this.DataContext = new NoteSearchViewModel();
             ((NoteSearchViewModel)this.DataContext).MessageBoxEvent += NoteSearchView_MessageBoxEvent;
             ((NoteSearchViewModel)this.DataContext).MouseEvent += NoteSearchView_MouseEvent;
+
+            ((NoteSearchViewModel)this.DataContext).CallGetNoteLines();
         }
 
         #endregion

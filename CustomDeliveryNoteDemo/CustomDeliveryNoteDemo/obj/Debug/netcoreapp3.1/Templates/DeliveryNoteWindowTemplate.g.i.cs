@@ -52,7 +52,8 @@ namespace CustomDeliveryNoteDemo.Templates {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CustomDeliveryNoteDemo;component/templates/deliverynotewindowtemplate.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CustomDeliveryNoteDemo;V1.0.0.0;component/templates/deliverynotewindowtemplate.x" +
+                    "aml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Templates\DeliveryNoteWindowTemplate.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
