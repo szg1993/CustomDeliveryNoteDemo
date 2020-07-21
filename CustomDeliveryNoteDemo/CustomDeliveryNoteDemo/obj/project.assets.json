@@ -4974,8 +4974,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Gábor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -4983,14 +4982,11 @@
       "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
       "projectName": "CustomDeliveryNoteDemo",
       "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
-      "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Gábor\\.nuget\\packages\\",
       "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Sztarcsevics Gabor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gábor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5041,7 +5037,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
