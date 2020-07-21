@@ -240,6 +240,7 @@
                      TextWrapping="Wrap"
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Center"
+                     MaxLength="150"
                      FontSize="{Binding LabelFontSize}"/>
 
             <Label Grid.Column="5"
@@ -254,6 +255,7 @@
 
             <TextBox Grid.Column="7"
                      Grid.Row="2"
+                     MaxLength="50"
                      Text="{Binding ActNoteVM.AssignToPhone}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
@@ -337,6 +339,7 @@
             <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="0"
+                     MaxLength="30"
                      Text="{Binding ActNoteVM.EkaerNbr}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
@@ -381,6 +384,7 @@
             <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="4"
+                     MaxLength="150"
                      Text="{Binding ActNoteVM.Contact}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"
@@ -403,6 +407,7 @@
             <TextBox Grid.Column="11"
                      Grid.ColumnSpan="5"
                      Grid.Row="6"
+                     MaxLength="50"
                      Text="{Binding ActNoteVM.ContactPhone}"
                      Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                      HorizontalAlignment="Stretch"

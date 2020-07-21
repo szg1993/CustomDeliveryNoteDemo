@@ -10,11 +10,14 @@
         "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
         "projectName": "CustomDeliveryNoteDemo",
         "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
-        "packagesPath": "C:\\Users\\Gábor\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
         "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gábor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sztarcsevics Gabor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -75,11 +78,14 @@
         "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
         "projectName": "Model",
         "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
-        "packagesPath": "C:\\Users\\Gábor\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
         "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gábor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sztarcsevics Gabor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -137,7 +143,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -147,11 +153,14 @@
         "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj",
         "projectName": "ViewModel",
         "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj",
-        "packagesPath": "C:\\Users\\Gábor\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
         "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gábor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sztarcsevics Gabor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -199,7 +208,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

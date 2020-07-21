@@ -148,7 +148,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     
-                    <GridViewColumn Width="250">
+                    <GridViewColumn Width="220">
                         <GridViewColumnHeader>
                             <Label Content="Part description"
                                    HorizontalContentAlignment="Left"
