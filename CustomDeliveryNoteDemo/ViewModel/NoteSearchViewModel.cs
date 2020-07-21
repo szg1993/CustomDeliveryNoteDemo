@@ -71,6 +71,8 @@ namespace ViewModel
             {
                 try
                 {
+                    this.IsBusy = true;
+
                     OnCursorHandling(true);
 
                     this.NoteLineVMList.Clear();
@@ -101,6 +103,7 @@ namespace ViewModel
                 finally
                 {
                     OnCursorHandling(false);
+                    this.IsBusy = false;
                 }
             });
         }

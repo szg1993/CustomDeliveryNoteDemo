@@ -433,7 +433,7 @@ namespace ViewModel.ModelViewModel
             {
                 if (addLineCommand == null)
                 {
-                    addLineCommand = new RelayCommand(c => this.NoteLineVMList?.Add(new NoteLineViewModel(this)));
+                    addLineCommand = new RelayCommand(c => AddNoteLine());
                 }
 
                 return addLineCommand;
@@ -470,6 +470,23 @@ namespace ViewModel.ModelViewModel
             Task.Run(() => GetPkgScaleListAsync());
             Task.Run(() => GetPkgSizeUmListAsync());
             Task.Run(() => GetTareWeightUmListAsync());
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        /// <summary>
+        /// Add a new line to the note.
+        /// </summary>
+        private void AddNoteLine()
+        {
+            if (this.NoteLineVMList != null)
+            {
+                int lineCount = this.NoteLineVMList.Count + 1;
+                this.NoteLineVMList.Add(new NoteLineViewModel(this) { Line = lineCount });
+            }
         }
 
         #endregion

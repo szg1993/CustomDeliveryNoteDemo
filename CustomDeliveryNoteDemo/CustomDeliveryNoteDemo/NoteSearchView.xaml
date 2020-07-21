@@ -55,8 +55,9 @@
                 HorizontalContentAlignment="Center"
                 Height="28"
                 Width="28"
+                IsEnabled="{Binding IsBusy}"
                 Style="{StaticResource DeliveryNoteButtonTemplate}">
-            <Image Source = "Pictures/EyeIcon.png"
+            <Image Source = "Pictures/EyeIcon.png"                   
                    Width="24"
                    Height="24">
             </Image>
@@ -70,6 +71,7 @@
                 HorizontalContentAlignment="Center"
                 Height="28"
                 Width="28"
+                IsEnabled="{Binding IsBusy}"
                 Style="{StaticResource DeliveryNoteButtonTemplate}">
             <Image Source = "Pictures/LikeIcon.png"
                    Width="24"
@@ -85,6 +87,7 @@
                 HorizontalContentAlignment="Center"
                 Height="28"
                 Width="28"
+                IsEnabled="{Binding IsBusy}"
                 Style="{StaticResource DeliveryNoteButtonTemplate}">
             <Image Source = "Pictures/InfirmIcon.png"
                    Width="24"
