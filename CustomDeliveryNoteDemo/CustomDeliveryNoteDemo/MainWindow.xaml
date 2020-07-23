@@ -70,17 +70,6 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Help"
-                          AlternationCount="2"
-                          FontSize="16">
-                    <MenuItem Header="Open Wiki">
-                        <MenuItem.Icon>
-                            <Image Source="pack://application:,,,/Pictures/LearnIcon.png"
-                                   Width="20"
-                                   Height="20"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
             </Menu>
         </StackPanel>
         <Grid Name="grdWorkPlace"

@@ -23,6 +23,8 @@ namespace ViewModel
     {
         #region Properties
 
+        private bool isDisposed = false;
+
         private NoteViewModel actNoteVM;
         /// <summary>
         /// The actual note.
@@ -149,9 +151,10 @@ namespace ViewModel
                     {
                         List<Recipient> recList = await ctx.Recipient.Where(x => x.Code != null).ToListAsync();
 
+                        Mapper mapper = new Mapper(MapperConfig);
+
                         foreach (Recipient rec in recList)
                         {
-                            Mapper mapper = new Mapper(MapperConfig);
                             RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
                             this.AllRecipientVMList.Add(recVM);
                         }
@@ -225,6 +228,25 @@ namespace ViewModel
                     OnCursorHandling(false);
                 }
             });
+        }
+
+        #endregion
+
+        #region Dispose
+
+        protected override void Dispose(bool disposing)
+        {
+            if (isDisposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                if (this.AllRecipientVMList != null) { this.AllRecipientVMList = null; }
+            }
+
+            isDisposed = true;
         }
 
         #endregion

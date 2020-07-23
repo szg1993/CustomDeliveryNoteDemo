@@ -29,6 +29,57 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
+                    <GridViewColumn Width="50">
+                        <GridViewColumnHeader>
+                            <Label Content="Line"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Line}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="100">
+                        <GridViewColumnHeader>
+                            <Label Content="Part code"
+                                   HorizontalContentAlignment="Left"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PartCode}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="220">
+                        <GridViewColumnHeader>
+                            <Label Content="Part description"
+                                   HorizontalContentAlignment="Left"
+                                   HorizontalAlignment="Stretch"
+                                   FontSize="{Binding LabelFontSize}"/>
+                        </GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PartDesc}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           FontSize="{Binding LineListLabelFontSize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                     <GridViewColumn Width="75">
                         <GridViewColumnHeader>
                             <Label Content="Created by"
@@ -108,57 +159,6 @@
                             <DataTemplate>
                                 <TextBlock Text="{Binding NoteVM.RecVM.Name}"
                                            HorizontalAlignment="Left"
-                                           VerticalAlignment="Center"
-                                           FontSize="{Binding LineListLabelFontSize}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Width="50">
-                        <GridViewColumnHeader>
-                            <Label Content="Line"
-                                   HorizontalContentAlignment="Center"
-                                   HorizontalAlignment="Stretch"
-                                   FontSize="{Binding LabelFontSize}"/>
-                        </GridViewColumnHeader>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Line}"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="{Binding LineListLabelFontSize}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Width="100">
-                        <GridViewColumnHeader>
-                            <Label Content="Part code"
-                                   HorizontalContentAlignment="Left"
-                                   HorizontalAlignment="Stretch"
-                                   FontSize="{Binding LabelFontSize}"/>
-                        </GridViewColumnHeader>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding PartCode}"
-                                           HorizontalAlignment="Stretch"
-                                           VerticalAlignment="Center"
-                                           FontSize="{Binding LineListLabelFontSize}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    
-                    <GridViewColumn Width="220">
-                        <GridViewColumnHeader>
-                            <Label Content="Part description"
-                                   HorizontalContentAlignment="Left"
-                                   HorizontalAlignment="Stretch"
-                                   FontSize="{Binding LabelFontSize}"/>
-                        </GridViewColumnHeader>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding PartDesc}"
-                                           HorizontalAlignment="Stretch"
                                            VerticalAlignment="Center"
                                            FontSize="{Binding LineListLabelFontSize}"/>
                             </DataTemplate>

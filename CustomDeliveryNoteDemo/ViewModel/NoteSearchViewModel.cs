@@ -17,7 +17,9 @@ namespace ViewModel
 {
     public class NoteSearchViewModel : ViewModelBase
     {
-        #region Declaration
+        #region Properties
+
+        private bool isDisposed = false;
 
         private AsyncObservableCollection<NoteLineViewModel> noteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
 
@@ -84,10 +86,10 @@ namespace ViewModel
                         .Include(z => z.Note.Rec)
                         .ToListAsync();
 
+                        Mapper mapper = new Mapper(MapperConfig);
+
                         foreach (NoteLine line in lineList)
                         {
-                            Mapper mapper = new Mapper(MapperConfig);
-
                             MapProperties(mapper, line);
                         }
                     }
@@ -106,6 +108,25 @@ namespace ViewModel
                     this.IsBusy = false;
                 }
             });
+        }
+
+        #endregion
+
+        #region Dispose
+
+        protected override void Dispose(bool disposing)
+        {
+            if (isDisposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                if (this.NoteLineVMList != null) { this.NoteLineVMList = null; }
+            }
+
+            isDisposed = true;
         }
 
         #endregion
