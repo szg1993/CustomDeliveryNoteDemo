@@ -501,8 +501,9 @@ namespace ViewModel.ModelViewModel
         {
             string prefix = "N";
             string postfix;
+            string firstPostfix = "00001";
             string nbrSerialFormat = "00000";
-
+            
             Note lastNote = ctx.Note.OrderByDescending(x => x.Id).FirstOrDefault();
 
             if (lastNote != null)
@@ -520,7 +521,7 @@ namespace ViewModel.ModelViewModel
             }
             else
             {
-                return prefix + "00001";
+                return prefix + firstPostfix;
             }
         }
 
