@@ -9,7 +9,9 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModel.Commands;
 using ViewModel.Excep;
+using ViewModel.Interfaces;
 using ViewModel.ModelViewModel;
 using ViewModel.Util;
 
@@ -28,6 +30,43 @@ namespace ViewModel
             get { return noteLineVMList; }
             set { noteLineVMList = value; OnPropertyChanged(); }
         }
+
+        private AsyncObservableCollection<NoteLineViewModel> defaultNoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
+
+        public AsyncObservableCollection<NoteLineViewModel> DefaultNoteLineVMList
+        {
+            get { return defaultNoteLineVMList; }
+            set { defaultNoteLineVMList = value; OnPropertyChanged(); }
+        }
+
+        private string findText;
+        /// <summary>
+        /// The text what the user enters to the search field.
+        /// </summary>
+        public string FindText
+        {
+            get { return findText; }
+            set { findText = value; Task.Run(() => FilterList()); OnPropertyChanged(); }
+        }
+
+        #endregion
+
+        #region Commands
+
+        //private IAsyncCommand searchCommand;
+
+        //public IAsyncCommand SearchCommand
+        //{
+        //    get
+        //    {
+        //        if (searchCommand == null)
+        //        {
+        //            searchCommand = new AsyncCommand(SearchAsync, CanExecuteAsyncCommand);
+        //        }
+
+        //        return searchCommand;
+        //    }
+        //}
 
         #endregion
 
@@ -56,7 +95,55 @@ namespace ViewModel
             noteVM.RecVM = recVM;
             lineVM.NoteVM = noteVM;
 
-            this.NoteLineVMList.Add(lineVM);
+            this.DefaultNoteLineVMList.Add(lineVM);
+        }
+
+        /// <summary>
+        /// Filter the note line list.
+        /// </summary>
+        private void FilterList()
+        {
+            try
+            {
+                this.IsBusy = true;
+
+                OnCursorHandling(true);
+
+                this.NoteLineVMList = this.DefaultNoteLineVMList;
+
+                if (!String.IsNullOrEmpty(this.FindText))
+                {
+                    IEnumerable<NoteLineViewModel> filteredList;
+
+                    if (!String.IsNullOrEmpty(this.FindText))
+                    {
+                        filteredList = this.DefaultNoteLineVMList.Where(x =>
+                        x.NoteVM.NoteNbr.ToUpper().Contains(this.FindText.ToUpper())
+                        || x.PartCode.ToUpper().Contains(this.FindText.ToUpper())
+                        || x.PartDesc.ToUpper().Contains(this.FindText.ToUpper())
+                        || x.NoteVM.RecVM.Code.ToUpper().Contains(this.FindText.ToUpper())
+                        || x.NoteVM.RecVM.Name.ToUpper().Contains(this.FindText.ToUpper()));
+
+                        if (filteredList != null)
+                        {
+                            this.NoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>(filteredList);
+                        }
+                    }
+                }
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+                this.IsBusy = false;
+            }
         }
 
         #endregion
@@ -77,7 +164,7 @@ namespace ViewModel
 
                     OnCursorHandling(true);
 
-                    this.NoteLineVMList.Clear();
+                    this.DefaultNoteLineVMList.Clear();
 
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
@@ -93,6 +180,8 @@ namespace ViewModel
                             MapProperties(mapper, line);
                         }
                     }
+
+                    this.NoteLineVMList = this.DefaultNoteLineVMList;
                 }
                 catch (MessageException mex)
                 {

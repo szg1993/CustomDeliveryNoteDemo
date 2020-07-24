@@ -52,7 +52,7 @@
                           AlternationCount="2"
                           FontSize="16">
                     <MenuItem Name="mnrecmaintenance"
-                              Header="Recipient maintenance"
+                              Header="New recipient"
                               Command="{Binding OpenMenuItemCommand}" CommandParameter="CustomDeliveryNoteDemo.RecipientMaintenanceView">
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Pictures/PencilIcon.png"
