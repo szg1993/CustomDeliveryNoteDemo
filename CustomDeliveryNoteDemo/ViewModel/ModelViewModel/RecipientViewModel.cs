@@ -128,5 +128,14 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
+
+        #region Methods
+
+        public override string ToString()
+        {
+            return this.Code + " - " + this.Name;
+        }
+
+        #endregion
     }
 }

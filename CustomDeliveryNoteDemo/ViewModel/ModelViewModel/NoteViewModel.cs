@@ -481,8 +481,12 @@ namespace ViewModel.ModelViewModel
 
         #endregion
 
-
         #region Methods
+
+        public override string ToString()
+        {
+            return this.NoteNbr;
+        }
 
         /// <summary>
         /// Add a new line to the note.

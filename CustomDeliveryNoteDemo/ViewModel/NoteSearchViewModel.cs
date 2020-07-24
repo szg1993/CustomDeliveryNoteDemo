@@ -85,7 +85,7 @@ namespace ViewModel
 
         public NoteSearchViewModel()
         {
-            
+            this.NoteLineVMListView = CollectionViewSource.GetDefaultView(this.NoteLineVMList);
         }
 
         #endregion
@@ -195,10 +195,7 @@ namespace ViewModel
                         {
                             MapProperties(mapper, line);
                         }
-                    }
-
-                    this.NoteLineVMListView = CollectionViewSource.GetDefaultView(this.NoteLineVMList);
-                    //this.NoteLineVMList = this.DefaultNoteLineVMList;
+                    }                  
                 }
                 catch (MessageException mex)
                 {

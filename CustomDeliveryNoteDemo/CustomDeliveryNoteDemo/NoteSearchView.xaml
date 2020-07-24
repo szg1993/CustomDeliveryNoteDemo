@@ -107,8 +107,8 @@
 
         <ListView Grid.Row="2" Grid.RowSpan="5"
                   Grid.Column="2" Grid.ColumnSpan="6"
-                  DataContext="{Binding NoteLineVMList}"                 
-                  SelectedItem="{Binding DataContext.SelectedNoteLine, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                  DataContext="{Binding NoteLineVMList}"
+                  IsSynchronizedWithCurrentItem="True"
                   Template="{StaticResource SearchNoteLineListViewTemplate}">
         </ListView>
     </Grid>

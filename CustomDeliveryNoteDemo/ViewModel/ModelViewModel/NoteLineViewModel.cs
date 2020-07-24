@@ -197,6 +197,11 @@ namespace ViewModel.ModelViewModel
 
         #region Methods
 
+        public override string ToString()
+        {
+            return this.NoteVM.NoteNbr + "/" + this.Line;
+        }
+
         #endregion
 
         #region Tasks
