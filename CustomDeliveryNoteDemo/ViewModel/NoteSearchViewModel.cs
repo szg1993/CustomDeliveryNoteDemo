@@ -4,11 +4,13 @@ using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using ViewModel.Commands;
 using ViewModel.Excep;
 using ViewModel.Interfaces;
@@ -23,6 +25,15 @@ namespace ViewModel
 
         private bool isDisposed = false;
 
+        //private AsyncObservableCollection<NoteLineViewModel> defaultNoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
+
+        //public AsyncObservableCollection<NoteLineViewModel> DefaultNoteLineVMList
+        //{
+        //    get { return defaultNoteLineVMList; }
+        //    set { defaultNoteLineVMList = value; OnPropertyChanged(); }
+        //}
+
+
         private AsyncObservableCollection<NoteLineViewModel> noteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
 
         public AsyncObservableCollection<NoteLineViewModel> NoteLineVMList
@@ -31,22 +42,12 @@ namespace ViewModel
             set { noteLineVMList = value; OnPropertyChanged(); }
         }
 
-        private AsyncObservableCollection<NoteLineViewModel> defaultNoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
+        private ICollectionView noteLineVMListView;
 
-        public AsyncObservableCollection<NoteLineViewModel> DefaultNoteLineVMList
+        public ICollectionView NoteLineVMListView
         {
-            get { return defaultNoteLineVMList; }
-            set { defaultNoteLineVMList = value; OnPropertyChanged(); }
-        }
-
-        private NoteLineViewModel selectedNoteLine;
-        /// <summary>
-        /// The selected row from the listview.
-        /// </summary>
-        public NoteLineViewModel SelectedNoteLine
-        {
-            get { return selectedNoteLine; }
-            set { selectedNoteLine = value; OnPropertyChanged(); }
+            get { return noteLineVMListView; }
+            set { noteLineVMListView = value; OnPropertyChanged(); }
         }
 
         private string findText;
@@ -56,7 +57,7 @@ namespace ViewModel
         public string FindText
         {
             get { return findText; }
-            set { findText = value; Task.Run(() => FilterList()); OnPropertyChanged(); }
+            set { findText = value; OnPropertyChanged(); }
         }
 
         #endregion
@@ -110,56 +111,56 @@ namespace ViewModel
             noteVM.RecVM = recVM;
             lineVM.NoteVM = noteVM;
 
-            this.DefaultNoteLineVMList.Add(lineVM);
+            this.NoteLineVMList.Add(lineVM);
         }
 
         /// <summary>
         /// Filter the note line list.
         /// </summary>
-        private void FilterList()
-        {
-            try
-            {
-                this.IsBusy = true;
+        //private void FilterList()
+        //{
+        //    try
+        //    {
+        //        this.IsBusy = true;
 
-                OnCursorHandling(true);
+        //        OnCursorHandling(true);
 
-                this.NoteLineVMList = this.DefaultNoteLineVMList;
+        //        this.NoteLineVMList = this.DefaultNoteLineVMList;
 
-                if (!String.IsNullOrEmpty(this.FindText))
-                {
-                    IEnumerable<NoteLineViewModel> filteredList;
+        //        if (!String.IsNullOrEmpty(this.FindText))
+        //        {
+        //            IEnumerable<NoteLineViewModel> filteredList;
 
-                    if (!String.IsNullOrEmpty(this.FindText))
-                    {
-                        filteredList = this.DefaultNoteLineVMList.Where(x =>
-                        x.NoteVM.NoteNbr.ToUpper().Contains(this.FindText.ToUpper())
-                        || x.PartCode.ToUpper().Contains(this.FindText.ToUpper())
-                        || x.PartDesc.ToUpper().Contains(this.FindText.ToUpper())
-                        || x.NoteVM.RecVM.Code.ToUpper().Contains(this.FindText.ToUpper())
-                        || x.NoteVM.RecVM.Name.ToUpper().Contains(this.FindText.ToUpper()));
+        //            if (!String.IsNullOrEmpty(this.FindText))
+        //            {
+        //                filteredList = this.DefaultNoteLineVMList.Where(x =>
+        //                x.NoteVM.NoteNbr.ToUpper().Contains(this.FindText.ToUpper())
+        //                || x.PartCode.ToUpper().Contains(this.FindText.ToUpper())
+        //                || x.PartDesc.ToUpper().Contains(this.FindText.ToUpper())
+        //                || x.NoteVM.RecVM.Code.ToUpper().Contains(this.FindText.ToUpper())
+        //                || x.NoteVM.RecVM.Name.ToUpper().Contains(this.FindText.ToUpper()));
 
-                        if (filteredList != null)
-                        {
-                            this.NoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>(filteredList);
-                        }
-                    }
-                }
-            }
-            catch (MessageException mex)
-            {
-                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
-            }
-            catch (Exception ex)
-            {
-                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
-            }
-            finally
-            {
-                OnCursorHandling(false);
-                this.IsBusy = false;
-            }
-        }
+        //                if (filteredList != null)
+        //                {
+        //                    this.NoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>(filteredList);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (MessageException mex)
+        //    {
+        //        OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+        //    }
+        //    finally
+        //    {
+        //        OnCursorHandling(false);
+        //        this.IsBusy = false;
+        //    }
+        //}
 
         #endregion
 
@@ -179,7 +180,7 @@ namespace ViewModel
 
                     OnCursorHandling(true);
 
-                    this.DefaultNoteLineVMList.Clear();
+                    this.NoteLineVMList.Clear();
 
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
@@ -196,7 +197,8 @@ namespace ViewModel
                         }
                     }
 
-                    this.NoteLineVMList = this.DefaultNoteLineVMList;
+                    this.NoteLineVMListView = CollectionViewSource.GetDefaultView(this.NoteLineVMList);
+                    //this.NoteLineVMList = this.DefaultNoteLineVMList;
                 }
                 catch (MessageException mex)
                 {
@@ -228,10 +230,19 @@ namespace ViewModel
 
                     OnCursorHandling(true);
 
-                    //using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
-                    //{
-                    //    ctx.SaveChanges();
-                    //}
+                    if (this.NoteLineVMListView.CurrentItem != null && this.NoteLineVMListView.CurrentItem is NoteLineViewModel)
+                    {
+                        using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                        {
+                            Note dbNote = ctx.Note.FirstOrDefault(x => x.Id == (this.NoteLineVMListView.CurrentItem as NoteLineViewModel).NoteVM.Id);
+                            if (dbNote != null)
+                            {
+                                dbNote.Status = (int)NoteStatus.INFIRMED;
+                            }
+
+                            ctx.SaveChanges();
+                        }
+                    }
                 }
                 catch (MessageException mex)
                 {
