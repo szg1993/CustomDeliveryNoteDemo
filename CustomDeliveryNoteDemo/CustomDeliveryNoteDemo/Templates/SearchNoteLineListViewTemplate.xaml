@@ -3,9 +3,10 @@
                     xmlns:local="clr-namespace:CustomDeliveryNoteDemo.Templates">
     
     <ControlTemplate x:Key="SearchNoteLineListViewTemplate" TargetType="ListView">
-        <ListView ItemsSource="{Binding .}" 
-                  BorderThickness="0"
-                  SelectionMode="Single"                 
+        <ListView BorderThickness="0"
+                  ItemsSource="{Binding .}"
+                  IsSynchronizedWithCurrentItem="True"
+                  SelectionMode="Single"
                   ItemContainerStyle="{DynamicResource DeliveryNoteListViewItemTemplate}"
                   AlternationCount="2">
             <ListView.View>

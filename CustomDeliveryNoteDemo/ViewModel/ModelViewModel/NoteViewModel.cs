@@ -17,6 +17,13 @@ using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
 {
+    public enum NoteStatus
+    {
+        NEW,
+        ACCEPTED,
+        INFIRMED
+    }
+
     public class NoteViewModel : ModelViewModelBase
     {
         #region Properties

@@ -39,6 +39,16 @@ namespace ViewModel
             set { defaultNoteLineVMList = value; OnPropertyChanged(); }
         }
 
+        private NoteLineViewModel selectedNoteLine;
+        /// <summary>
+        /// The selected row from the listview.
+        /// </summary>
+        public NoteLineViewModel SelectedNoteLine
+        {
+            get { return selectedNoteLine; }
+            set { selectedNoteLine = value; OnPropertyChanged(); }
+        }
+
         private string findText;
         /// <summary>
         /// The text what the user enters to the search field.
@@ -53,20 +63,20 @@ namespace ViewModel
 
         #region Commands
 
-        //private IAsyncCommand searchCommand;
+        private IAsyncCommand acceptNoteCommand;
 
-        //public IAsyncCommand SearchCommand
-        //{
-        //    get
-        //    {
-        //        if (searchCommand == null)
-        //        {
-        //            searchCommand = new AsyncCommand(SearchAsync, CanExecuteAsyncCommand);
-        //        }
+        public IAsyncCommand AcceptNoteCommand
+        {
+            get
+            {
+                if (acceptNoteCommand == null)
+                {
+                    acceptNoteCommand = new AsyncCommand(AcceptNoteAsync, CanExecuteAsyncCommand);
+                }
 
-        //        return searchCommand;
-        //    }
-        //}
+                return acceptNoteCommand;
+            }
+        }
 
         #endregion
 
@@ -74,7 +84,7 @@ namespace ViewModel
 
         public NoteSearchViewModel()
         {
-
+            
         }
 
         #endregion
@@ -86,6 +96,11 @@ namespace ViewModel
             Task.Run(() => GetNoteLines());
         }
 
+        /// <summary>
+        /// Create view model from the model objects.
+        /// </summary>
+        /// <param name="mapper"></param>
+        /// <param name="line"></param>
         private void MapProperties(Mapper mapper, NoteLine line)
         {
             NoteLineViewModel lineVM = mapper.Map<NoteLineViewModel>(line);
@@ -195,6 +210,41 @@ namespace ViewModel
                 {
                     OnCursorHandling(false);
                     this.IsBusy = false;
+                }
+            });
+        }
+
+        /// <summary>
+        /// Set the status of the delivery note to accepted
+        /// </summary>
+        /// <returns></returns>
+        private async Task AcceptNoteAsync()
+        {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    this.IsBusy = true;
+
+                    OnCursorHandling(true);
+
+                    //using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    //{
+                    //    ctx.SaveChanges();
+                    //}
+                }
+                catch (MessageException mex)
+                {
+                    OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+                }
+                catch (Exception ex)
+                {
+                    OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+                }
+                finally
+                {
+                    this.IsBusy = false;
+                    OnCursorHandling(false);
                 }
             });
         }

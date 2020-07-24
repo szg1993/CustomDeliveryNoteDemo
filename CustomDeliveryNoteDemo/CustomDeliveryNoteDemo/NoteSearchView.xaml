@@ -76,6 +76,7 @@
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
+                Command="{Binding AcceptNoteCommand}"
                 Height="28"
                 Width="28"
                 ToolTip="Approve the selected delivery note."
@@ -106,7 +107,8 @@
 
         <ListView Grid.Row="2" Grid.RowSpan="5"
                   Grid.Column="2" Grid.ColumnSpan="6"
-                  DataContext="{Binding NoteLineVMList}"          
+                  DataContext="{Binding NoteLineVMList}"                 
+                  SelectedItem="{Binding DataContext.SelectedNoteLine, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
                   Template="{StaticResource SearchNoteLineListViewTemplate}">
         </ListView>
     </Grid>
