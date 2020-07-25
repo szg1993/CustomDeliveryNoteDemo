@@ -40,7 +40,8 @@
                           FontSize="16">
                     <MenuItem Name ="mnnewstandardnote"
                               Header="Standard note"
-                              Command="{Binding OpenMenuItemCommand}" CommandParameter="CustomDeliveryNoteDemo.NoteMaintenanceView">
+                              Command="{Binding DataContext.OpenMenuItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                              CommandParameter="CustomDeliveryNoteDemo.NoteMaintenanceView">
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Pictures/AddStandardNoteIcon.png"
                                Width="20"
@@ -53,7 +54,8 @@
                           FontSize="16">
                     <MenuItem Name="mnrecmaintenance"
                               Header="New recipient"
-                              Command="{Binding OpenMenuItemCommand}" CommandParameter="CustomDeliveryNoteDemo.RecipientMaintenanceView">
+                              Command="{Binding DataContext.OpenMenuItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                              CommandParameter="CustomDeliveryNoteDemo.RecipientMaintenanceView">
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Pictures/PencilIcon.png"
                                    Width="20"
@@ -62,7 +64,8 @@
                     </MenuItem>
                     <MenuItem Name="mnnotesearch"
                               Header="Note search"
-                              Command="{Binding OpenMenuItemCommand}" CommandParameter="CustomDeliveryNoteDemo.NoteSearchView">
+                              Command="{Binding DataContext.OpenMenuItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                              CommandParameter="CustomDeliveryNoteDemo.NoteSearchView">
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Pictures/SearchNoteIcon.png"
                                    Width="20"
