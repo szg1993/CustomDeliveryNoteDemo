@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -24,15 +25,6 @@ namespace ViewModel
         #region Properties
 
         private bool isDisposed = false;
-
-        //private AsyncObservableCollection<NoteLineViewModel> defaultNoteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
-
-        //public AsyncObservableCollection<NoteLineViewModel> DefaultNoteLineVMList
-        //{
-        //    get { return defaultNoteLineVMList; }
-        //    set { defaultNoteLineVMList = value; OnPropertyChanged(); }
-        //}
-
 
         private AsyncObservableCollection<NoteLineViewModel> noteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
 
@@ -57,25 +49,54 @@ namespace ViewModel
         public string FindText
         {
             get { return findText; }
-            set { findText = value; OnPropertyChanged(); }
+            set { findText = value; FilterList(); OnPropertyChanged(); }
         }
-
+        
         #endregion
 
         #region Commands
 
-        private IAsyncCommand acceptNoteCommand;
+        //private IAsyncCommand acceptNoteCommand;
 
-        public IAsyncCommand AcceptNoteCommand
+        //public IAsyncCommand AcceptNoteCommand
+        //{
+        //    get
+        //    {
+        //        if (acceptNoteCommand == null)
+        //        {
+        //            acceptNoteCommand = new AsyncCommand(AcceptNoteAsync, CanExecuteAsyncCommand);
+        //        }
+
+        //        return acceptNoteCommand;
+        //    }
+        //}
+
+        private RelayCommand acceptNoteCommand;
+        public RelayCommand AcceptNoteCommand
         {
             get
             {
-                if (acceptNoteCommand == null)
+                if (this.acceptNoteCommand == null)
                 {
-                    acceptNoteCommand = new AsyncCommand(AcceptNoteAsync, CanExecuteAsyncCommand);
+                    this.acceptNoteCommand = new RelayCommand(x => SetNoteStatus(NoteStatus.ACCEPTED));
                 }
 
                 return acceptNoteCommand;
+            }
+        }
+
+
+        private RelayCommand infirmNoteCommand;
+        public RelayCommand InfirmNoteCommand
+        {
+            get
+            {
+                if (this.infirmNoteCommand == null)
+                {
+                    this.infirmNoteCommand = new RelayCommand(x => SetNoteStatus(NoteStatus.INFIRMED));
+                }
+
+                return infirmNoteCommand;
             }
         }
 
@@ -112,6 +133,88 @@ namespace ViewModel
             lineVM.NoteVM = noteVM;
 
             this.NoteLineVMList.Add(lineVM);
+        }
+
+        private void SetNoteStatus(NoteStatus noteStatus)
+        {
+            try
+            {
+                OnCursorHandling(true);
+
+                if (this.NoteLineVMListView.CurrentItem != null && this.NoteLineVMListView.CurrentItem is NoteLineViewModel)
+                {
+                    Mapper mapper = new Mapper(MapperConfig);
+
+                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    {
+                        Note dbNote = ctx.Note.FirstOrDefault(x => x.Id == (this.NoteLineVMListView.CurrentItem as NoteLineViewModel).NoteVM.Id);
+                        if (dbNote != null)
+                        {
+                            dbNote.Status = (int)noteStatus;
+                        }
+
+                        ctx.SaveChanges();
+                    }
+
+                    ReportSuccess();
+                }
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+            }
+        }
+
+        /// <summary>
+        /// Filter the list based on the columns.
+        /// </summary>
+        private void FilterList()
+        {
+            try
+            {
+                OnCursorHandling(true);
+
+                this.NoteLineVMListView.Filter = null;
+
+                if (this.NoteLineVMListView.CurrentItem != null)
+                {
+                    this.NoteLineVMListView.MoveCurrentTo(null);
+                }
+
+                Expression<Func<object, bool>> predicate = PredicateBuilder.True<object>();
+                
+                if (!String.IsNullOrEmpty(this.FindText) && this.NoteLineVMList.Count != 0)
+                {
+                    predicate = PredicateBuilder.And(o => ((NoteLineViewModel)o).PartCode.ToUpper().Contains(this.FindText.ToUpper()), predicate);
+                    predicate = PredicateBuilder.Or(o => ((NoteLineViewModel)o).PartDesc.ToUpper().Contains(this.FindText.ToUpper()), predicate);
+                    predicate = PredicateBuilder.Or(o => ((NoteLineViewModel)o).NoteVM.RecVM.Code.ToUpper().Contains(this.FindText.ToUpper()), predicate);
+                    predicate = PredicateBuilder.Or(o => ((NoteLineViewModel)o).NoteVM.RecVM.Name.ToUpper().Contains(this.FindText.ToUpper()), predicate);
+                }
+
+                Func<object, bool> func = predicate.Compile();
+
+                this.NoteLineVMListView.Filter = new Predicate<object>(func);
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+            }
         }
 
         /// <summary>
@@ -229,6 +332,8 @@ namespace ViewModel
 
                     if (this.NoteLineVMListView.CurrentItem != null && this.NoteLineVMListView.CurrentItem is NoteLineViewModel)
                     {
+                        Mapper mapper = new Mapper(MapperConfig);
+  
                         using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                         {
                             Note dbNote = ctx.Note.FirstOrDefault(x => x.Id == (this.NoteLineVMListView.CurrentItem as NoteLineViewModel).NoteVM.Id);

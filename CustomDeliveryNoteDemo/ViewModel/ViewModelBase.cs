@@ -78,7 +78,7 @@ namespace ViewModel
 
         public virtual void ReportSuccess()
         {
-            OnMessageBoxHandling("The upload was successful!", DeliveryNoteMessageBoxType.Information);
+            OnMessageBoxHandling("The process was successful!", DeliveryNoteMessageBoxType.Information);
         }
 
         /// <summary>

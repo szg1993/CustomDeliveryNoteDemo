@@ -97,6 +97,7 @@
                 Height="28"
                 Width="28"
                 ToolTip="Infirm the selected delivery note."
+                Command="{Binding InfirmNoteCommand}"
                 IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
                 Style="{StaticResource DeliveryNoteButtonTemplate}">
             <Image Source = "Pictures/InfirmIcon.png"
