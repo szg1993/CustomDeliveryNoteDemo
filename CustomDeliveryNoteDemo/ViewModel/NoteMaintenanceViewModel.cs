@@ -195,7 +195,7 @@ namespace ViewModel
                         this.ActNoteVM.NoteNbr = NoteViewModel.CreateNoteNbr(ctx);
                         this.ActNoteVM.Status = (int)NoteStatus.NEW;
                         this.ActNoteVM.CreatedDate = DateTime.Now; //Because this is just a demo app, I don't use the server time.
-                        this.ActNoteVM.RecId = this.ActNoteVM.RecVM.Id;
+                        //this.ActNoteVM.RecId = this.ActNoteVM.RecVM.Id;
                         
                         CheckData();
 

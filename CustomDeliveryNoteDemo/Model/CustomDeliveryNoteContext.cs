@@ -34,7 +34,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.AssignTo).IsRequired();
 
@@ -72,7 +72,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.NoteId).HasColumnName("NoteID");
 
@@ -90,7 +90,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Address).IsRequired();
 
