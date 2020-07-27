@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Model.Models;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Text;

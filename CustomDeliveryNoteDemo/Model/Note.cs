@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Model.Models
+namespace Model
 {
     public partial class Note
     {
@@ -10,36 +10,35 @@ namespace Model.Models
             NoteLine = new HashSet<NoteLine>();
         }
 
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string NoteNbr { get; set; }
         public string EkaerNbr { get; set; }
         public string CreatedBy { get; set; }
         public string AssignTo { get; set; }
         public string AssignToPhone { get; set; }
-        public int RecId { get; set; }
-        public decimal TareWgt { get; set; }
+        public long RecId { get; set; }
+        public double TareWgt { get; set; }
         public string TareWgtUm { get; set; }
-        public DateTime ShipDate { get; set; }
-        public decimal PkgQty { get; set; }
+        public long ShipDate { get; set; }
+        public double PkgQty { get; set; }
         public string PkgScale { get; set; }
-        public decimal PkgSizeX { get; set; }
-        public decimal PkgSizeY { get; set; }
-        public decimal PkgSizeZ { get; set; }
+        public double PkgSizeX { get; set; }
+        public double PkgSizeY { get; set; }
+        public double PkgSizeZ { get; set; }
         public string PkgSizeUm { get; set; }
         public string TakeoverPlace { get; set; }
-        public DateTime TakeoverDate { get; set; }
-        public DateTime EstimatedArrivalDate { get; set; }
+        public long TakeoverDate { get; set; }
+        public string EstimatedArrivalDate { get; set; }
         public string Category { get; set; }
         public string Contact { get; set; }
         public string ContactPhone { get; set; }
-        public bool IsUrgent { get; set; }
-        public bool IsCrackable { get; set; }
-        public bool IsDangerous { get; set; }
-        public bool IsOwnCost { get; set; }
+        public long IsUrgent { get; set; }
+        public long IsCrackable { get; set; }
+        public long IsDangerous { get; set; }
+        public long IsOwnCost { get; set; }
         public string Comments { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public int Status { get; set; }
-        public byte[] ModifiedDate { get; set; }
+        public long CreatedDate { get; set; }
+        public long Status { get; set; }
 
         public virtual Recipient Rec { get; set; }
         public virtual ICollection<NoteLine> NoteLine { get; set; }
