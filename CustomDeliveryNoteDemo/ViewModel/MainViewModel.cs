@@ -48,11 +48,7 @@ namespace ViewModel
             {
                 OnCursorHandling(true);
 
-                if (param == null)
-                {
-                    return;
-                }
-                else
+                if (param != null)
                 {
                     string menuItemName = param is object[]? Convert.ToString((param as object[])[0]) : Convert.ToString(param);
                     if (String.IsNullOrEmpty(menuItemName))
@@ -61,6 +57,10 @@ namespace ViewModel
                     }
 
                     NewMenuItemEvent.Invoke(menuItemName);
+                }
+                else
+                {
+                    return;
                 }
             }
             catch (MessageException mex)

@@ -58,24 +58,6 @@
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
-                Height="28"
-                Width="28"
-                Command="{Binding SearchCommand}"
-                ToolTip="View the selected delivery note."
-                IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
-                Style="{StaticResource DeliveryNoteButtonTemplate}">
-            <Image Source = "Pictures/EyeIcon.png"                   
-                   Width="24"
-                   Height="24">
-            </Image>
-        </Button>
-
-        <Button Grid.Row="4"
-                Grid.Column="0" Grid.ColumnSpan="2"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Center"
                 Command="{Binding AcceptNoteCommand}"
                 Height="28"
                 Width="28"
@@ -88,7 +70,7 @@
             </Image>
         </Button>
 
-        <Button Grid.Row="5"
+        <Button Grid.Row="4"
                 Grid.Column="0" Grid.ColumnSpan="2"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
