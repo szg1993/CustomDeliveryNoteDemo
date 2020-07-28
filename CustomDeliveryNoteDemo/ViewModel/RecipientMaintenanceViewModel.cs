@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Commands;
@@ -67,6 +68,19 @@ namespace ViewModel
             base.ReportSuccess();
         }
 
+        /// <summary>
+        /// Check if the user would like to use an existing code for the new recipient.
+        /// </summary>
+        /// <param name="ctx"></param>
+        private void CheckRecCode(CustomDeliveryNoteContext ctx)
+        {
+            Recipient existingRec = ctx.Recipient.FirstOrDefault(x => x.Code == this.ActRecVM.Code);
+            if (existingRec != null)
+            {
+                throw new MessageException("The following code is already used: " + this.ActRecVM.Code + ".\nPlease choose an another code for the new recipient.");
+            }
+        }
+
         #endregion
 
         #region Tasks
@@ -81,19 +95,23 @@ namespace ViewModel
 
                     OnCursorHandling(true);
 
-                    this.ActRecVM.CheckErros();
-
-                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    if (this.ActRecVM != null)
                     {
-                        Mapper mapper = new Mapper(MapperConfig);
+                        this.ActRecVM.CheckErros();
 
-                        Recipient rec = mapper.Map<Recipient>(this.ActRecVM);
-                        ctx.Recipient.Add(rec);
+                        using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                        {
+                            CheckRecCode(ctx);
+                            Mapper mapper = new Mapper(MapperConfig);
 
-                        ctx.SaveChanges();
+                            Recipient rec = mapper.Map<Recipient>(this.ActRecVM);
+                            ctx.Recipient.Add(rec);
+
+                            ctx.SaveChanges();
+                        }
+
+                        ReportSuccess();
                     }
-
-                    ReportSuccess();
                 }
                 catch (MessageException mex)
                 {

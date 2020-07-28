@@ -135,6 +135,11 @@ namespace ViewModel.ModelViewModel
             return this.Code + " - " + this.Name;
         }
 
+        public void CheckRecCode()
+        {
+
+        }
+
         #endregion
     }
 }
