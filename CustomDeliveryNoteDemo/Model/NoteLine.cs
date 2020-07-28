@@ -9,6 +9,7 @@ namespace Model
         public long NoteId { get; set; }
         public long Line { get; set; }
         public string PartCode { get; set; }
+        public string PartDesc { get; set; }
         public string PartCmt { get; set; }
         public double PartQty { get; set; }
         public string PartQtyUm { get; set; }

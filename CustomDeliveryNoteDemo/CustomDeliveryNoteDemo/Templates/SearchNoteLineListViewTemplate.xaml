@@ -13,7 +13,7 @@
                 <GridView AllowsColumnReorder="False"
                           ColumnHeaderContainerStyle="{DynamicResource DeliveryNoteGridViewColumnHeaderTemplate}">
 
-                    <GridViewColumn Width="80">
+                    <GridViewColumn Width="70">
                         <GridViewColumnHeader>
                             <Label Content="Note nbr"
                                    HorizontalContentAlignment="Left"
@@ -30,7 +30,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="50">
+                    <GridViewColumn Width="40">
                         <GridViewColumnHeader>
                             <Label Content="Line"
                                    HorizontalContentAlignment="Center"
@@ -47,7 +47,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="100">
+                    <GridViewColumn Width="80">
                         <GridViewColumnHeader>
                             <Label Content="Part code"
                                    HorizontalContentAlignment="Left"
@@ -64,7 +64,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="220">
+                    <GridViewColumn Width="180">
                         <GridViewColumnHeader>
                             <Label Content="Part description"
                                    HorizontalContentAlignment="Left"
@@ -81,24 +81,24 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="75">
+                    <GridViewColumn Width="150">
                         <GridViewColumnHeader>
-                            <Label Content="Created by"
-                                   HorizontalContentAlignment="Center"
+                            <Label Content="Part description"
+                                   HorizontalContentAlignment="Left"
                                    HorizontalAlignment="Stretch"
                                    FontSize="{Binding LabelFontSize}"/>
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding NoteVM.CreatedBy}"
-                                           HorizontalAlignment="Center"
+                                <TextBlock Text="{Binding PartDesc}"
+                                           HorizontalAlignment="Stretch"
                                            VerticalAlignment="Center"
                                            FontSize="{Binding LineListLabelFontSize}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="125">
+                    <GridViewColumn Width="110">
                         <GridViewColumnHeader>
                             <Label Content="Created date"
                                    HorizontalContentAlignment="Center"
@@ -149,7 +149,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="150">
+                    <GridViewColumn Width="175">
                         <GridViewColumnHeader>
                             <Label Content="Recipient name"
                                    HorizontalContentAlignment="Stretch"
