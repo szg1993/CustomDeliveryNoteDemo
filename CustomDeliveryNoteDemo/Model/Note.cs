@@ -28,7 +28,7 @@ namespace Model
         public string PkgSizeUm { get; set; }
         public string TakeoverPlace { get; set; }
         public long TakeoverDate { get; set; }
-        public string EstimatedArrivalDate { get; set; }
+        public long EstimatedArrivalDate { get; set; }
         public string Category { get; set; }
         public string Contact { get; set; }
         public string ContactPhone { get; set; }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Controls.Primitives;
 using ViewModel.ModelViewModel;
 
 namespace ViewModel
@@ -63,8 +64,10 @@ namespace ViewModel
         {
             MapperConfig = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<DateTime, long>().ConvertUsing(s => s.Ticks);
+                cfg.CreateMap<long, DateTime>().ConvertUsing(s => new DateTime(s));
                 cfg.CreateMap<Note, NoteViewModel>();
-                cfg.CreateMap<NoteViewModel, Note>();
+                cfg.CreateMap<NoteViewModel, Note>();               
                 cfg.CreateMap<NoteLine, NoteLineViewModel>();
                 cfg.CreateMap<NoteLineViewModel, NoteLine>();
                 cfg.CreateMap<Recipient, RecipientViewModel>();

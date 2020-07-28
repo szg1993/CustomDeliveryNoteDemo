@@ -44,7 +44,7 @@ namespace ViewModel.ModelViewModel
                     {
                         ex = "The following field cannot be empty: " + descAttr.Description + ".";
                     }
-                    else if (prop.PropertyType == typeof(decimal?) && ((decimal?)propValue == null || (decimal)propValue <= 0))
+                    else if (prop.PropertyType == typeof(double?) && ((double?)propValue == null || (double)propValue <= 0))
                     {
                         ex = "The following field must contains a positive number: " + descAttr.Description + ".";
                     }

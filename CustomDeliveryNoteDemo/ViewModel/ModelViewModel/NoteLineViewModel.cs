@@ -16,31 +16,31 @@ namespace ViewModel.ModelViewModel
     {
         #region Properties
 
-        private int id;
+        private long id;
         /// <summary>
         /// The ID of the line.
         /// </summary>
-        public int Id
+        public long Id
         {
             get { return id; }
             set { id = value; OnPropertyChanged(); }
         }
 
-        private int noteId;
+        private long noteId;
         /// <summary>
         /// The ID of the parent note.
         /// </summary>
-        public int NoteId
+        public long NoteId
         {
             get { return noteId; }
             set { noteId = value; OnPropertyChanged(); }
         }
 
-        private int line;
+        private long line;
         /// <summary>
         /// The number of the actual line.
         /// </summary>
-        public int Line
+        public long Line
         {
             get { return line; }
             set { line = value; OnPropertyChanged(); }
@@ -80,13 +80,13 @@ namespace ViewModel.ModelViewModel
             set { partCmt = value; OnPropertyChanged(); }
         }
 
-        private decimal? partQty;
+        private double? partQty;
         /// <summary>
         /// The quantity of the desired part.
         /// </summary>
         [Required]
         [Description("Line part quantity")]
-        public decimal? PartQty
+        public double? PartQty
         {
             get { return partQty; }
             set { partQty = value; OnPropertyChanged(); }
@@ -104,13 +104,13 @@ namespace ViewModel.ModelViewModel
             set { partQtyUm = value; OnPropertyChanged(); }
         }
 
-        private decimal? partWgt;
+        private double? partWgt;
         /// <summary>
         /// The weight of the part.
         /// </summary>
         [Required]
         [Description("Line part weight")]
-        public decimal? PartWgt
+        public double? PartWgt
         {
             get { return partWgt; }
             set { partWgt = value; OnPropertyChanged(); }

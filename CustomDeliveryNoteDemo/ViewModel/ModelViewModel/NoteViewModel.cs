@@ -28,11 +28,11 @@ namespace ViewModel.ModelViewModel
     {
         #region Properties
 
-        private int id;
+        private long id;
         /// <summary>
         /// The id of the note.
         /// </summary>
-        public int Id
+        public long Id
         {
             get { return id; }
             set { id = value; OnPropertyChanged(); }
@@ -96,23 +96,23 @@ namespace ViewModel.ModelViewModel
             set { assignToPhone = value; OnPropertyChanged(); }
         }
 
-        private int recId;
+        private long recId;
         /// <summary>
         /// The id of the recipient.
         /// </summary>
-        public int RecId
+        public long RecId
         {
             get { return recId; }
             set { recId = value; OnPropertyChanged(); }
         }
 
-        private decimal? tareWgt;
+        private double? tareWgt;
         /// <summary>
         /// The weight of the tare.
         /// </summary>
         [Required]
         [Description("Tare weight")]
-        public decimal? TareWgt
+        public double? TareWgt
         {
             get { return tareWgt; }
             set { tareWgt = value; OnPropertyChanged(); }
@@ -142,13 +142,13 @@ namespace ViewModel.ModelViewModel
             set { shipDate = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgQty;
+        private double? pkgQty;
         /// <summary>
         /// the quantity of the boxes or palettes.
         /// </summary>
         [Required]
         [Description("Package quantity")]
-        public decimal? PkgQty
+        public double? PkgQty
         {
             get { return pkgQty; }
             set { pkgQty = value; OnPropertyChanged(); }
@@ -166,37 +166,37 @@ namespace ViewModel.ModelViewModel
             set { pkgScale = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgSizeX;
+        private double? pkgSizeX;
         /// <summary>
         /// The x dimension of the package.
         /// </summary>
         [Required]
         [Description("Package size X dimension")]
-        public decimal? PkgSizeX
+        public double? PkgSizeX
         {
             get { return pkgSizeX; }
             set { pkgSizeX = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgSizeY;
+        private double? pkgSizeY;
         /// <summary>
         /// The y dimension of the package.
         /// </summary>
         [Required]
         [Description("Package size Y dimension")]
-        public decimal? PkgSizeY
+        public double? PkgSizeY
         {
             get { return pkgSizeY; }
             set { pkgSizeY = value; OnPropertyChanged(); }
         }
 
-        private decimal? pkgSizeZ;
+        private double? pkgSizeZ;
         /// <summary>
         /// The z dimension of the package.
         /// </summary>
         [Required]
         [Description("Package size Z dimension")]
-        public decimal? PkgSizeZ
+        public double? PkgSizeZ
         {
             get { return pkgSizeZ; }
             set { pkgSizeZ = value; OnPropertyChanged(); }
@@ -348,11 +348,11 @@ namespace ViewModel.ModelViewModel
             set { createdDate = value; OnPropertyChanged(); }
         }
 
-        private int status;
+        private long status;
         /// <summary>
         /// The status of the note.
         /// </summary>
-        public int Status
+        public long Status
         {
             get { return status; }
             set { status = value; OnPropertyChanged(); }
