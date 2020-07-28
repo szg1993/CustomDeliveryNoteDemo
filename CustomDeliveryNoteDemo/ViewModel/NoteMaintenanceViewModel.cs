@@ -67,6 +67,21 @@ namespace ViewModel
             }
         }
 
+        private IAsyncCommand refreshRecListCommand;
+
+        public IAsyncCommand RefreshRecListCommand
+        {
+            get
+            {
+                if (refreshRecListCommand == null)
+                {
+                    refreshRecListCommand = new AsyncCommand(GetRecipientListAsync, CanExecuteAsyncCommand);
+                }
+
+                return refreshRecListCommand;
+            }
+        }
+
         #endregion
 
         #region Ctors
@@ -99,12 +114,12 @@ namespace ViewModel
                 && this.ActNoteVM.NoteLineVMList != null
                 && this.ActNoteVM.NoteLineVMList.Count > 0)
             {
-                this.ActNoteVM.CheckErros();
-                this.ActNoteVM.RecVM.CheckErros();
+                this.ActNoteVM.CheckProps();
+                this.ActNoteVM.RecVM.CheckProps();
                 
                 foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
                 {
-                    lineVM.CheckErros();
+                    lineVM.CheckProps();
                 }
             }
             else

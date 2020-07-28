@@ -27,7 +27,7 @@ namespace ViewModel.ModelViewModel
         /// <summary>
         /// Throw exception if a required property doesn't have proper value.
         /// </summary>
-        public void CheckErros()
+        public void CheckProps()
         {
             string ex = null;
 

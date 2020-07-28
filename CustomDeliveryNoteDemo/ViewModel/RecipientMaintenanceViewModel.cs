@@ -97,7 +97,7 @@ namespace ViewModel
 
                     if (this.ActRecVM != null)
                     {
-                        this.ActRecVM.CheckErros();
+                        this.ActRecVM.CheckProps();
 
                         using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                         {

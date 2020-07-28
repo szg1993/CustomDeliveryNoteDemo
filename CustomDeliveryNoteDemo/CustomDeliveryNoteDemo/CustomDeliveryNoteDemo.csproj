@@ -17,6 +17,7 @@
     <None Remove="Pictures\PencilIcon.png" />
     <None Remove="Pictures\ProgramIcon.ico" />
     <None Remove="Pictures\RedCrossIcon.png" />
+    <None Remove="Pictures\RefreshIcon.png" />
     <None Remove="Pictures\RubbishIcon.png" />
     <None Remove="Pictures\SearchNoteIcon.png" />
     <None Remove="Pictures\WpfErrorIcon.png" />
@@ -62,6 +63,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\RedCrossIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\RefreshIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\RubbishIcon.png">
