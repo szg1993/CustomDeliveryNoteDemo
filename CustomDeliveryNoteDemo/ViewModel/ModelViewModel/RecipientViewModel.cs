@@ -15,11 +15,11 @@ namespace ViewModel.ModelViewModel
     {
         #region Properties
 
-        private int id;
+        private long id;
         /// <summary>
         /// The ID of the recipient.
         /// </summary>
-        public int Id
+        public long Id
         {
             get { return id; }
             set { id = value; OnPropertyChanged(); }
