@@ -183,7 +183,7 @@ namespace ViewModel.ModelViewModel
 
         public NoteLineViewModel()
         {
-
+            
         }
 
         public NoteLineViewModel(NoteViewModel noteVM)

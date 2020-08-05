@@ -23,8 +23,6 @@ namespace ViewModel
     {
         #region Properties
 
-        private bool isDisposed = false;
-
         private NoteViewModel actNoteVM;
         /// <summary>
         /// The actual note.
@@ -245,25 +243,6 @@ namespace ViewModel
                     OnCursorHandling(false);
                 }
             });
-        }
-
-        #endregion
-
-        #region Dispose
-
-        protected override void Dispose(bool disposing)
-        {
-            if (isDisposed)
-            {
-                return;
-            }
-
-            if (disposing)
-            {
-                if (this.AllRecipientVMList != null) { this.AllRecipientVMList = null; }
-            }
-
-            isDisposed = true;
         }
 
         #endregion

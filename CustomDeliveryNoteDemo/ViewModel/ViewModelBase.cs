@@ -20,14 +20,9 @@ namespace ViewModel
         Warning
     }
 
-    public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         #region Declaration
-
-        /// <summary>
-        /// Needed because of the dispose pattern.
-        /// </summary>
-        private bool isDisposed;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -128,31 +123,6 @@ namespace ViewModel
         public bool CanExecuteAsyncCommand()
         {
             return !this.IsBusy;
-        }
-
-        #endregion
-
-        #region Dispose
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (isDisposed)
-            {
-                return;
-            }
-
-            if (disposing)
-            {
-                
-            }
-
-            isDisposed = true;
         }
 
         #endregion

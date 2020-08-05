@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ViewModel.Excep
 {
-    public class MessageException : Exception
+    class MessageException : Exception
     {
         public MessageException() { }
         public MessageException(string message) : base(message) { }
