@@ -21,7 +21,7 @@ namespace ViewModel
 {
     public class NoteMaintenanceViewModel : ViewModelBase
     {
-        #region Properties
+        #region Declaration
 
         private NoteViewModel actNoteVM;
         /// <summary>

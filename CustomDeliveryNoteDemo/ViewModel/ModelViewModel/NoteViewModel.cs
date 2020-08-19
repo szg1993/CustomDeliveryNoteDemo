@@ -26,7 +26,7 @@ namespace ViewModel.ModelViewModel
 
     public class NoteViewModel : ModelViewModelBase
     {
-        #region Properties
+        #region Declaration
 
         private long id;
         /// <summary>

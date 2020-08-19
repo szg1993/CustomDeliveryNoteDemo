@@ -7,7 +7,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Dictionary/BrushDictionary.xaml"/>
-                <ResourceDictionary Source="Dictionary/StyleDictionary.xaml"/>
                 <ResourceDictionary Source="Dictionary/ConverterDictionary.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteWindowTemplate.xaml"/>
                 <ResourceDictionary Source="Templates/DeliveryNoteMenuTemplate.xaml"/>

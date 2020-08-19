@@ -7,18 +7,20 @@ namespace ViewModel.Commands
 {
     public class RelayCommand : ICommand
     {
-        private Action<object> execute;
-        private Predicate<object> canExecute;
+        #region Declaration
+
+        private readonly Action<object> execute;
+        private readonly Predicate<object> canExecute;
 
         public event EventHandler CanExecuteChanged;
 
+        #endregion
+
+        #region Ctors
+
         public RelayCommand(Action<object> exec_in, Predicate<object> canExec_in)
         {
-            if (exec_in == null)
-            {
-                throw new Exception("Nincs execute meghatározva!");
-            }
-            this.execute = exec_in;
+            this.execute = exec_in ?? throw new Exception("There is no execute parameter!");
             this.canExecute = canExec_in;
         }
 
@@ -26,6 +28,10 @@ namespace ViewModel.Commands
         {
 
         }
+
+        #endregion
+
+        #region Methods
 
         public bool CanExecute(object parameter)
         {
@@ -43,5 +49,7 @@ namespace ViewModel.Commands
         {
             execute(parameter);
         }
+
+        #endregion
     }
 }

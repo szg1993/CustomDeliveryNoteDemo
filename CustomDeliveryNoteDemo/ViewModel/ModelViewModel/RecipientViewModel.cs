@@ -13,7 +13,7 @@ namespace ViewModel.ModelViewModel
 {
     public class RecipientViewModel: ModelViewModelBase
     {
-        #region Properties
+        #region Declaration
 
         private long id;
         /// <summary>
@@ -133,11 +133,6 @@ namespace ViewModel.ModelViewModel
         public override string ToString()
         {
             return this.Code + " - " + this.Name;
-        }
-
-        public void CheckRecCode()
-        {
-
         }
 
         #endregion

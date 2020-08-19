@@ -14,7 +14,7 @@ namespace ViewModel
 {
     public class RecipientMaintenanceViewModel: ViewModelBase
     {
-        #region Properties
+        #region Declaration
 
         private RecipientViewModel actRecVM;
         /// <summary>

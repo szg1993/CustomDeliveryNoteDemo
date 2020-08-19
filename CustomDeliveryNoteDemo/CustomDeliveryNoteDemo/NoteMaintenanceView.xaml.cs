@@ -28,6 +28,7 @@ namespace CustomDeliveryNoteDemo
             InitializeComponent();
 
             this.DataContext = new NoteMaintenanceViewModel();
+
             ((NoteMaintenanceViewModel)this.DataContext).MessageBoxEvent += NoteMaintenanceView_MessageBoxEvent;
             ((NoteMaintenanceViewModel)this.DataContext).MouseEvent += NoteMaintenanceView_MouseEvent;
             ((NoteMaintenanceViewModel)this.DataContext).ComboBoxEvent += NoteMaintenanceView_ComboBoxEvent;

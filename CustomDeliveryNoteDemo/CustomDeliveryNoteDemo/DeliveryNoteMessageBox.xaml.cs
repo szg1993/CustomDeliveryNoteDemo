@@ -18,14 +18,40 @@ namespace CustomDeliveryNoteDemo
     /// </summary>
     public partial class DeliveryNoteMessageBox : Window
     {
+        #region Declaration
+
         static DeliveryNoteMessageBox messageBox;
         static MessageBoxResult result = MessageBoxResult.No;
+
+        #endregion
+
+        #region Ctors
 
         public DeliveryNoteMessageBox()
         {
             InitializeComponent();
+
             Mouse.OverrideCursor = null;
         }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Find the desired image.
+        /// </summary>
+        /// <param name="imageName"></param>
+        private void SetImage(string imageName)
+        {
+            string uri = string.Format("/Pictures/{0}", imageName);
+            var uriSource = new Uri(uri, UriKind.RelativeOrAbsolute);
+            img.Source = new BitmapImage(uriSource);
+        }
+
+        #endregion
+
+        #region Static
 
         /// <summary>
         /// Shows notification about the unknown error.
@@ -201,6 +227,10 @@ namespace CustomDeliveryNoteDemo
             }
         }
 
+        #endregion
+
+        #region Events
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (sender == btnOk) { result = MessageBoxResult.OK; }
@@ -213,15 +243,6 @@ namespace CustomDeliveryNoteDemo
             messageBox = null;
         }
 
-        /// <summary>
-        /// Find the desired image.
-        /// </summary>
-        /// <param name="imageName"></param>
-        private void SetImage(string imageName)
-        {
-            string uri = string.Format("/Pictures/{0}", imageName);
-            var uriSource = new Uri(uri, UriKind.RelativeOrAbsolute);
-            img.Source = new BitmapImage(uriSource);
-        }
+        #endregion
     }
 }

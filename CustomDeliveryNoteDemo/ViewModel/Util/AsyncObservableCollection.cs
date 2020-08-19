@@ -10,20 +10,32 @@ namespace ViewModel.Util
 {
     public class AsyncObservableCollection<T> : ObservableCollection<T>
     {
-        private SynchronizationContext _synchronizationContext = SynchronizationContext.Current;
+        #region Declaration
+
+        private SynchronizationContext synchronizationContext = SynchronizationContext.Current;
+
+        #endregion
+
+        #region Ctors
 
         public AsyncObservableCollection()
         {
+
         }
 
         public AsyncObservableCollection(IEnumerable<T> list)
             : base(list)
         {
+
         }
+
+        #endregion
+
+        #region Methods
 
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
-            if (SynchronizationContext.Current == _synchronizationContext)
+            if (SynchronizationContext.Current == synchronizationContext)
             {
                 // Execute the CollectionChanged event on the current thread
                 RaiseCollectionChanged(e);
@@ -31,7 +43,7 @@ namespace ViewModel.Util
             else
             {
                 // Raises the CollectionChanged event on the creator thread
-                _synchronizationContext.Send(RaiseCollectionChanged, e);
+                synchronizationContext.Send(RaiseCollectionChanged, e);
             }
         }
 
@@ -43,7 +55,7 @@ namespace ViewModel.Util
 
         protected override void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            if (SynchronizationContext.Current == _synchronizationContext)
+            if (SynchronizationContext.Current == synchronizationContext)
             {
                 // Execute the PropertyChanged event on the current thread
                 RaisePropertyChanged(e);
@@ -51,7 +63,7 @@ namespace ViewModel.Util
             else
             {
                 // Raises the PropertyChanged event on the creator thread
-                _synchronizationContext.Send(RaisePropertyChanged, e);
+                synchronizationContext.Send(RaisePropertyChanged, e);
             }
         }
 
@@ -60,5 +72,7 @@ namespace ViewModel.Util
             // We are in the creator thread, call the base implementation directly
             base.OnPropertyChanged((PropertyChangedEventArgs)param);
         }
+
+        #endregion
     }
 }

@@ -14,7 +14,7 @@ namespace ViewModel.ModelViewModel
 {
     public class NoteLineViewModel: ModelViewModelBase
     {
-        #region Properties
+        #region Declaration
 
         private long id;
         /// <summary>

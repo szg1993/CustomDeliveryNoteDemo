@@ -12,7 +12,6 @@ C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDem
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo_MarkupCompile.lref
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\App.baml
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Dictionary\BrushDictionary.baml
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Dictionary\StyleDictionary.baml
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\Templates\DeliveryNoteMenuTemplate.baml
 C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\CustomDeliveryNoteDemo.g.resources

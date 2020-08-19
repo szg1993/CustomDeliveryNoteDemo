@@ -8,6 +8,8 @@ namespace CustomDeliveryNoteDemo.Converters
     [ValueConversion(typeof(bool), typeof(bool))]
     public class InverseBooleanConverter: IValueConverter
     {
+        #region Methods
+
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null || !(value is bool))
@@ -22,5 +24,7 @@ namespace CustomDeliveryNoteDemo.Converters
         {
             throw new NotSupportedException();
         }
+
+        #endregion
     }
 }

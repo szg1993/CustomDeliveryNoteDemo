@@ -22,7 +22,7 @@ namespace ViewModel
 {
     public class NoteSearchViewModel : ViewModelBase
     {
-        #region Properties
+        #region Declaration
 
         private AsyncObservableCollection<NoteLineViewModel> noteLineVMList = new AsyncObservableCollection<NoteLineViewModel>();
 
@@ -118,6 +118,10 @@ namespace ViewModel
             this.NoteLineVMList.Add(lineVM);
         }
 
+        /// <summary>
+        /// Change the status of the delivery note and save to the database.
+        /// </summary>
+        /// <param name="noteStatus"></param>
         private void SetNoteStatus(NoteStatus noteStatus)
         {
             try
@@ -157,7 +161,7 @@ namespace ViewModel
         }
 
         /// <summary>
-        /// Filter the list based on the columns.
+        /// Filter the list based on the desired columns.
         /// </summary>
         private void FilterList()
         {

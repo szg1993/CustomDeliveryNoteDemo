@@ -101,12 +101,12 @@ namespace ViewModel
         /// <summary>
         /// Check if the property is exists.
         /// </summary>
-        /// <param name="propertyName_in"></param>
-        protected void VerifyPropertyName(string propertyName_in)
+        /// <param name="propertyNameIn"></param>
+        protected void VerifyPropertyName(string propertyNameIn)
         {
-            if (TypeDescriptor.GetProperties(this)[propertyName_in] == null)
+            if (TypeDescriptor.GetProperties(this)[propertyNameIn] == null)
             {
-                throw new Exception(String.Format("There is no property with this name: {0} !", propertyName_in));
+                throw new Exception(String.Format("There is no property with this name: {0} !", propertyNameIn));
             }
         }
 

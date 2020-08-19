@@ -14,6 +14,15 @@ namespace ViewModel
 {
     public sealed class MainViewModel : ViewModelBase
     {
+        #region Declaration
+
+        public delegate void MenuItemNotify(string menuItemName);
+        public event MenuItemNotify NewMenuItemEvent;
+
+        #endregion
+
+        #region Commands
+
         private RelayCommand openMenuItemCommand;
 
         public RelayCommand OpenMenuItemCommand
@@ -29,13 +38,18 @@ namespace ViewModel
             }
         }
 
-        public delegate void MenuItemNotify(string menuItemName);
-        public event MenuItemNotify NewMenuItemEvent;
+        #endregion
+
+        #region Ctors
 
         public MainViewModel()
         {
 
         }
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Create the corresponding view and open it.
@@ -75,5 +89,7 @@ namespace ViewModel
                 OnCursorHandling(false);
             }
         }
+
+        #endregion
     }
 }

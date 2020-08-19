@@ -24,7 +24,9 @@ namespace CustomDeliveryNoteDemo
         public NoteSearchView()
         {
             InitializeComponent();
+
             this.DataContext = new NoteSearchViewModel();
+
             ((NoteSearchViewModel)this.DataContext).MessageBoxEvent += NoteSearchView_MessageBoxEvent;
             ((NoteSearchViewModel)this.DataContext).MouseEvent += NoteSearchView_MouseEvent;
 
