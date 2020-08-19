@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj": {}
+    "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj": {}
   },
   "projects": {
-    "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj": {
+    "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
+        "projectUniqueName": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
         "projectName": "CustomDeliveryNoteDemo",
-        "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
+        "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo.csproj",
         "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
-        "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\obj\\",
+        "outputPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj": {
-                "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj"
+              "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj": {
+                "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {
+    "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+        "projectUniqueName": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+        "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
-        "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
+        "outputPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -151,14 +151,14 @@
         }
       }
     },
-    "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj": {
+    "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj",
+        "projectUniqueName": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj",
         "projectName": "ViewModel",
-        "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj",
+        "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\ViewModel.csproj",
         "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
-        "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\obj\\",
+        "outputPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\ViewModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -177,8 +177,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {
-                "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj"
+              "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {
+                "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj"
               }
             }
           }

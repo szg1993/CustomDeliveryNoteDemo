@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vF1fXFjJJFQUJvaGudc4aUTXbXI6RhBK2YQ0vnLPy7KzKd4Z9AixsF3E8O9OMZQri6N58oNrx8hvu3/KqioDGQ==",
+  "dgSpecHash": "Ou70Qw/501prsvMksR747peaNXcrLWvJZ/7gCLzNV46U+yU/jyHw4alf3JjZDeDW6Nf6fkC7dRQBaY/yfGd3Gw==",
   "success": true,
-  "projectFilePath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+  "projectFilePath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
