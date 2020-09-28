@@ -86,8 +86,6 @@ namespace Model
                     .IsRequired()
                     .HasDefaultValueSql("'Empty'");
 
-                entity.Property(e => e.PartQty).IsRequired();
-
                 entity.Property(e => e.PartQtyUm).IsRequired();
 
                 entity.Property(e => e.PartWgtUm)

@@ -11,7 +11,7 @@ namespace Model
         public string PartCode { get; set; }
         public string PartDesc { get; set; }
         public string PartCmt { get; set; }
-        public string PartQty { get; set; }
+        public double PartQty { get; set; }
         public string PartQtyUm { get; set; }
         public double PartWgt { get; set; }
         public byte[] PartWgtUm { get; set; }
