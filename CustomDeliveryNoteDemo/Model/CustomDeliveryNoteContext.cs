@@ -18,13 +18,14 @@ namespace Model
         public virtual DbSet<Note> Note { get; set; }
         public virtual DbSet<NoteLine> NoteLine { get; set; }
         public virtual DbSet<Recipient> Recipient { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlite("DataSource=..\\..\\..\\..\\Model\\CustomDeliveryNote.db");           
+                optionsBuilder.UseSqlite("DataSource=..\\..\\..\\..\\Model\\CustomDeliveryNote.db");
             }
         }
 
@@ -34,7 +35,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedOnAdd();
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AssignTo).IsRequired();
 
@@ -45,10 +46,6 @@ namespace Model
                 entity.Property(e => e.Contact).IsRequired();
 
                 entity.Property(e => e.ContactPhone).IsRequired();
-
-                entity.Property(e => e.CreatedBy).IsRequired();
-
-                entity.Property(e => e.EstimatedArrivalDate).IsRequired();
 
                 entity.Property(e => e.NoteNbr).IsRequired();
 
@@ -62,9 +59,16 @@ namespace Model
 
                 entity.Property(e => e.TareWgtUm).IsRequired();
 
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
                 entity.HasOne(d => d.Rec)
                     .WithMany(p => p.Note)
                     .HasForeignKey(d => d.RecId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Note)
+                    .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
@@ -72,13 +76,23 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedOnAdd();
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.NoteId).HasColumnName("NoteID");
 
                 entity.Property(e => e.PartCode).IsRequired();
 
-                entity.Property(e => e.PartWgtUm).IsRequired();
+                entity.Property(e => e.PartDesc)
+                    .IsRequired()
+                    .HasDefaultValueSql("'Empty'");
+
+                entity.Property(e => e.PartQty).IsRequired();
+
+                entity.Property(e => e.PartQtyUm).IsRequired();
+
+                entity.Property(e => e.PartWgtUm)
+                    .IsRequired()
+                    .HasColumnType("NUMERIC");
 
                 entity.HasOne(d => d.Note)
                     .WithMany(p => p.NoteLine)
@@ -90,7 +104,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedOnAdd();
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Address).IsRequired();
 
@@ -103,6 +117,17 @@ namespace Model
                 entity.Property(e => e.Name).IsRequired();
 
                 entity.Property(e => e.Zip).IsRequired();
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Name).IsRequired();
+
+                entity.Property(e => e.Password).IsRequired();
             });
 
             OnModelCreatingPartial(modelBuilder);

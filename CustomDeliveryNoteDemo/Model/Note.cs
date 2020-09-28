@@ -13,7 +13,7 @@ namespace Model
         public long Id { get; set; }
         public string NoteNbr { get; set; }
         public string EkaerNbr { get; set; }
-        public string CreatedBy { get; set; }
+        public long UserId { get; set; }
         public string AssignTo { get; set; }
         public string AssignToPhone { get; set; }
         public long RecId { get; set; }
@@ -41,6 +41,7 @@ namespace Model
         public long Status { get; set; }
 
         public virtual Recipient Rec { get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<NoteLine> NoteLine { get; set; }
     }
 }
