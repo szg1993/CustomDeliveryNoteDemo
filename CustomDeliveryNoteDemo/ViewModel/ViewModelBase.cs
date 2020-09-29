@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Controls.Primitives;
+using ViewModel.Commands;
+using ViewModel.Excep;
 using ViewModel.ModelViewModel;
 
 namespace ViewModel
@@ -32,6 +34,9 @@ namespace ViewModel
         public delegate void MsgNotify(string msg, DeliveryNoteMessageBoxType type);
         public event MsgNotify MessageBoxEvent;
 
+        public delegate void MenuItemNotify(string menuItemName);
+        public event MenuItemNotify NewMenuItemEvent;
+
         public int LabelFontSize { get; set; } = 12;
         public int LineListLabelFontSize { get; set; } = 10;
 
@@ -53,6 +58,21 @@ namespace ViewModel
 
         #endregion
 
+        private RelayCommand openMenuItemCommand;
+
+        public RelayCommand OpenMenuItemCommand
+        {
+            get
+            {
+                if (this.openMenuItemCommand == null)
+                {
+                    this.openMenuItemCommand = new RelayCommand(OpenMenuItem);
+                }
+
+                return openMenuItemCommand;
+            }
+        }
+
         #region Ctors
 
         public ViewModelBase()
@@ -73,6 +93,45 @@ namespace ViewModel
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Create the corresponding view and open it.
+        /// </summary>
+        /// <param name="param"></param>
+        public void OpenMenuItem(object param)
+        {
+            try
+            {
+                OnCursorHandling(true);
+
+                if (param != null)
+                {
+                    string menuItemName = param is object[]? Convert.ToString((param as object[])[0]) : Convert.ToString(param);
+                    if (String.IsNullOrEmpty(menuItemName))
+                    {
+                        throw new MessageException("There is no class attached to the menu item.");
+                    }
+
+                    NewMenuItemEvent.Invoke(menuItemName);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+            }
+        }
 
         public virtual void ReportSuccess()
         {
@@ -96,7 +155,6 @@ namespace ViewModel
         {
             MessageBoxEvent.Invoke(msg, type);
         }
-
 
         /// <summary>
         /// Check if the property is exists.

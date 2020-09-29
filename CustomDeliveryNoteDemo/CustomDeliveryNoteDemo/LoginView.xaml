@@ -36,13 +36,12 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="1" Grid.ColumnSpan="4"
+        <TextBlock Grid.Column="1" Grid.ColumnSpan="4"
                Grid.Row="1"          
-               Content="Use the default admin/admin credentials to test the application."
-               HorizontalAlignment="Center"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
+               Text="Use the default admin/admin credentials to test the application. Sorry for the 'PasswordBox'. :)"
+               HorizontalAlignment="Center"                  
                VerticalAlignment="Top"
+               TextWrapping="Wrap"
                Padding="0"
                FontSize="10"/>
 
@@ -58,7 +57,7 @@
 
         <TextBox Grid.Column="2" Grid.ColumnSpan="3"
                  Grid.Row="2"                
-                 Text="{Binding ActRecVM.Country}"
+                 Text="{Binding UserName}"
                  Template="{StaticResource DeliveryNoteTextBoxTemplate}"
                  HorizontalAlignment="Stretch"
                  HorizontalContentAlignment="Left"
@@ -77,15 +76,16 @@
                Padding="0"
                FontSize="{Binding LabelFontSize}"/>
 
-        <PasswordBox Name="pbPin"
-                     Grid.Column="2" Grid.ColumnSpan="3"
-                     Grid.Row="3"
-                     Height="22"
-                     HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left"
-                     VerticalAlignment="Center"
-                     VerticalContentAlignment="Center"
-                     Style="{StaticResource DeliveryNotePasswordBoxTemplate}"/>
+        <TextBox Grid.Column="2" Grid.ColumnSpan="3"
+                 Grid.Row="3"                
+                 Text="{Binding Password}"
+                 Template="{StaticResource DeliveryNoteTextBoxTemplate}"
+                 HorizontalAlignment="Stretch"
+                 HorizontalContentAlignment="Left"
+                 TextWrapping="Wrap"
+                 VerticalContentAlignment="Center"
+                 VerticalAlignment="Center"
+                 FontSize="{Binding LabelFontSize}"/>
 
         <Button Grid.Column="2" Grid.ColumnSpan="2"
                 Grid.Row="4"     

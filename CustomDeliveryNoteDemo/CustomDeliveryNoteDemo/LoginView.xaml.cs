@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace CustomDeliveryNoteDemo
 {
@@ -21,6 +22,8 @@ namespace CustomDeliveryNoteDemo
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            this.DataContext = new LoginViewModel();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
