@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {}
+    "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {}
   },
   "projects": {
-    "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {
+    "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+        "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
-        "outputPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
+        "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

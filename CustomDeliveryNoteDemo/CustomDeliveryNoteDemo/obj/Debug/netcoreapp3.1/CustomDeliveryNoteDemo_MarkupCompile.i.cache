@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\obj\Debug\netcoreapp3.1\
 CustomDeliveryNoteDemo
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-c:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\App.xaml
-19-668047323
+C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\App.xaml
+21-33743074
 
-11-338096562
-221-1065628223
-DeliveryNoteMessageBox.xaml;Dictionary\BrushDictionary.xaml;Dictionary\ConverterDictionary.xaml;MainWindow.xaml;NoteMaintenanceView.xaml;NoteSearchView.xaml;RecipientMaintenanceView.xaml;Templates\DeliveryNoteButtonTemplate.xaml;Templates\DeliveryNoteCheckBoxTemplate.xaml;Templates\DeliveryNoteComboBoxTemplate.xaml;Templates\DeliveryNoteDatePickerTemplate.xaml;Templates\DeliveryNoteGridViewColumnHeaderTemplate.xaml;Templates\DeliveryNoteListViewItemTemplate.xaml;Templates\DeliveryNoteMenuTemplate.xaml;Templates\DeliveryNoteRadioButtonTemplate.xaml;Templates\DeliveryNoteTextBoxTemplate.xaml;Templates\DeliveryNoteWindowTemplate.xaml;Templates\NoteLineListViewTemplate.xaml;Templates\SearchNoteLineListViewTemplate.xaml;
+12-176704886
+221-1035319144
+DeliveryNoteMessageBox.xaml;Dictionary\BrushDictionary.xaml;Dictionary\ConverterDictionary.xaml;LoginView.xaml;MainWindow.xaml;NoteMaintenanceView.xaml;NoteSearchView.xaml;RecipientMaintenanceView.xaml;Templates\DeliveryNoteButtonTemplate.xaml;Templates\DeliveryNoteCheckBoxTemplate.xaml;Templates\DeliveryNoteComboBoxTemplate.xaml;Templates\DeliveryNoteDatePickerTemplate.xaml;Templates\DeliveryNoteGridViewColumnHeaderTemplate.xaml;Templates\DeliveryNoteListViewItemTemplate.xaml;Templates\DeliveryNoteMenuTemplate.xaml;Templates\DeliveryNotePasswordBoxTemplate.xaml;Templates\DeliveryNoteRadioButtonTemplate.xaml;Templates\DeliveryNoteTextBoxTemplate.xaml;Templates\DeliveryNoteWindowTemplate.xaml;Templates\NoteLineListViewTemplate.xaml;Templates\SearchNoteLineListViewTemplate.xaml;
 
-False
+True
 

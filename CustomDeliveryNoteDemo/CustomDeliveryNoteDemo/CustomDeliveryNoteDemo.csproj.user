@@ -10,6 +10,9 @@
     <Compile Update="DeliveryNoteMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="LoginView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="NoteMaintenanceView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionary\ConverterDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LoginView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
@@ -58,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\DeliveryNoteMenuTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\DeliveryNotePasswordBoxTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\DeliveryNoteRadioButtonTemplate.xaml">
