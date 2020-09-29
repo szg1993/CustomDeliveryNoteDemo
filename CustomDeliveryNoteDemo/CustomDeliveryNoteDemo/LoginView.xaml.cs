@@ -24,6 +24,10 @@ namespace CustomDeliveryNoteDemo
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.DataContext = new LoginViewModel();
+
+            ((LoginViewModel)this.DataContext).MessageBoxEvent += LoginView_MessageBoxEvent;
+            ((LoginViewModel)this.DataContext).MouseEvent += LoginView_MouseEvent;
+            ((LoginViewModel)this.DataContext).NewMenuItemEvent += LoginView_NewMenuItemEvent;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -32,6 +36,33 @@ namespace CustomDeliveryNoteDemo
             {
                 this.DragMove();
             }
+        }
+
+        private void LoginView_MouseEvent(bool isWaiting)
+        {
+            if (isWaiting)
+            {
+                this.Dispatcher.Invoke(() => Mouse.OverrideCursor = Cursors.Wait);
+            }
+            else
+            {
+                this.Dispatcher.Invoke(() => Mouse.OverrideCursor = null);
+            }
+        }
+
+        private void LoginView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
+        {
+            this.Dispatcher.Invoke(() => DeliveryNoteMessageBox.Show(msg, type));
+        }
+
+        private void LoginView_NewMenuItemEvent(string menuItemName)
+        {
+            object ucType = menuItemName;
+            Type t = Type.GetType((string)ucType);
+
+            Window w = Activator.CreateInstance(t) as Window;
+            this.Close();
+            w.Show();
         }
     }
 }

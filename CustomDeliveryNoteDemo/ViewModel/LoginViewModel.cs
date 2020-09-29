@@ -59,7 +59,7 @@ namespace ViewModel
 
         private void Login()
         {
-            
+            OpenMenuItem("CustomDeliveryNoteDemo.MainWindow");
         }
 
         #endregion
