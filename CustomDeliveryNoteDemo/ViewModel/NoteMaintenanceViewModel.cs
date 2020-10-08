@@ -43,9 +43,6 @@ namespace ViewModel
             set { allRecipientVMList = value; OnPropertyChanged(); }
         }
 
-        public delegate void ComboBoxNotify();
-        public event ComboBoxNotify ComboBoxEvent;
-
         #endregion
 
         #region Commands
@@ -92,11 +89,6 @@ namespace ViewModel
         #endregion
 
         #region Methods
-
-        protected virtual void OnComboBoxHandling()
-        {
-            ComboBoxEvent.Invoke();
-        }
 
         public void CallGetRecipientList()
         {

@@ -37,6 +37,9 @@ namespace ViewModel
         public delegate void MenuItemNotify(string menuItemName);
         public event MenuItemNotify NewMenuItemEvent;
 
+        public delegate void ComboBoxNotify();
+        public event ComboBoxNotify ComboBoxEvent;
+
         public int LabelFontSize { get; set; } = 12;
         public int LineListLabelFontSize { get; set; } = 10;
 
@@ -154,6 +157,11 @@ namespace ViewModel
         protected virtual void OnMessageBoxHandling(string msg, DeliveryNoteMessageBoxType type)
         {
             MessageBoxEvent.Invoke(msg, type);
+        }
+
+        protected virtual void OnComboBoxHandling()
+        {
+            ComboBoxEvent.Invoke();
         }
 
         /// <summary>
