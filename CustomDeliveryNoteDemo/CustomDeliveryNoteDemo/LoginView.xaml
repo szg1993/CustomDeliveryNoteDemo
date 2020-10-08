@@ -97,7 +97,7 @@
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Center"
                      PasswordChar="*"
-                     Height="24"
+                     Height="22"
                      FontSize="{Binding LabelFontSize}">
         </PasswordBox>
         

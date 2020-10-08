@@ -25,7 +25,7 @@ namespace Model
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlite("DataSource=..\\..\\..\\..\\Model\\CustomDeliveryNote.db");
+                optionsBuilder.UseSqlite("DataSource=..\\..\\..\\..\\Model\\CustomDeliveryNote.db;");
             }
         }
 
@@ -35,7 +35,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.AssignTo).IsRequired();
 
@@ -76,7 +76,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.NoteId).HasColumnName("NoteID");
 
@@ -88,9 +88,7 @@ namespace Model
 
                 entity.Property(e => e.PartQtyUm).IsRequired();
 
-                entity.Property(e => e.PartWgtUm)
-                    .IsRequired()
-                    .HasColumnType("NUMERIC");
+                entity.Property(e => e.PartWgtUm).IsRequired();
 
                 entity.HasOne(d => d.Note)
                     .WithMany(p => p.NoteLine)
@@ -102,7 +100,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Address).IsRequired();
 
@@ -121,7 +119,7 @@ namespace Model
             {
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Name).IsRequired();
 
