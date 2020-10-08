@@ -90,8 +90,8 @@ namespace ViewModel
                 cfg.CreateMap<NoteLineViewModel, NoteLine>();
                 cfg.CreateMap<Recipient, RecipientViewModel>();
                 cfg.CreateMap<RecipientViewModel, Recipient>();
-                cfg.CreateMap<UserViewModel, User>();
-                cfg.CreateMap<User, UserViewModel>();
+                //cfg.CreateMap<UserViewModel, User>();
+                //cfg.CreateMap<User, UserViewModel>();
             });
         }
 

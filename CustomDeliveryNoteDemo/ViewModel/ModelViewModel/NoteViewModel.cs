@@ -60,16 +60,14 @@ namespace ViewModel.ModelViewModel
             set { ekaerNbr = value; OnPropertyChanged(); }
         }
 
-        private string createdBy;
+        private long userId;
         /// <summary>
-        /// The creator of the note.
+        /// The id of the note.
         /// </summary>
-        [Required]
-        [Description("Date of creation")]
-        public string CreatedBy
+        public long UserId
         {
-            get { return createdBy; }
-            set { createdBy = value; OnPropertyChanged(); }
+            get { return id; }
+            set { id = value; OnPropertyChanged(); }
         }
 
         private string assignTo;
@@ -358,6 +356,16 @@ namespace ViewModel.ModelViewModel
             set { status = value; OnPropertyChanged(); }
         }
 
+        //private UserViewModel userVM;
+        ///// <summary>
+        ///// The user who created the note.
+        ///// </summary>
+        //public UserViewModel UserVM
+        //{
+        //    get { return userVM; }
+        //    set { userVM = value; OnPropertyChanged(); }
+        //}
+
         private RecipientViewModel recVM;
         /// <summary>
         /// The recipient of the note.
@@ -470,7 +478,6 @@ namespace ViewModel.ModelViewModel
         {
             this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
             this.RecVM = new RecipientViewModel();
-            this.CreatedBy = "admin"; //Hard coded because this is just a demo application without login system.
 
             Task.Run(() => GetCategoryListAsync());
             Task.Run(() => GetTakeoverPlaceListAsync());

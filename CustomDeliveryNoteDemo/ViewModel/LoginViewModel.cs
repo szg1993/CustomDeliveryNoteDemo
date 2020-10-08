@@ -11,6 +11,7 @@ using ViewModel.Commands;
 using ViewModel.Excep;
 using ViewModel.Interfaces;
 using ViewModel.ModelViewModel;
+using ViewModel.Singleton;
 using ViewModel.Util;
 
 namespace ViewModel
@@ -71,7 +72,7 @@ namespace ViewModel
                     SecureString secureString = passwordContainer.Password;
                     string password = SecurityUtilities.ConvertToUnsecureString(secureString);
                     
-                    var a = CheckCreadentials(password);
+                    CheckCreadentials(password);
                     
                     OpenMenuItem("CustomDeliveryNoteDemo.MainWindow");
                 }
@@ -95,7 +96,7 @@ namespace ViewModel
         /// </summary>
         /// <param name="password"></param>
         /// <returns></returns>
-        private UserViewModel CheckCreadentials(string password)
+        private void CheckCreadentials(string password)
         {
             using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
             {
@@ -103,8 +104,10 @@ namespace ViewModel
 
                 if (user != null)
                 {
-                    Mapper mapper = new Mapper(MapperConfig);
-                    return mapper.Map<UserViewModel>(user);
+                    LoggedUser.Employee.Id = user.Id;
+                    LoggedUser.Employee.Name = user.Name;
+
+                    return;
                 }
 
                 throw new MessageException("The entered credentials are invalid.");

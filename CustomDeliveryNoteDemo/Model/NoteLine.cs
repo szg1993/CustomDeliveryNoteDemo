@@ -14,7 +14,7 @@ namespace Model
         public double PartQty { get; set; }
         public string PartQtyUm { get; set; }
         public double PartWgt { get; set; }
-        public byte[] PartWgtUm { get; set; }
+        public string PartWgtUm { get; set; }
 
         public virtual Note Note { get; set; }
     }

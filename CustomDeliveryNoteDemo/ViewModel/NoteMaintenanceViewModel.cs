@@ -15,6 +15,7 @@ using ViewModel.Commands;
 using ViewModel.Excep;
 using ViewModel.Interfaces;
 using ViewModel.ModelViewModel;
+using ViewModel.Singleton;
 using ViewModel.Util;
 
 namespace ViewModel
@@ -207,11 +208,13 @@ namespace ViewModel
                         Note note = mapper.Map<Note>(this.ActNoteVM);
                         Recipient rec = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
 
+                        note.UserId = LoggedUser.Employee.Id;
+
                         foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
                         {
                             NoteLine noteLine = mapper.Map<NoteLine>(lineVM);
                             note.NoteLine.Add(noteLine);
-                        }
+                        }                     
 
                         ctx.Note.Add(note);
 
