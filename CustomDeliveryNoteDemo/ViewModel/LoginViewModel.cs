@@ -1,7 +1,17 @@
-﻿using System;
+﻿using AutoMapper;
+using Model;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Text;
+using System.Threading.Tasks;
 using ViewModel.Commands;
+using ViewModel.Excep;
+using ViewModel.Interfaces;
+using ViewModel.ModelViewModel;
+using ViewModel.Util;
 
 namespace ViewModel
 {
@@ -17,17 +27,6 @@ namespace ViewModel
             set { userName = value; OnPropertyChanged(); }
         }
 
-        private string password;
-        /// <summary>
-        /// The password of the user.
-        /// Sorry for the security issue with the string password. :)
-        /// </summary>
-        public string Password
-        {
-            get { return password; }
-            set { password = value; OnPropertyChanged(); }
-        }
-
         #region Commands
 
         private RelayCommand loginCommand;
@@ -37,7 +36,7 @@ namespace ViewModel
             {
                 if (this.loginCommand == null)
                 {
-                    this.loginCommand = new RelayCommand(x => Login());
+                    this.loginCommand = new RelayCommand(x => Login(x));
                 }
 
                 return loginCommand;
@@ -57,9 +56,59 @@ namespace ViewModel
 
         #region Methods
 
-        private void Login()
+        /// <summary>
+        /// Do the login logic.
+        /// </summary>
+        /// <param name="parameter"></param>
+        private void Login(object parameter)
         {
-            OpenMenuItem("CustomDeliveryNoteDemo.MainWindow");
+            try
+            {
+                OnCursorHandling(true);
+
+                if (parameter is IHavePassword passwordContainer)
+                {
+                    SecureString secureString = passwordContainer.Password;
+                    string password = SecurityUtilities.ConvertToUnsecureString(secureString);
+                    
+                    var a = CheckCreadentials(password);
+                    
+                    OpenMenuItem("CustomDeliveryNoteDemo.MainWindow");
+                }
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+            }
+        }
+
+        /// <summary>
+        /// Get the user view model from the database.
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private UserViewModel CheckCreadentials(string password)
+        {
+            using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+            {
+                User user = ctx.User.FirstOrDefault(x => x.Name == this.UserName && x.Password == password);
+
+                if (user != null)
+                {
+                    Mapper mapper = new Mapper(MapperConfig);
+                    return mapper.Map<UserViewModel>(user);
+                }
+
+                throw new MessageException("The entered credentials are invalid.");
+            }
         }
 
         #endregion

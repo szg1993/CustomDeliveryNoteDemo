@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,14 +11,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ViewModel;
+using ViewModel.Interfaces;
 
 namespace CustomDeliveryNoteDemo
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginView : Window, IHavePassword
     {
+        #region Declaration
+
+        public SecureString Password
+        {
+            get
+            {
+                return pbPassword.SecurePassword;
+            }
+        }
+
+        #endregion
+
+        #region Ctors
+
         public LoginView()
         {
             InitializeComponent();
@@ -29,6 +45,8 @@ namespace CustomDeliveryNoteDemo
             ((LoginViewModel)this.DataContext).MouseEvent += LoginView_MouseEvent;
             ((LoginViewModel)this.DataContext).NewMenuItemEvent += LoginView_NewMenuItemEvent;
         }
+
+        #endregion
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {

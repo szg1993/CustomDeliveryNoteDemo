@@ -154,7 +154,6 @@ namespace ViewModel
 
                     using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
-                        var a = AppDomain.CurrentDomain.BaseDirectory;
                         List<Recipient> recList = await ctx.Recipient.Where(x => x.Code != null).ToListAsync();
 
                         Mapper mapper = new Mapper(MapperConfig);

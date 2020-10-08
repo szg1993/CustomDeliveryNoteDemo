@@ -48,13 +48,13 @@ namespace CustomDeliveryNoteDemo.Templates
         /// <param name="e"></param>
         private void WindowClosingIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is Ellipse)
+            if (sender is Ellipse elipse)
             {
-                if ((sender as Ellipse).DataContext is MainViewModel)
+                if (elipse.DataContext is MainViewModel || elipse.DataContext is LoginViewModel)
                 {
                     Application.Current.Shutdown();
                 }
-                else if ((sender as Ellipse).DataContext is RecipientMaintenanceViewModel)
+                else if (elipse.DataContext is RecipientMaintenanceViewModel)
                 {
                     Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
                     activeWindow.Close();
