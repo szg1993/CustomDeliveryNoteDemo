@@ -51,7 +51,7 @@ namespace ViewModel
             get { return findText; }
             set { findText = value; FilterList(); OnPropertyChanged(); }
         }
-        
+
         #endregion
 
         #region Commands
@@ -110,14 +110,15 @@ namespace ViewModel
         /// <param name="line"></param>
         private void MapProperties(Mapper mapper, NoteLine line)
         {
-            NoteLineViewModel lineVM = mapper.Map<NoteLineViewModel>(line);
-            NoteViewModel noteVM = mapper.Map<NoteViewModel>(line.Note);
-            RecipientViewModel recVM = mapper.Map<RecipientViewModel>(line.Note.Rec);
+            var noteLineVM = mapper.Map<NoteLineViewModel>(line);
+            var noteVM = mapper.Map<NoteViewModel>(line.Note);
+            var recipientVM = mapper.Map<RecipientViewModel>(line.Note.Rec);
 
-            noteVM.RecVM = recVM;
-            lineVM.NoteVM = noteVM;
+            noteVM.Id = line.Note.Id; //For some reason, the Id wasn't mapped.
+            noteVM.RecVM = recipientVM;
+            noteLineVM.NoteVM = noteVM;
 
-            this.NoteLineVMList.Add(lineVM);
+            this.NoteLineVMList.Add(noteLineVM);
         }
 
         /// <summary>
@@ -137,11 +138,13 @@ namespace ViewModel
                     using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                     {
                         var noteFromDb = await unitOfWork.NoteRepo.GetAsync((this.NoteLineVMListView.CurrentItem as NoteLineViewModel).NoteVM.Id);
-                        if (noteFromDb != null)
+
+                        if (noteFromDb == null)
                         {
-                            noteFromDb.Status = (int)noteStatus;
+                            throw new MessageException("The selected delivery note was not found in the database!");
                         }
 
+                        noteFromDb.Status = (int)noteStatus;
                         await unitOfWork.SaveAsync();
                     }
 
@@ -179,7 +182,7 @@ namespace ViewModel
                 }
 
                 Expression<Func<object, bool>> predicate = PredicateBuilder.True<object>();
-                
+
                 if (!String.IsNullOrEmpty(this.FindText) && this.NoteLineVMList.Count != 0)
                 {
                     predicate = PredicateBuilder.And(o => ((NoteLineViewModel)o).PartCode.ToUpper().Contains(this.FindText.ToUpper()), predicate);
@@ -230,13 +233,13 @@ namespace ViewModel
                     {
                         var noteLineList = await unitOfWork.NoteLineRepo.GetAllNoteLinesWithAllData();
 
-                        Mapper mapper = new Mapper(MapperConfig);
+                        var mapper = new Mapper(MapperConfig);
 
                         foreach (var noteLine in noteLineList)
                         {
                             MapProperties(mapper, noteLine);
                         }
-                    }                
+                    }
                 }
                 catch (MessageException mex)
                 {

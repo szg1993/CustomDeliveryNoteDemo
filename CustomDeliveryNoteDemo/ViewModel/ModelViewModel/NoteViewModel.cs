@@ -500,9 +500,5 @@ namespace ViewModel.ModelViewModel
         }
 
         #endregion
-
-        #region Static
-
-        #endregion
     }
 }

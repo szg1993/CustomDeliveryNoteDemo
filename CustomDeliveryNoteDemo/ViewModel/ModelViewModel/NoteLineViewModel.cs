@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Commands;
 using ViewModel.Excep;
+using ViewModel.Factory;
 using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
@@ -183,14 +184,15 @@ namespace ViewModel.ModelViewModel
 
         public NoteLineViewModel()
         {
-            
+
         }
 
         public NoteLineViewModel(NoteViewModel noteVM)
         {
             this.NoteVM = noteVM;
-            Task.Run(() => GetPartQtyUmListAsync());
-            Task.Run(() => GetPartWeightUmListAsync());
+
+            this.PartQtyUmList = StaticListFactory.GetPartQtyUnitList();
+            this.PartWeightUmList = StaticListFactory.GetPartWeightUnitList();
         }
 
         #endregion
@@ -200,43 +202,6 @@ namespace ViewModel.ModelViewModel
         public override string ToString()
         {
             return this.NoteVM.NoteNbr + "/" + this.Line;
-        }
-
-        #endregion
-
-        #region Tasks
-
-        /// <summary>
-        /// Get the list of the available part qty units async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetPartQtyUmListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.PartQtyUmList.Clear();
-                this.PartQtyUmList.Add("piece");
-                this.PartQtyUmList.Add("kg");
-                this.PartQtyUmList.Add("cm");
-                this.PartQtyUmList.Add("m");
-                this.PartQtyUmList.Add("l");
-            });
-        }
-
-        /// <summary>
-        /// Get the list of the available part qty units async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetPartWeightUmListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.PartWeightUmList.Clear();
-                this.PartWeightUmList.Add("kg");
-                this.PartWeightUmList.Add("t");
-            });
         }
 
         #endregion

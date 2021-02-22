@@ -89,5 +89,37 @@ namespace ViewModel.Factory
 
             return sizeWeightList;
         }
+
+        /// <summary>
+        /// Returns the values what can apply as a part quantity unit on the note lines.
+        /// </summary>
+        /// <returns></returns>
+        public static AsyncObservableCollection<string> GetPartQtyUnitList()
+        {
+            var partQtyUnitList = new AsyncObservableCollection<string>
+            {
+                "kg",
+                "cm",
+                "m",
+                "l"
+            };
+
+            return partQtyUnitList;
+        }
+
+        /// <summary>
+        /// Returns the values what can apply as a part weight unit on the note lines.
+        /// </summary>
+        /// <returns></returns>
+        public static AsyncObservableCollection<string> GetPartWeightUnitList()
+        {
+            var partWeightUnitList = new AsyncObservableCollection<string>
+            {
+                "kg",
+                "t",
+            };
+
+            return partWeightUnitList;
+        }
     }
 }
