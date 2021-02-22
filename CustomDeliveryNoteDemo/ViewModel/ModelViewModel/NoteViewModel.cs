@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ViewModel.Commands;
 using ViewModel.Excep;
+using ViewModel.Factory;
 using ViewModel.Util;
 
 namespace ViewModel.ModelViewModel
@@ -356,16 +357,6 @@ namespace ViewModel.ModelViewModel
             set { status = value; OnPropertyChanged(); }
         }
 
-        //private UserViewModel userVM;
-        ///// <summary>
-        ///// The user who created the note.
-        ///// </summary>
-        //public UserViewModel UserVM
-        //{
-        //    get { return userVM; }
-        //    set { userVM = value; OnPropertyChanged(); }
-        //}
-
         private RecipientViewModel recVM;
         /// <summary>
         /// The recipient of the note.
@@ -479,11 +470,11 @@ namespace ViewModel.ModelViewModel
             this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
             this.RecVM = new RecipientViewModel();
 
-            Task.Run(() => GetCategoryListAsync());
-            Task.Run(() => GetTakeoverPlaceListAsync());
-            Task.Run(() => GetPkgScaleListAsync());
-            Task.Run(() => GetPkgSizeUmListAsync());
-            Task.Run(() => GetTareWeightUmListAsync());
+            this.CategoryList = DropdownListFactory.GetCategoryList();
+            this.TakeoverPlaceList = DropdownListFactory.GetTakeoverPlaceList();
+            this.PkgScaleList = DropdownListFactory.GetPkgScaleList();
+            this.PkgSizeUmList = DropdownListFactory.GetSizeUnitList();
+            this.TareWeightUmList = DropdownListFactory.GetWeightUnitList();
         }
 
         #endregion
@@ -541,90 +532,6 @@ namespace ViewModel.ModelViewModel
             {
                 return prefix + firstPostfix;
             }
-        }
-
-        #endregion
-
-        #region Tasks
-
-        /// <summary>
-        /// Get the list of the available categories async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetCategoryListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.CategoryList.Clear();
-                this.CategoryList.Add("Other");
-                this.CategoryList.Add("Quality complaint");
-                this.CategoryList.Add("Return cargo");
-                this.CategoryList.Add("Sample");
-                this.CategoryList.Add("Tool test");
-            });
-        }
-
-        /// <summary>
-        /// Get the list of the available takeover places async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetTakeoverPlaceListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.TakeoverPlaceList.Clear();
-                this.TakeoverPlaceList.Add("Logistics office");
-                this.TakeoverPlaceList.Add("Special storage");
-                this.TakeoverPlaceList.Add("Tooling storage");
-            });
-        }
-
-        /// <summary>
-        /// Get the list of the available package scales async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetPkgScaleListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.PkgScaleList.Clear();
-                this.PkgScaleList.Add("Box");
-                this.PkgScaleList.Add("Envelope");
-                this.PkgScaleList.Add("Pallet");
-            });
-        }
-
-        /// <summary>
-        /// Get the list of the available package size units async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetPkgSizeUmListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.PkgSizeUmList.Clear();
-                this.PkgSizeUmList.Add("cm");
-                this.PkgSizeUmList.Add("mm");
-            });
-        }
-
-        /// <summary>
-        /// Get the list of the available tare weight units async.
-        /// If this weren't a demo app, then this values should be come from database or something else.
-        /// </summary>
-        /// <returns></returns>
-        private async Task GetTareWeightUmListAsync()
-        {
-            await Task.Run(() =>
-            {
-                this.TareWeightUmList.Clear();
-                this.TareWeightUmList.Add("kg");
-                this.TareWeightUmList.Add("t");
-            });
         }
 
         #endregion

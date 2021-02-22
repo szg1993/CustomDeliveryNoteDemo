@@ -11,11 +11,6 @@ namespace CustomDeliveryNoteDemo.Templates
 {
     public partial class DeliveryNoteWindowTemplate : ResourceDictionary
     {
-        public DeliveryNoteWindowTemplate()
-        {
-            
-        }
-
         /// <summary>
         /// Send the application to the tray if the user clicks to the proper icon.
         /// </summary>

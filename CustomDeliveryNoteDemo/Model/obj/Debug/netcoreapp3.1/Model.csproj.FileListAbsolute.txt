@@ -9,4 +9,3 @@ c:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netco
 c:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.dll
 c:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.pdb
 c:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.genruntimeconfig.cache
-C:\Projektek\CustomDeliveryNoteDemo\CustomDeliveryNoteDemo\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
