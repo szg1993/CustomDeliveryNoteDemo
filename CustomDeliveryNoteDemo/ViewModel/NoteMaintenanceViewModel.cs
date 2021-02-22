@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Model;
 using Model.Models;
+using Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -109,9 +110,9 @@ namespace ViewModel
                 this.ActNoteVM.CheckProps();
                 this.ActNoteVM.RecVM.CheckProps();
                 
-                foreach (NoteLineViewModel lineVM in this.ActNoteVM.NoteLineVMList)
+                foreach (var noteLineVM in this.ActNoteVM.NoteLineVMList)
                 {
-                    lineVM.CheckProps();
+                    noteLineVM.CheckProps();
                 }
             }
             else
@@ -154,15 +155,15 @@ namespace ViewModel
 
                     this.AllRecipientVMList.Clear();
 
-                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                     {
-                        List<Recipient> recList = await ctx.Recipient.Where(x => x.Code != null).ToListAsync();
+                        var recList = await unitOfWork.RecipientRepo.GetAllAsync();
 
-                        Mapper mapper = new Mapper(MapperConfig);
+                        var mapper = new Mapper(MapperConfig);
 
-                        foreach (Recipient rec in recList)
+                        foreach (var rec in recList)
                         {
-                            RecipientViewModel recVM = mapper.Map<RecipientViewModel>(rec);
+                            var recVM = mapper.Map<RecipientViewModel>(rec);
                             this.AllRecipientVMList.Add(recVM);
                         }
                     }
@@ -188,7 +189,7 @@ namespace ViewModel
         /// <returns></returns>
         private async Task UploadAsync()
         {
-            await Task.Run(() =>
+            await Task.Run(async() =>
             {
                 try
                 {
@@ -196,7 +197,37 @@ namespace ViewModel
 
                     OnCursorHandling(true);
 
-                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
+                    {
+                        string lastNoteNbr = await unitOfWork.NoteRepo.GetLastNoteNumberAsync();
+
+                        this.ActNoteVM.NoteNbr = CreateNoteNbr(lastNoteNbr);
+
+                        this.ActNoteVM.Status = (int)NoteStatus.NEW;
+                        this.ActNoteVM.CreatedDate = DateTime.Now; //Because this is just a demo app, I don't use the server time.
+                        this.ActNoteVM.RecId = this.ActNoteVM.RecVM.Id;
+
+                        CheckData();
+
+                        var mapper = new Mapper(MapperConfig);
+                        var note = mapper.Map<Note>(this.ActNoteVM);
+                        var recipient = mapper.Map<Recipient>(this.ActNoteVM.RecVM);
+
+                        note.UserId = LoggedUser.Employee.Id;
+
+                        foreach (var noteLineVM in this.ActNoteVM.NoteLineVMList)
+                        {
+                            var noteLine = mapper.Map<NoteLine>(noteLineVM);
+                            note.NoteLine.Add(noteLine);
+                        }
+
+                        await unitOfWork.NoteRepo.AddAsync(note);
+                        await unitOfWork.SaveAsync();
+                    }
+
+                    ReportSuccess();
+
+                    /*using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
                     {
                         this.ActNoteVM.NoteNbr = NoteViewModel.CreateNoteNbr(ctx);
                         this.ActNoteVM.Status = (int)NoteStatus.NEW;
@@ -220,9 +251,9 @@ namespace ViewModel
                         ctx.Note.Add(note);
 
                         ctx.SaveChanges();
-                    }
+                    }*/
 
-                    ReportSuccess();
+
                 }
                 catch (MessageException mex)
                 {
@@ -238,6 +269,40 @@ namespace ViewModel
                     OnCursorHandling(false);
                 }
             });
+        }
+
+        #endregion
+
+        #region Static
+
+        /// <summary>
+        /// Create a new unique ID for the deliver note.
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateNoteNbr(string lastNoteNbr)
+        {
+            string prefix = "N";
+            string postfix;
+            string firstPostfix = "00001";
+            string nbrSerialFormat = "00000";;
+
+            if (lastNoteNbr != null)
+            {
+                postfix = lastNoteNbr.Substring(prefix.Length, nbrSerialFormat.Length);
+
+                if (Convert.ToInt32(postfix) < Convert.ToInt32(nbrSerialFormat.Replace('0', '5')))
+                {
+                    return prefix + (Convert.ToInt32(postfix) + 1).ToString(nbrSerialFormat);
+                }
+                else
+                {
+                    throw new MessageException("The program is unable to calculate the next delivery note number, because there is more available serial number.");
+                }
+            }
+            else
+            {
+                return prefix + firstPostfix;
+            }
         }
 
         #endregion

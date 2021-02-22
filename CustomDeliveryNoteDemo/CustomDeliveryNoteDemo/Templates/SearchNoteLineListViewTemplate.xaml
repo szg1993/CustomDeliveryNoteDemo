@@ -83,14 +83,14 @@
 
                     <GridViewColumn Width="150">
                         <GridViewColumnHeader>
-                            <Label Content="Part description"
+                            <Label Content="Part comment"
                                    HorizontalContentAlignment="Left"
                                    HorizontalAlignment="Stretch"
                                    FontSize="{Binding LabelFontSize}"/>
                         </GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding PartDesc}"
+                                <TextBlock Text="{Binding PartCmt}"
                                            HorizontalAlignment="Stretch"
                                            VerticalAlignment="Center"
                                            FontSize="{Binding LineListLabelFontSize}"/>

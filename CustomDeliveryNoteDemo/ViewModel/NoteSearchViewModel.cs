@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Model;
 using Model.Models;
+using Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -123,7 +124,7 @@ namespace ViewModel
         /// Change the status of the delivery note and save to the database.
         /// </summary>
         /// <param name="noteStatus"></param>
-        private void SetNoteStatus(NoteStatus noteStatus)
+        private async Task SetNoteStatus(NoteStatus noteStatus)
         {
             try
             {
@@ -133,15 +134,15 @@ namespace ViewModel
                 {
                     Mapper mapper = new Mapper(MapperConfig);
 
-                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                     {
-                        Note dbNote = ctx.Note.FirstOrDefault(x => x.Id == (this.NoteLineVMListView.CurrentItem as NoteLineViewModel).NoteVM.Id);
-                        if (dbNote != null)
+                        var noteFromDb = await unitOfWork.NoteRepo.GetAsync((this.NoteLineVMListView.CurrentItem as NoteLineViewModel).NoteVM.Id);
+                        if (noteFromDb != null)
                         {
-                            dbNote.Status = (int)noteStatus;
+                            noteFromDb.Status = (int)noteStatus;
                         }
 
-                        ctx.SaveChanges();
+                        await unitOfWork.SaveAsync();
                     }
 
                     ReportSuccess();
@@ -225,20 +226,17 @@ namespace ViewModel
 
                     this.NoteLineVMList.Clear();
 
-                    using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                    using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                     {
-                        List<NoteLine> lineList = await ctx.NoteLine.Where(x => x.Note != null)
-                        .Include(y => y.Note)
-                        .Include(z => z.Note.Rec)
-                        .ToListAsync();
+                        var noteLineList = await unitOfWork.NoteLineRepo.GetAllNoteLinesWithAllData();
 
                         Mapper mapper = new Mapper(MapperConfig);
 
-                        foreach (NoteLine line in lineList)
+                        foreach (var noteLine in noteLineList)
                         {
-                            MapProperties(mapper, line);
+                            MapProperties(mapper, noteLine);
                         }
-                    }                  
+                    }                
                 }
                 catch (MessageException mex)
                 {

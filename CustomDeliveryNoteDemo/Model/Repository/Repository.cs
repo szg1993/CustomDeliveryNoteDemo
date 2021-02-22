@@ -35,7 +35,7 @@ namespace Model.Repository
             await dbSet.AddAsync(entity);
         }
 
-        public async Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(long id)
         {
             return await dbSet.FindAsync(id);
         }

@@ -10,5 +10,6 @@ namespace Model.Repository.IRepository
     {
         Task<Note> GetByNumberAsync(string noteNbr);
         Task<Note> GetWithAllPropertiesAsync(int id);
+        Task<string> GetLastNoteNumberAsync();
     }
 }

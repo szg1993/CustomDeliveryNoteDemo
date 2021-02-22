@@ -42,6 +42,11 @@ namespace Model.Repository
             return await query.FirstOrDefaultAsync(n => n.Id == id);
         }
 
+        public async Task<string> GetLastNoteNumberAsync()
+        {
+            return (await _db.Note.OrderByDescending(x => x.Id).FirstOrDefaultAsync()).NoteNbr;
+        }
+
         #endregion
     }
 }

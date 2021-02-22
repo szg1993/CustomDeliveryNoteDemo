@@ -90,18 +90,18 @@ namespace ViewModel
 
                         using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                         {
-                            Recipient existingRec = await unitOfWork.RecipientRepo.GetFirstOrDefaultAsync(x => x.Code == this.ActRecVM.Code);
+                            var recipientFromDb = await unitOfWork.RecipientRepo.GetFirstOrDefaultAsync(x => x.Code == this.ActRecVM.Code);
                             
-                            if (existingRec != null)
+                            if (recipientFromDb != null)
                             {
                                 throw new MessageException("The following code is already used: " + this.ActRecVM.Code + ".\nPlease choose an another code for the new recipient.");
                             }
 
                             Mapper mapper = new Mapper(MapperConfig);
 
-                            Recipient rec = mapper.Map<Recipient>(this.ActRecVM);
+                            var recipient = mapper.Map<Recipient>(this.ActRecVM);
                             
-                            await unitOfWork.RecipientRepo.AddAsync(rec);
+                            await unitOfWork.RecipientRepo.AddAsync(recipient);
                             await unitOfWork.SaveAsync();
                         }
 

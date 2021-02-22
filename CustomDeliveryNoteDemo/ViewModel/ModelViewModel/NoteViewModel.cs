@@ -503,38 +503,6 @@ namespace ViewModel.ModelViewModel
 
         #region Static
 
-        /// <summary>
-        /// Create a new unique ID for the deliver note.
-        /// </summary>
-        /// <returns></returns>
-        public static string CreateNoteNbr(CustomDeliveryNoteContext ctx)
-        {
-            string prefix = "N";
-            string postfix;
-            string firstPostfix = "00001";
-            string nbrSerialFormat = "00000";
-            
-            Note lastNote = ctx.Note.OrderByDescending(x => x.Id).FirstOrDefault();
-
-            if (lastNote != null)
-            {
-                postfix = String.IsNullOrEmpty(lastNote.NoteNbr) ? nbrSerialFormat : lastNote.NoteNbr.Substring(prefix.Length, nbrSerialFormat.Length);
-
-                if (Convert.ToInt32(postfix) < Convert.ToInt32(nbrSerialFormat.Replace('0', '5')))
-                {
-                    return prefix + (Convert.ToInt32(postfix) + 1).ToString(nbrSerialFormat);
-                }
-                else
-                {
-                    throw new MessageException("The program is unable to calculate the next delivery note number, because there is more available serial number.");
-                }
-            }
-            else
-            {
-                return prefix + firstPostfix;
-            }
-        }
-
         #endregion
     }
 }
