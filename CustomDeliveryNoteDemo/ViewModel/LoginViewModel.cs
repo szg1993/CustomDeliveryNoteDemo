@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Model;
+using Model.Models;
+using Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,22 +48,13 @@ namespace ViewModel
 
         #endregion
 
-        #region Ctors
-
-        public LoginViewModel()
-        {
-
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>
         /// Do the login logic.
         /// </summary>
         /// <param name="parameter"></param>
-        private void Login(object parameter)
+        private async Task Login(object parameter)
         {
             try
             {
@@ -71,10 +64,10 @@ namespace ViewModel
                 {
                     SecureString secureString = passwordContainer.Password;
                     string password = SecurityUtilities.ConvertToUnsecureString(secureString);
-                    
-                    CheckCreadentials(password);
-                    
-                    OpenMenuItem("CustomDeliveryNoteDemo.MainWindow");
+
+                    await CheckCredentials(password);
+
+                    OpenMenuItem(StaticDetails.MainWindowName);
                 }
             }
             catch (MessageException mex)
@@ -96,22 +89,20 @@ namespace ViewModel
         /// </summary>
         /// <param name="password"></param>
         /// <returns></returns>
-        private void CheckCreadentials(string password)
+        private async Task CheckCredentials(string password)
         {
-            using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+            using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
             {
-                User user = ctx.User.FirstOrDefault(x => x.Name == this.UserName && x.Password == password);
+                var user = await unitOfWork.UserRepo.GetFirstOrDefaultAsync(x => x.Name == this.UserName && x.Password == password);
 
-                if (user != null)
+                if (user == null)
                 {
-                    LoggedUser.Employee.Id = user.Id;
-                    LoggedUser.Employee.Name = user.Name;
-
-                    return;
+                    throw new MessageException("The entered credentials are invalid.");
                 }
 
-                throw new MessageException("The entered credentials are invalid.");
-            }
+                LoggedUser.Employee.Id = user.Id;
+                LoggedUser.Employee.Name = user.Name;
+            }          
         }
 
         #endregion

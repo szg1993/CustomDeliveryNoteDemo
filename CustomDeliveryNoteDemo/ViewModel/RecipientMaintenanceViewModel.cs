@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Model;
+using Model.Models;
+using Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,26 +70,13 @@ namespace ViewModel
             base.ReportSuccess();
         }
 
-        /// <summary>
-        /// Check if the user would like to use an existing code for the new recipient.
-        /// </summary>
-        /// <param name="ctx"></param>
-        private void CheckRecCode(CustomDeliveryNoteContext ctx)
-        {
-            Recipient existingRec = ctx.Recipient.FirstOrDefault(x => x.Code == this.ActRecVM.Code);
-            if (existingRec != null)
-            {
-                throw new MessageException("The following code is already used: " + this.ActRecVM.Code + ".\nPlease choose an another code for the new recipient.");
-            }
-        }
-
         #endregion
 
         #region Tasks
 
         private async Task UploadAsync()
         {
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 try
                 {
@@ -99,15 +88,21 @@ namespace ViewModel
                     {
                         this.ActRecVM.CheckProps();
 
-                        using (CustomDeliveryNoteContext ctx = new CustomDeliveryNoteContext())
+                        using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                         {
-                            CheckRecCode(ctx);
+                            Recipient existingRec = await unitOfWork.RecipientRepo.GetFirstOrDefaultAsync(x => x.Code == this.ActRecVM.Code);
+                            
+                            if (existingRec != null)
+                            {
+                                throw new MessageException("The following code is already used: " + this.ActRecVM.Code + ".\nPlease choose an another code for the new recipient.");
+                            }
+
                             Mapper mapper = new Mapper(MapperConfig);
 
                             Recipient rec = mapper.Map<Recipient>(this.ActRecVM);
-                            ctx.Recipient.Add(rec);
-
-                            ctx.SaveChanges();
+                            
+                            await unitOfWork.RecipientRepo.AddAsync(rec);
+                            await unitOfWork.SaveAsync();
                         }
 
                         ReportSuccess();

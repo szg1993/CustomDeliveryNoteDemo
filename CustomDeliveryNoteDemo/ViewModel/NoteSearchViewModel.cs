@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

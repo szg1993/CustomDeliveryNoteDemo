@@ -24,11 +24,6 @@ namespace ViewModel
 
         #region Ctors
 
-        public MainViewModel()
-        {
-
-        }
-
         #endregion
 
         #region Methods

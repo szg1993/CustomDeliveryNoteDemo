@@ -5,7 +5,7 @@ using ViewModel.Util;
 
 namespace ViewModel.Factory
 {
-    public static class DropdownListFactory
+    public static class StaticListFactory
     {
         /// <summary>
         /// Returns the values what can apply as a delivery note category

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Model;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -470,11 +471,11 @@ namespace ViewModel.ModelViewModel
             this.NoteLineVMList = new ObservableCollection<NoteLineViewModel>();
             this.RecVM = new RecipientViewModel();
 
-            this.CategoryList = DropdownListFactory.GetCategoryList();
-            this.TakeoverPlaceList = DropdownListFactory.GetTakeoverPlaceList();
-            this.PkgScaleList = DropdownListFactory.GetPkgScaleList();
-            this.PkgSizeUmList = DropdownListFactory.GetSizeUnitList();
-            this.TareWeightUmList = DropdownListFactory.GetWeightUnitList();
+            this.CategoryList = StaticListFactory.GetCategoryList();
+            this.TakeoverPlaceList = StaticListFactory.GetTakeoverPlaceList();
+            this.PkgScaleList = StaticListFactory.GetPkgScaleList();
+            this.PkgSizeUmList = StaticListFactory.GetSizeUnitList();
+            this.TareWeightUmList = StaticListFactory.GetWeightUnitList();
         }
 
         #endregion
