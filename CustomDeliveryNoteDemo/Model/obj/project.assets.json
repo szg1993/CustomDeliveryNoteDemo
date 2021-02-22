@@ -5388,11 +5388,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
+      "projectPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\Sztarcsevics Gabor\\.nuget\\packages\\",
-      "outputPath": "c:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
+      "outputPath": "C:\\Projektek\\CustomDeliveryNoteDemo\\CustomDeliveryNoteDemo\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5410,6 +5410,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5421,6 +5422,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
@@ -5460,7 +5462,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
