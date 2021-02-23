@@ -93,7 +93,7 @@ namespace ViewModel
         {
             using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
             {
-                var user = await unitOfWork.UserRepo.GetFirstOrDefaultAsync(x => x.Name == this.UserName && x.Password == password);
+                var user = await unitOfWork.UserRepo.GetUserByNameAndPasswordAsync(this.UserName, password);
 
                 if (user == null)
                 {

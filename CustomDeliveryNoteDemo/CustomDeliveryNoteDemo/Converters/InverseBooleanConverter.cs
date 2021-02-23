@@ -5,6 +5,9 @@ using System.Windows.Data;
 
 namespace CustomDeliveryNoteDemo.Converters
 {
+    /// <summary>
+    /// Used to convert values on XAML to it's opppsite.
+    /// </summary>
     [ValueConversion(typeof(bool), typeof(bool))]
     public class InverseBooleanConverter: IValueConverter
     {
