@@ -79,6 +79,7 @@
         <Grid Name="grdWorkPlace"
               Grid.Row="2"
               Grid.Column="0">
+            <Rectangle Fill="Red" Width="200" Height="200"/>
         </Grid>
     </Grid>
 </Window>

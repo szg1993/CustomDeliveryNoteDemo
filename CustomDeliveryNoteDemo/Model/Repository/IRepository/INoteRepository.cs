@@ -9,6 +9,7 @@ namespace Model.Repository.IRepository
     public interface INoteRepository : IRepository<Note>
     {
         Task<Note> GetByNumberAsync(string noteNbr);
+        Note GetByNumber(string noteNbr);
         Task<Note> GetWithAllPropertiesAsync(int id);
         Task<string> GetLastNoteNumberAsync();
     }

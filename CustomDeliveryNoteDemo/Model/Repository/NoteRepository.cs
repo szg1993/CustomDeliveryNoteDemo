@@ -33,6 +33,11 @@ namespace Model.Repository
             return await _db.Note.FirstOrDefaultAsync(n => n.NoteNbr == noteNbr);
         }
 
+        public Note GetByNumber(string noteNbr)
+        {
+            return _db.Note.FirstOrDefault(n => n.NoteNbr == noteNbr);
+        }
+
         public async Task<Note> GetWithAllPropertiesAsync(int id)
         {
             IQueryable<Note> query = _db.Set<Note>()

@@ -15,7 +15,7 @@ namespace ModelTest.Repository
     public class RecipientRepositoryTest
     {
         [Fact]
-        public void IsRecipientExists_ShouldReturnTrue_WhenNameExists()
+        public void IsRecipientExists_ShouldReturnTrue_WhenExists()
         {
             //Arrange
             var sampleFactory = new SampleFactory();
