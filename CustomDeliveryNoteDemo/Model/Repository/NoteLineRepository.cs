@@ -28,16 +28,21 @@ namespace Model.Repository
 
         #region Methods
 
-        public async Task<IEnumerable<NoteLine>> GetNoteLinesInNote(int noteId)
+        public async Task<IEnumerable<NoteLine>> GetNoteLinesInNoteAsync(int noteId)
         {
             return await _db.NoteLine.Include(l => l.Note).Where(l => l.NoteId == noteId).ToListAsync();
+        }
+
+        public IEnumerable<NoteLine> GetNoteLinesInNote(int noteId)
+        {
+            return _db.NoteLine.Include(l => l.Note).Where(l => l.NoteId == noteId).ToList();
         }
 
         /// <summary>
         /// Return all data from the tables started from NoteLine.
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<NoteLine>> GetAllNoteLinesWithAllData()
+        public async Task<IEnumerable<NoteLine>> GetAllNoteLinesWithAllDataAsync()
         {
             return await _db.NoteLine
                 .Include(l => l.Note)

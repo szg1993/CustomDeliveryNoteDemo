@@ -8,7 +8,8 @@ namespace Model.Repository.IRepository
 {
     public interface INoteLineRepository : IRepository<NoteLine>
     {
-        Task<IEnumerable<NoteLine>> GetNoteLinesInNote(int noteId);
-        Task<IEnumerable<NoteLine>> GetAllNoteLinesWithAllData();
+        Task<IEnumerable<NoteLine>> GetNoteLinesInNoteAsync(int noteId);
+        IEnumerable<NoteLine> GetNoteLinesInNote(int noteId);
+        Task<IEnumerable<NoteLine>> GetAllNoteLinesWithAllDataAsync();
     }
 }

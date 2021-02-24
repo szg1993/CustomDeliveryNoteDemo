@@ -26,6 +26,25 @@ namespace ModelTest.Sample
         }
 
         /// <summary>
+        /// Returns a sample list from note lines for testing purposes.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<NoteLine> GetSampleNoteLineList()
+        {
+            List<NoteLine> noteLineList = new List<NoteLine>
+            {
+                new NoteLine {Id = 1, NoteId = 1, PartCode = "ABC-001" },
+                new NoteLine {Id = 2, NoteId = 1, PartCode = "ABC-002" },
+                new NoteLine {Id = 3, NoteId = 2, PartCode = "ABC-003" },
+                new NoteLine {Id = 4, NoteId = 2, PartCode = "ABC-004" },
+                new NoteLine {Id = 5, NoteId = 3, PartCode = "ABC-005" },
+                new NoteLine {Id = 6, NoteId = 4, PartCode = "ABC-006" },
+            };
+
+            return noteLineList;
+        }
+
+        /// <summary>
         /// Returns a sample list of users for testing purposes.
         /// </summary>
         /// <returns></returns>

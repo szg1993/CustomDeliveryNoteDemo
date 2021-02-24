@@ -221,7 +221,7 @@ namespace ViewModel
 
                 using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                 {
-                    var noteLineList = await unitOfWork.NoteLineRepo.GetAllNoteLinesWithAllData();
+                    var noteLineList = await unitOfWork.NoteLineRepo.GetAllNoteLinesWithAllDataAsync();
 
                     var mapper = new Mapper(MapperConfig);
 
