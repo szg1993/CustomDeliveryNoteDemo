@@ -31,12 +31,20 @@ namespace CustomDeliveryNoteDemo
             ((NoteSearchViewModel)this.DataContext).MessageBoxEvent += NoteSearchView_MessageBoxEvent;
             ((NoteSearchViewModel)this.DataContext).MouseEvent += NoteSearchView_MouseEvent;
 
-            ((NoteSearchViewModel)this.DataContext).CallGetNoteLines();
+            Loaded += NoteSearchView_Loaded;
         }
 
         #endregion
 
         #region Events
+
+        private void NoteSearchView_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null && this.DataContext is NoteSearchViewModel)
+            {
+                ((NoteSearchViewModel)this.DataContext).CallGetNoteLines();
+            }
+        }
 
         private void NoteSearchView_MessageBoxEvent(string msg, DeliveryNoteMessageBoxType type)
         {
