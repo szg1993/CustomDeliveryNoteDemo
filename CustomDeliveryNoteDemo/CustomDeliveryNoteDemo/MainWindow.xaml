@@ -79,7 +79,17 @@
         <Grid Name="grdWorkPlace"
               Grid.Row="2"
               Grid.Column="0">
-            <Rectangle Fill="Red" Width="200" Height="200"/>
+            <TextBox Text="Dear Visitor," FontStyle="Italic" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="0" Margin="10,0,0,0" />
+            <TextBox Text="Thank you for trying out my demo application." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,20,0,0" BorderThickness="0"/>
+            <TextBox Text="With this software you can create delivey notes and store the data in a SQLite database (I used SQLite for the sake of simplicity)." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,40,0,0" BorderThickness="0"/>
+            <TextBox Text="Usage:" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,60,0,0" BorderThickness="0"/>
+            <TextBox Text="If you would like to create a new delivery note please go the New -> Standard Note menu item." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,80,0,0" BorderThickness="0"/>
+            <TextBox Text="After the upload the full version of this application starts a parameterized SSRS report in order to show the delivery note for printing (this demo will do that)." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,100,0,0" BorderThickness="0"/>
+            <TextBox Text="You can add a new recipient in the Maintenance -> New Recipient window. After that you will be able to select that recipient while creating a note." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,120,0,0" BorderThickness="0"/>
+            <TextBox Text="The Maintenance -> Note Search menu item is used to list of the existing notes. You can also confirm or infirm the note." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,140,0,0" BorderThickness="0"/>
+            <TextBox Text="Comments:" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,160,0,0" BorderThickness="0"/>
+            <TextBox Text="Please note this is just a demo application with limited functionalities." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,180,0,0" BorderThickness="0"/>
+            <TextBox Text="The full version of this software is currently used by a company with lots of extra features in it." VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,200,0,0" BorderThickness="0"/>
         </Grid>
     </Grid>
 </Window>

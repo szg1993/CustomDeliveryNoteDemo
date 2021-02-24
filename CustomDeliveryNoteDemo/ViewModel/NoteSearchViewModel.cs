@@ -1,22 +1,14 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Model;
 using Model.Models;
 using Model.Repository;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using ViewModel.Commands;
 using ViewModel.Excep;
-using ViewModel.Interfaces;
 using ViewModel.ModelViewModel;
 using ViewModel.Util;
 
@@ -217,44 +209,41 @@ namespace ViewModel
         /// Get the list of the available recipients async.
         /// </summary>
         /// <returns></returns>
-        private async Task GetNoteLines()
+        public async Task GetNoteLines()
         {
-            await Task.Run(async () =>
+            try
             {
-                try
+                this.IsBusy = true;
+
+                OnCursorHandling(true);
+
+                this.NoteLineVMList.Clear();
+
+                using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                 {
-                    this.IsBusy = true;
+                    var noteLineList = await unitOfWork.NoteLineRepo.GetAllNoteLinesWithAllData();
 
-                    OnCursorHandling(true);
+                    var mapper = new Mapper(MapperConfig);
 
-                    this.NoteLineVMList.Clear();
-
-                    using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
+                    foreach (var noteLine in noteLineList)
                     {
-                        var noteLineList = await unitOfWork.NoteLineRepo.GetAllNoteLinesWithAllData();
-
-                        var mapper = new Mapper(MapperConfig);
-
-                        foreach (var noteLine in noteLineList)
-                        {
-                            MapProperties(mapper, noteLine);
-                        }
+                        MapProperties(mapper, noteLine);
                     }
                 }
-                catch (MessageException mex)
-                {
-                    OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
-                }
-                catch (Exception ex)
-                {
-                    OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
-                }
-                finally
-                {
-                    OnCursorHandling(false);
-                    this.IsBusy = false;
-                }
-            });
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+                this.IsBusy = false;
+            }
         }
 
         #endregion

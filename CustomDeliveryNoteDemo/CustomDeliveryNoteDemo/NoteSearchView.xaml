@@ -47,9 +47,6 @@
                  VerticalContentAlignment="Center"
                  VerticalAlignment="Center"
                  FontSize="{Binding LabelFontSize}">
-            <!--<TextBox.InputBindings>
-                <KeyBinding Command="{Binding SearchCommand}" Key="Enter" />
-            </TextBox.InputBindings>-->
         </TextBox>
 
         <Button Grid.Row="3"

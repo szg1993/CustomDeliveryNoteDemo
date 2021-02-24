@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ViewModel.Commands;
 using ViewModel.Excep;
@@ -147,40 +148,37 @@ namespace ViewModel
         /// <returns></returns>
         private async Task GetRecipientListAsync()
         {
-            await Task.Run(async () =>
+            try
             {
-                try
+                OnCursorHandling(true);
+
+                this.AllRecipientVMList.Clear();
+
+                using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
                 {
-                    OnCursorHandling(true);
+                    var recList = await unitOfWork.RecipientRepo.GetAllAsync();
 
-                    this.AllRecipientVMList.Clear();
+                    var mapper = new Mapper(MapperConfig);
 
-                    using (UnitOfWork unitOfWork = new UnitOfWork(new CustomDeliveryNoteContext()))
+                    foreach (var rec in recList)
                     {
-                        var recList = await unitOfWork.RecipientRepo.GetAllAsync();
-
-                        var mapper = new Mapper(MapperConfig);
-
-                        foreach (var rec in recList)
-                        {
-                            var recVM = mapper.Map<RecipientViewModel>(rec);
-                            this.AllRecipientVMList.Add(recVM);
-                        }
+                        var recVM = mapper.Map<RecipientViewModel>(rec);
+                        this.AllRecipientVMList.Add(recVM);
                     }
                 }
-                catch (MessageException mex)
-                {
-                    OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
-                }
-                catch (Exception ex)
-                {
-                    OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
-                }
-                finally
-                {
-                    OnCursorHandling(false);
-                }
-            });
+            }
+            catch (MessageException mex)
+            {
+                OnMessageBoxHandling(mex.Message, DeliveryNoteMessageBoxType.Warning);
+            }
+            catch (Exception ex)
+            {
+                OnMessageBoxHandling(ex.Message, DeliveryNoteMessageBoxType.Error);
+            }
+            finally
+            {
+                OnCursorHandling(false);
+            }
         }
 
         /// <summary>
